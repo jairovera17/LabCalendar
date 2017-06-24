@@ -5,11 +5,13 @@ import { HttpModule } from '@angular/http';
 
 import { AppComponent } from './app.component';
 import { InicioComponent } from './inicio/inicio.component';
+import { WeekViewCalendarComponent } from './week-view-calendar/week-view-calendar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    InicioComponent
+    InicioComponent,
+    WeekViewCalendarComponent
   ],
   imports: [
     BrowserModule,
