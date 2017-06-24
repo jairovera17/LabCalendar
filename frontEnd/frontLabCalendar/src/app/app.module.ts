@@ -6,14 +6,12 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { WeekViewCalendarComponent } from './week-view-calendar/week-view-calendar.component';
-import { LabFootComponent } from './lab-foot/lab-foot.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     InicioComponent,
-    WeekViewCalendarComponent,
-    LabFootComponent
+    WeekViewCalendarComponent
   ],
   imports: [
     BrowserModule,
