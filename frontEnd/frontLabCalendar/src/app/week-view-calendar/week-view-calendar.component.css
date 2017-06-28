@@ -61,7 +61,7 @@ table tbody tr td:last-child {
   border-right: 1px solid #626E7E;
 }
 table tbody tr td.hour {
-  font-size: 2em;
+  font-size: 1em;
   padding: 0;
   color: #626E7E;
   background: #fff;
@@ -76,4 +76,5 @@ table tbody tr td.hour span {
 
 table thead tr th  {
   text-align: center;
+
 }
