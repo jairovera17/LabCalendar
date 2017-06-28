@@ -11,6 +11,8 @@ import { WeekViewCalendarComponent } from './week-view-calendar/week-view-calend
 import { MainPageComponent } from './main-page/main-page.component';
 import { LabViewComponent } from './lab-view/lab-view.component';
 
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +25,13 @@ import { LabViewComponent } from './lab-view/lab-view.component';
     BrowserModule,
     FormsModule,
     HttpModule,
+    NgbModule.forRoot(),
     RouterModule.forRoot([
+      {
+        path: '',
+        redirectTo: '/main-page',
+        pathMatch: 'full'
+      },
       {
         path: 'week-view-calendar',
         component: WeekViewCalendarComponent
