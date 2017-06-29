@@ -16,7 +16,7 @@ module.exports = {
     profesor:{
       model:'Profesor'
     }
-
+<!--   comentario  -->
   }
 };
 

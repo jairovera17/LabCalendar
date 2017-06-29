@@ -9,7 +9,7 @@ import {Http} from '@angular/http';
 export class CalendarTableComponent implements OnInit {
   arreglo: number[] = [7, 9, 11, 13, 15, 17, 19];
   idDias: number[] = [1, 2, 3, 4, 5, 6];
-  nombreDias: string[]= ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'];
+  nombreDias: string[]= ['Monday', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'];
 
   constructor(private _http: Http) {
 
