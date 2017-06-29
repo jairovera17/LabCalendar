@@ -1,0 +1,40 @@
+
+<div  [contextMenu]="basicMenu" style=" min-height: 120px;
+  text-align: center;">
+
+</div>
+<context-menu class="container" style="text-align: center">
+  <ng-template contextMenuItem >
+    <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Agendar</button>
+  </ng-template>
+
+</context-menu>
+
+<ng-template #content let-c="close" let-d="dismiss">
+  <div class="modal-header">
+    <h4 class="modal-title" style="text-align: center">Agendar</h4>
+  </div>
+  <div class="modal-body" style="text-align: center">
+    <h6><strong>Dia:</strong></h6>
+    <p>{{this.getdia(this.dia)}}</p>
+
+    <h6><strong>Hora Inicio:</strong></h6>
+    <p>{{this.hora}}</p>
+
+    <h6><strong>Hora Fin:</strong></h6>
+    <p>{{this.hora+2}}</p>
+
+    <input  class="form-control"
+            placeholder="Ingresa alguna Observacion"
+            type="text">
+
+
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-secondary" (click)="c('Close click')">Guardar</button>
+    <button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
+  </div>
+</ng-template>
+
+
+

@@ -12,19 +12,24 @@ import { MainPageComponent } from './main-page/main-page.component';
 import { LabViewComponent } from './lab-view/lab-view.component';
 
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
-
+import { CalendarTableComponent } from './calendar-table/calendar-table.component';
+import {ContextMenuModule} from 'ngx-contextmenu';
+import { CalendarTableCellComponent } from './calendar-table-cell/calendar-table-cell.component';
 @NgModule({
   declarations: [
     AppComponent,
     InicioComponent,
     WeekViewCalendarComponent,
     MainPageComponent,
-    LabViewComponent
+    LabViewComponent,
+    CalendarTableComponent,
+    CalendarTableCellComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
+    ContextMenuModule,
     NgbModule.forRoot(),
     RouterModule.forRoot([
       {

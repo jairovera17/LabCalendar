@@ -1,0 +1,31 @@
+
+<div class="container">
+  <div class="row calendarTop calendarRight" style="background-color: #d1d5db">
+    <div class=" col-1 calendarDim calendarLeft">
+
+    </div>
+    <div class="col-11">
+      <div class="row">
+        <div class="col-2 calendarDim" *ngFor="let dia of this.idDias"><br><br>{{getdia(dia)}}</div>
+      </div>
+    </div>
+  </div>
+  <div class="row" *ngFor="let horas of this.arreglo">
+
+    <div class=" col-1 calendarLeft calendarBottom  calendarDim">
+      <br><br>
+      {{horas}}-{{horas+2}}
+    </div>
+    <div class="col-11">
+      <div class="row calendarRight">
+        <div class="col-2 calendarLeft calendarBottom  calendarDim" *ngFor="let dia of this.idDias">
+          <app-calendar-table-cell [dia]="dia" [hora]="horas" ></app-calendar-table-cell>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+
