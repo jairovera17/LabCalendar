@@ -1,0 +1,23 @@
+.calendarLeft{
+  border-left: 1px solid black;
+}
+.calendarRight{
+  border-right: 1px solid black;
+}
+
+.calendarTop{
+  border-top:  1px solid black;
+}
+.calendarBottom{
+  border-bottom: 1px solid black;
+}
+
+.calendarDim{
+  min-height: 120px;
+  text-align: center;
+
+}
+
+.calendar-header{
+  background-color: #9bd2e4;
+}
