@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {Http} from '@angular/http';
+import {Laboratorio} from '../misClasses/interfazLaboratorio';
+import {ModeloComputador} from '../misClasses/interfazModeloComputador';
+import {Software} from '../misClasses/interfazSoftware';
 
 @Component({
   selector: 'app-calendar-table',
@@ -11,11 +14,25 @@ export class CalendarTableComponent implements OnInit {
   idDias: number[] = [1, 2, 3, 4, 5, 6];
   nombreDias: string[]= ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'];
 
+  laboratorios: Laboratorio[];
+  selectLab: Laboratorio;
   constructor(private _http: Http) {
-
   }
 
   ngOnInit() {
+    this._http
+      .get('http://localhost:1337/Laboratorio/')
+      .subscribe(
+        res => {
+          const rjson: Laboratorio[] = res.json();
+          this.laboratorios = rjson;
+          this.selectLab = this.laboratorios[0];
+        },
+        error => {
+          console.log('error papu');
+        }
+      );
+
   }
   getdia(numDia: number): string {
     return this.nombreDias[numDia - 1];
@@ -24,4 +41,39 @@ export class CalendarTableComponent implements OnInit {
     return 'ddddd';
   }
 
+  cargarLaboratorios () {
+  this._http
+    .get('http://localhost:1337/Laboratorio/')
+    .subscribe(
+  res => {
+  const rjson: Laboratorio[] = res.json();
+  this.laboratorios = rjson.map(
+  (lab: Laboratorio) => {
+    console.log(lab.nombre);
+    return lab;
+  }
+);
+},
+error => {
+  console.log('error papu');
 }
+);
+}
+
+  setLab(event){
+    this.laboratorios.map(
+      (lab: Laboratorio) => {
+        if (lab.nombre === event.target.value) {
+          this.selectLab = lab;
+          return;
+        }
+      }
+    );
+  }
+  vacio (ingreso: any): boolean {
+    return 'undefined' === typeof ingreso;
+  }
+
+
+}
+

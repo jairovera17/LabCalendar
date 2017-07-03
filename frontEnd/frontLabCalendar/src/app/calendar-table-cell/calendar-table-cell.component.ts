@@ -1,7 +1,9 @@
 import {Component, Input, OnInit, ViewChild} from '@angular/core';
 import { ContextMenuComponent } from 'ngx-contextmenu';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
-import {Http} from "@angular/http";
+import {Http} from '@angular/http';
+import {MateriaProfesor} from '../misClasses/interfazMateriaProfesor';
+import {Laboratorio} from "../misClasses/interfazLaboratorio";
 @Component({
   selector: 'app-calendar-table-cell',
   templateUrl: './calendar-table-cell.component.html',
@@ -11,6 +13,7 @@ export class CalendarTableCellComponent implements OnInit {
 
   @Input()hora: number;
   @Input()dia: number;
+  @Input()selectedLab: Laboratorio;
   @ViewChild(ContextMenuComponent) public basicMenu: ContextMenuComponent;
 
   nombreDias: string[]= ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'];
@@ -95,24 +98,6 @@ export class CalendarTableCellComponent implements OnInit {
 
 }
 
-class MateriaProfesor {
-  constructor(
-    public materia: Materia,
-    public profesor: Profesor
-  ) {
-  }
-}
 
-class Materia {
-  constructor(
-    public nombre: string,
-    public codigo: string
-  ) {}
-}
-class Profesor {
-  constructor(
-    public nombres: string,
-    public apellidos: string,
-    public ultimoTitulo: string
-  ) {}
-}
+
+

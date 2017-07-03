@@ -10,7 +10,7 @@ module.exports = {
   attributes: {
     marca: 'string',
     procesador: 'string',
-    ram: 'string',
+    ram: 'string'
 
 
 

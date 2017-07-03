@@ -17,6 +17,9 @@ module.exports = {
 
     materiaProfesor:{
       model:'MateriaProfesor'
+    },
+    laboratorio:{
+      model: 'Laboratorio'
     }
   }
 };
