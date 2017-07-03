@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {Http} from '@angular/http';
 
 @Component({
   selector: 'app-lab-view',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LabViewComponent implements OnInit {
 
-  constructor() { }
+//  materiaprofesor: MateriaProfesor[];
+  constructor(private _http: Http) { }
 
   ngOnInit() {
   }
 
+
 }
+
