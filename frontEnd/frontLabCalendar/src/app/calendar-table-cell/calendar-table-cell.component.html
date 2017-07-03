@@ -1,8 +1,9 @@
 
-<div  [contextMenu]="basicMenu" style=" min-height: 120px;
+<div  [contextMenu]="basicMenu" style=" min-height: 35px;
   text-align: center;">
 
 </div>
+
 <context-menu class="container" style="text-align: center">
   <ng-template contextMenuItem >
     <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Agendar</button>
@@ -22,7 +23,7 @@
     <p>{{this.hora}}</p>
 
     <h6><strong>Hora Fin:</strong></h6>
-    <p>{{this.hora+2}}</p>
+    <p>{{this.hora+1}}</p>
 
     <input  class="form-control"
             placeholder="Ingresa alguna Observacion"
