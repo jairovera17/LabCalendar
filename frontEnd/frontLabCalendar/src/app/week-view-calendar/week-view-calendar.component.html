@@ -1,8 +1,40 @@
 
 <div class="container" style="text-align: center">
   <br><br>
-  <h1>Calendario Semanal</h1>
+  <h1>Calendarios de Los Laboratorios</h1>
   <br><br>
 </div>
-<app-calendar-table></app-calendar-table>
-<br><br>
+
+
+
+<div class="jumbotron">
+  <div class="container">
+    <h3>Laboratorio: </h3>
+    <div class="row">
+      <div class="col">
+        <div ngbDropdown class="d-inline-block">
+          <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>{{getSelectedLabName(this.selectLab)}}</button>
+          <div class="dropdown-menu" aria-labelledby="dropdownBasic1">
+            <div *ngFor="let inicio of this.laboratorios" style="text-align: center">
+              <input class="dropdown-item" type="button"  (click)="setLab($event)" value="{{inicio.nombre}}">
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+
+    <div *ngIf="!vacio(this.selectLab)">
+      <input class="btn btn-info" type="button" value="Abrir Calendario" (click)="abrirLab()">
+    </div>
+
+  </div>
+
+
+
+</div>
+
+<div *ngIf="this.abrirCalendario">
+  <app-calendar-table [selectLab]="this.selectLab"></app-calendar-table>
+</div>

@@ -17,7 +17,7 @@
   </div>
   <div class="modal-body" style="text-align: center">
     <h6>Laboratorio:</h6>
-    <p>{{this.selectLab}}</p>
+    <p>{{this.getSelectedLabName(this.selectLab)}}</p>
     <h6><strong>Dia:</strong></h6>
     <p>{{this.getdia(this.dia)}}</p>
 
@@ -53,7 +53,7 @@
             <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>{{this.nuevaAgenda}}</button>
             <div class="dropdown-menu" aria-labelledby="dropdownBasic1">
               <div *ngFor="let inicio of this.materiaprofesor" style="text-align: center">
-                <input class="dropdown-item" type="button" (click)="buttonAgendaMateria($event)" value="{{inicio.materia.nombre}} por {{inicio.profesor.nombres}}">
+                <input class="dropdown-item" type="button" (click)="buttonAgendaMateria($event)" value="{{inicio.materia.nombre}}">
               </div>
 
             </div>
