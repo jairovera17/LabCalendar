@@ -8,7 +8,11 @@
 module.exports = {
 
   attributes: {
-
+    idAgendaLaboratorio:{
+      type:'integer',
+      unique:true,
+      autoIncrement: true
+    },
     fechaInicio: 'date',
     fechaFin: 'date',
     horaInicio: 'integer',
@@ -17,6 +21,9 @@ module.exports = {
 
     materiaProfesor:{
       model:'MateriaProfesor'
+    },
+    laboratorio:{
+      model: 'Laboratorio'
     }
   }
 };

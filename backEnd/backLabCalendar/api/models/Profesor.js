@@ -8,6 +8,11 @@
 module.exports = {
 
   attributes: {
+    idProfesor:{
+      type:'integer',
+      unique:true,
+      autoIncrement: true
+    },
     nombres: 'string',
     apellidos: 'string',
     ultimoTitulo: 'string',

@@ -8,6 +8,11 @@
 module.exports = {
 
   attributes: {
+    idMateriaProfesor:{
+      type:'integer',
+      unique:true,
+      autoIncrement: true
+    },
     grupo: 'string',
 
     materia:{
@@ -16,7 +21,6 @@ module.exports = {
     profesor:{
       model:'Profesor'
     }
-<!--   comentario  -->
   }
 };
 

@@ -8,6 +8,11 @@
 module.exports = {
 
   attributes: {
+    idSoftware:{
+      type:'integer',
+      unique:true,
+      autoIncrement: true
+    },
     nombre: 'string',
     version: 'string',
     owners:{

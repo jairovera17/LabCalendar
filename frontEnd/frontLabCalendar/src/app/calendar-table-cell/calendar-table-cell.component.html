@@ -16,11 +16,13 @@
     <h4 class="modal-title" style="text-align: center">Agendar</h4>
   </div>
   <div class="modal-body" style="text-align: center">
+    <h6>Laboratorio:</h6>
+    <p>{{this.getSelectedLabName(this.selectLab)}}</p>
     <h6><strong>Dia:</strong></h6>
     <p>{{this.getdia(this.dia)}}</p>
 
     <h6><strong>Hora Inicio:</strong></h6>
-    <p>{{this.hora}}</p>
+    <p>{{this.horaInicio}}</p>
 
     <div>
       <h6><strong>Hora Fin:</strong></h6>
@@ -30,8 +32,8 @@
           <div ngbDropdown class="d-inline-block">
             <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>{{this.horaFin}}</button>
             <div class="dropdown-menu" aria-labelledby="dropdownBasic1">
-              <div *ngFor="let inicio of this.gethorasRestantes(this.hora)" style="text-align: center">
-                <input class="dropdown-item" type="button" (click)="buttonHora($event)" value="{{inicio}}">
+              <div *ngFor="let inicio of this.gethorasRestantes(this.horaInicio)" style="text-align: center">
+                <input class="dropdown-item" type="button" (click)="setHoraFin($event)" value="{{inicio}}">
               </div>
 
             </div>
@@ -48,10 +50,10 @@
       <div class="row">
         <div class="col">
           <div ngbDropdown class="d-inline-block">
-            <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>{{this.nuevaAgenda}}</button>
+            <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>{{this.displayMateriaProfesor}}</button>
             <div class="dropdown-menu" aria-labelledby="dropdownBasic1">
               <div *ngFor="let inicio of this.materiaprofesor" style="text-align: center">
-                <input class="dropdown-item" type="button" (click)="buttonAgendaMateria($event)" value="{{inicio.materia.nombre}} por {{inicio.profesor.nombres}}">
+                <input class="dropdown-item" type="button" (click)="setAgendaMateriaProfesor(inicio)" value="{{inicio.materia.nombre}} por {{inicio.profesor.nombres}}">
               </div>
 
             </div>
@@ -60,13 +62,28 @@
       </div>
 
 
+
+
+
     </div>
+
+    <br>
+    <br>
+    <div class="row">
+      <div class="col-12">
+        <h6>Observaciones</h6>
+        <input class="form-control"  type="text" [(ngModel)]="this.nuevaAgenda.observacion" placeholder="Ingresa alguna observacion">
+      </div>
+    </div>
+
 
 
 
   </div>
   <div class="modal-footer">
-    <button type="button" class="btn btn-secondary" (click)="c('Close click')">Guardar</button>
+
+
+    <button type="button" class="btn btn-secondary" (click)="c('Close click');guardarNuevaAgenda()">Guardar</button>
     <button type="button" class="btn btn-secondary" (click)="c('Close click')">Cerrar</button>
   </div>
 </ng-template>
