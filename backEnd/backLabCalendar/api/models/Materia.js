@@ -8,6 +8,11 @@
 module.exports = {
 
   attributes: {
+    idMateria:{
+      type:'integer',
+      unique:true,
+      autoIncrement: true
+    },
     nombre: {
       type:'string',
       unique: true

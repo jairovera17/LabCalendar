@@ -4,6 +4,7 @@ import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import {Http} from '@angular/http';
 import {MateriaProfesor} from '../misClasses/interfazMateriaProfesor';
 import {Laboratorio} from "../misClasses/interfazLaboratorio";
+import {AgendaLaboratorio} from "../misClasses/interfazAgenda";
 @Component({
   selector: 'app-calendar-table-cell',
   templateUrl: './calendar-table-cell.component.html',
@@ -11,7 +12,7 @@ import {Laboratorio} from "../misClasses/interfazLaboratorio";
 })
 export class CalendarTableCellComponent implements OnInit {
 
-  @Input()hora: number;
+  @Input()horaInicio: number;
   @Input()dia: number;
   @Input()selectLab: Laboratorio;
   @ViewChild(ContextMenuComponent) public basicMenu: ContextMenuComponent;
@@ -19,12 +20,17 @@ export class CalendarTableCellComponent implements OnInit {
   nombreDias: string[]= ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'];
   horaFin = 0;
   materiaprofesor: MateriaProfesor[];
-  nuevaAgenda: string;
-
+  nuevaAgenda: AgendaLaboratorio;
+  displayMateriaProfesor: string;
   closeResult: string;
+
+
   ngOnInit() {
-    this.horaFin = this.hora + 1;
+    this.horaFin = this.horaInicio + 1;
+    this.nuevaAgenda = new AgendaLaboratorio(this.horaInicio, this.selectLab);
+    this.nuevaAgenda.horaFin = this.horaFin;
     this.cargar();
+    this.displayMateriaProfesor = 'Sin Asignar';
   }
   constructor(private modalService: NgbModal, private _http: Http) {}
 
@@ -65,12 +71,15 @@ export class CalendarTableCellComponent implements OnInit {
     return horas;
 
   }
-  buttonHora(event) {
+  setHoraFin(event) {
     this.horaFin = event.target.value;
+    this.nuevaAgenda.horaFin = this.horaFin;
   }
 
-  buttonAgendaMateria(event) {
-    this.nuevaAgenda = event.target.value;
+  setAgendaMateriaProfesor(materiaprofesor: MateriaProfesor): void {
+  this.displayMateriaProfesor = materiaprofesor.materia.nombre;
+  this.nuevaAgenda.MateriaProfesor = materiaprofesor;
+
   }
 
 
@@ -100,13 +109,28 @@ export class CalendarTableCellComponent implements OnInit {
 
 
   getSelectedLabName(lab: Laboratorio): string{
-    if (this.vacio(lab)){
-      return 'Laboratorio Sin Seleccionar';
+    if (this.vacio(lab)) {
+      return 'No disponible';
     } else {
       return lab.nombre;
     }
   }
 
+  guardarNuevaAgenda(): void {
+
+    console.log(this.nuevaAgenda);
+    this._http
+      .post('http://localhost:1337/AgendaLaboratorio/',this.nuevaAgenda)
+      .subscribe(
+        res => {
+          console.log(res);
+        },
+        err => {
+          console.log('error ', err);
+        }
+      );
+
+  }
 
 
 }

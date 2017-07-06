@@ -8,6 +8,11 @@
 module.exports = {
 
   attributes: {
+    idMateriaProfesor:{
+      type:'integer',
+      unique:true,
+      autoIncrement: true
+    },
     grupo: 'string',
 
     materia:{

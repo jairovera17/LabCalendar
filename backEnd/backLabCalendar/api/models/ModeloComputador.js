@@ -8,6 +8,11 @@
 module.exports = {
 
   attributes: {
+    idModeloComputador:{
+      type:'integer',
+      unique:true,
+      autoIncrement: true
+    },
     marca: 'string',
     procesador: 'string',
     ram: 'string'

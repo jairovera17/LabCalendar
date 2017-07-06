@@ -4,6 +4,7 @@
 
 export class ModeloComputador {
   constructor(
+    public idModeloComputador: number,
     public marca: string,
     public procesador: string,
     public ram: string

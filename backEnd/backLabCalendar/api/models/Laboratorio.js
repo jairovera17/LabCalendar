@@ -8,6 +8,12 @@
 module.exports = {
 
   attributes: {
+    
+    idLaboratorio:{
+      type:'integer',
+      unique:true,
+      autoIncrement: true
+    },
     nombre: 'string',
     numeroAula: 'string',
     numeroComputadoras: 'string',

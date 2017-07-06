@@ -6,6 +6,7 @@ import {Software} from './interfazSoftware';
 
 export class Laboratorio {
   constructor(
+    public idLaboratorio: number,
     public nombre: string,
     public numeroAula: string,
     public numeroComputadoras: string,

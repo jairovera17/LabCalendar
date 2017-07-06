@@ -4,6 +4,7 @@
 
 export class Profesor {
   constructor(
+    public idProfesor: number,
     public nombres: string,
     public apellidos: string,
     public ultimoTitulo: string,

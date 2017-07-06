@@ -4,6 +4,7 @@
 
 export class Software {
   constructor(
+    public idSoftware: number,
     public nombre: string,
     public version: string
   ) {}

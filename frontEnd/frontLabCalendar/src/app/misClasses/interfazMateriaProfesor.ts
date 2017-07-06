@@ -5,6 +5,7 @@ import {Profesor} from './interfazProfesor';
  */
 export class MateriaProfesor {
   constructor(
+    public idMateriaProfesor: number,
     public grupo: string,
     public materia: Materia,
     public profesor: Profesor
