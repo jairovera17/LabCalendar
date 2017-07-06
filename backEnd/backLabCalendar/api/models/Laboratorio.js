@@ -8,7 +8,7 @@
 module.exports = {
 
   attributes: {
-    
+
     idLaboratorio:{
       type:'integer',
       unique:true,
