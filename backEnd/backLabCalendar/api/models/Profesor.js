@@ -15,7 +15,9 @@ module.exports = {
       primaryKey: true
 
     },
-    nombres: 'string',
+    nombres: {
+      type:'string'
+    },
     apellidos: {
       type:'string',
       unique:true

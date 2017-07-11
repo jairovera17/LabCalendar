@@ -11,7 +11,7 @@
 
 </context-menu>
 
-<ng-template #content let-c="close" let-d="dismiss" style="width: 500px">
+<ng-template #content let-c="close" let-d="dismiss" style="width: 500px" >
   <div class="modal-header">
     <h4 class="modal-title" style="text-align: center">Agendar</h4>
   </div>
@@ -53,7 +53,7 @@
             <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>{{this.displayMateriaProfesor}}</button>
             <div class="dropdown-menu" aria-labelledby="dropdownBasic1">
               <div *ngFor="let inicio of this.materiaprofesor" style="text-align: center">
-                <input class="dropdown-item" type="button" (click)="setAgendaMateriaProfesor(inicio)" value="{{inicio.materia.nombre}} por {{inicio.profesor.nombres}}">
+                <input class="dropdown-item" type="button" (click)="setAgendaMateriaProfesor(inicio)" value="{{inicio.idMateria.nombre}} por {{inicio.idProfesor.nombres}}">
               </div>
 
             </div>

@@ -15,11 +15,12 @@ export class CalendarTableCellComponent implements OnInit {
   @Input()horaInicio: number;
   @Input()dia: number;
   @Input()selectLab: Laboratorio;
-  @ViewChild(ContextMenuComponent) public basicMenu: ContextMenuComponent;
+  @ViewChild(ContextMenuComponent)
+  public basicMenu: ContextMenuComponent;
 
   nombreDias: string[]= ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'];
   horaFin = 0;
-  materiaprofesor: MateriaProfesor[];
+  materiaprofesor: MateriaProfesor[]=[];
   nuevaAgenda: AgendaLaboratorio;
   displayMateriaProfesor: string;
   closeResult: string;
@@ -31,6 +32,8 @@ export class CalendarTableCellComponent implements OnInit {
     this.nuevaAgenda.horaFin = this.horaFin;
     this.cargar();
     this.displayMateriaProfesor = 'Sin Asignar';
+
+
   }
   constructor(private modalService: NgbModal, private _http: Http) {}
 
@@ -77,7 +80,7 @@ export class CalendarTableCellComponent implements OnInit {
   }
 
   setAgendaMateriaProfesor(materiaprofesor: MateriaProfesor): void {
-  this.displayMateriaProfesor = materiaprofesor.materia.nombre;
+  this.displayMateriaProfesor = materiaprofesor.idMateria.nombre ;
   this.nuevaAgenda.idMateriaProfesor= materiaprofesor;
 
   }
@@ -86,18 +89,21 @@ export class CalendarTableCellComponent implements OnInit {
   cargar() {
     console.log('cargando');
     this._http
-      .get('http://localhost:1337/MateriaProfesor/')
+      .get('http://localhost:1337/MateriaProfesor')
       .subscribe(
         res => {
           const rjson: MateriaProfesor[] = res.json();
-          console.log("c"+rjson+"hloooooo");
+
           this.materiaprofesor = rjson.map(
             (matprof: MateriaProfesor) => {
 
               return matprof;
 
             }
+
+
           );
+
         },
         error => {
           console.log('error papu');

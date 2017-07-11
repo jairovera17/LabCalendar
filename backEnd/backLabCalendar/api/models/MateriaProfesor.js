@@ -22,11 +22,13 @@ module.exports = {
 
 
     idProfesor:{
-      model:'Profesor'
+      model:'Profesor',
+      required:true
     },
 
     idMateria:{
-      model:'Materia'
+      model:'Materia',
+      required:true
     },
 
     idAgendaLaboratorio:{

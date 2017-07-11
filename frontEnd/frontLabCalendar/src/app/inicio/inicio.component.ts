@@ -201,7 +201,7 @@ export class InicioComponent implements OnInit {
    this.backMaterias();
    this.backModelos();
    this.backLabos()
-   */
+*/
   }
 
   backProfes(){
