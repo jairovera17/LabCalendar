@@ -20,7 +20,7 @@ export class CalendarTableCellComponent implements OnInit {
 
   nombreDias: string[]= ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'];
   horaFin = 0;
-  materiaprofesor: MateriaProfesor[]=[];
+  @Input()materiaprofesor: MateriaProfesor[];
   nuevaAgenda: AgendaLaboratorio;
   displayMateriaProfesor: string;
   closeResult: string;
@@ -30,7 +30,7 @@ export class CalendarTableCellComponent implements OnInit {
     this.horaFin = this.horaInicio + 1;
     this.nuevaAgenda = new AgendaLaboratorio(this.horaInicio, this.selectLab);
     this.nuevaAgenda.horaFin = this.horaFin;
-    this.cargar();
+
     this.displayMateriaProfesor = 'Sin Asignar';
 
 
@@ -86,31 +86,6 @@ export class CalendarTableCellComponent implements OnInit {
   }
 
 
-  cargar() {
-    console.log('cargando');
-    this._http
-      .get('http://localhost:1337/MateriaProfesor')
-      .subscribe(
-        res => {
-          const rjson: MateriaProfesor[] = res.json();
-
-          this.materiaprofesor = rjson.map(
-            (matprof: MateriaProfesor) => {
-
-              return matprof;
-
-            }
-
-
-          );
-
-        },
-        error => {
-          console.log('error papu');
-        }
-      );
-  }
-
   vacio (ingreso: any): boolean {
     return 'undefined' === typeof ingreso;
   }
@@ -127,7 +102,7 @@ export class CalendarTableCellComponent implements OnInit {
 
   guardarNuevaAgenda(): void {
 
-    console.log(this.nuevaAgenda);
+    console.log(JSON.stringify(this.nuevaAgenda));
     this._http
       .post('http://localhost:1337/AgendaLaboratorio/',this.nuevaAgenda)
       .subscribe(

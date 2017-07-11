@@ -15,6 +15,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { CalendarTableComponent } from './calendar-table/calendar-table.component';
 import {ContextMenuModule} from 'ngx-contextmenu';
 import { CalendarTableCellComponent } from './calendar-table-cell/calendar-table-cell.component';
+import {LabCalendarService} from "./lab-calendar.service";
 @NgModule({
   declarations: [
     AppComponent,
@@ -52,7 +53,7 @@ import { CalendarTableCellComponent } from './calendar-table-cell/calendar-table
     ])
 
   ],
-  providers: [],
+  providers: [LabCalendarService],
   bootstrap: [AppComponent]
 })
 
