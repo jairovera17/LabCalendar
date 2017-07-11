@@ -4,7 +4,7 @@
 
 export class Materia {
   constructor(
-    public idMateria: number,
+    public pkMateria: number,
     public nombre: string,
     public codigo: string
   ) {}

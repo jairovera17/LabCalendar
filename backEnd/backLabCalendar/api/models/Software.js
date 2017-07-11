@@ -8,16 +8,19 @@
 module.exports = {
 
   attributes: {
-    idSoftware:{
+    id:{
       type:'integer',
       unique:true,
-      autoIncrement: true
+      autoIncrement: true,
+      primaryKey: true
+
     },
     nombre: 'string',
     version: 'string',
-    owners:{
+
+    idLaboratorio:{
       collection:'Laboratorio',
-      via:'software'
+      via:'idSoftware'
     }
   }
 

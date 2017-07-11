@@ -4,7 +4,7 @@
 
 export class ModeloComputador {
   constructor(
-    public idModeloComputador: number,
+    public pkModeloComputador: number,
     public marca: string,
     public procesador: string,
     public ram: string

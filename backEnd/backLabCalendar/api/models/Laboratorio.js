@@ -8,26 +8,35 @@
 module.exports = {
 
   attributes: {
-
-    idLaboratorio:{
+    id:{
       type:'integer',
       unique:true,
-      autoIncrement: true
-    },
-    nombre: 'string',
-    numeroAula: 'string',
-    numeroComputadoras: 'string',
-    modeloComputador:{
-      model:'ModeloComputador',
-      via:'idModelo'
+      autoIncrement: true,
+      primaryKey: true
 
     },
 
-    software:{
+    nombre: {type:'string',required: true},
+    numeroAula: {type:'string',required: true},
+    numeroComputadoras: {type:'string',required: true},
+
+
+    idModeloComputador:{
+      model:'ModeloComputador'
+    },
+
+    idSoftware:{
       collection:'Software',
-      via:'owners',
+      via:'idLaboratorio',
       dominant:true
+    },
+
+    idAgendaLaboratorio:{
+      collection:'AgendaLaboratorio',
+      via:'idLaboratorio'
     }
+
+
   }
 
 
