@@ -8,23 +8,31 @@
 module.exports = {
 
   attributes: {
-    idAgendaLaboratorio:{
+    id:{
       type:'integer',
       unique:true,
-      autoIncrement: true
+      autoIncrement: true,
+      primaryKey: true
+
     },
-    fechaInicio: 'date',
-    fechaFin: 'date',
-    horaInicio: 'integer',
-    horaFin: 'integer',
+
+    fechaInicio: {type:'date',required:true},
+    fechaFin: {type:'date',required:true},
+    horaInicio: {type:'integer',required:true},
+    horaFin: {type:'integer',required:true},
     observacion: 'string',
 
-    materiaProfesor:{
+
+    idMateriaProfesor:{
       model:'MateriaProfesor'
     },
-    laboratorio:{
-      model: 'Laboratorio'
+
+    idLaboratorio:{
+      model:'Laboratorio'
     }
+
+
+
   }
 };
 

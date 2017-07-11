@@ -8,15 +8,29 @@
 module.exports = {
 
   attributes: {
-    idModeloComputador:{
+    id:{
       type:'integer',
       unique:true,
-      autoIncrement: true
-    },
-    marca: 'string',
-    procesador: 'string',
-    ram: 'string'
+      autoIncrement: true,
+      primaryKey: true
 
+    },
+    marca: {
+      type:'string',
+
+    },
+    procesador: {
+      type:'string',
+
+    },
+    ram: {
+      type:'string',
+
+    },
+    idLaboratorio:{
+      collection:'Laboratorio',
+      via:'idModeloComputador'
+    }
 
 
   }

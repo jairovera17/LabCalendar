@@ -8,10 +8,10 @@ export class AgendaLaboratorio {
   constructor(
 
     public horaInicio: number,
-    public Laboratorio: Laboratorio,
+    public idLaboratorio: Laboratorio,
     public horaFin?: number,
     public observacion?: string,
-    public MateriaProfesor?: MateriaProfesor,
+    public idMateriaProfesor?: MateriaProfesor,
     public fechaInicio?: Date,
     public fechaFin?: Date
   ) {}

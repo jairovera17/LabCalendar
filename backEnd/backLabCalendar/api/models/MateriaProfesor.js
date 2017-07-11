@@ -8,19 +8,33 @@
 module.exports = {
 
   attributes: {
-    idMateriaProfesor:{
+    id:{
       type:'integer',
       unique:true,
-      autoIncrement: true
-    },
-    grupo: 'string',
+      autoIncrement: true,
+      primaryKey: true
 
-    materia:{
+    },
+    grupo: {
+      type:'string',
+
+    },
+
+
+    idProfesor:{
+      model:'Profesor'
+    },
+
+    idMateria:{
       model:'Materia'
     },
-    profesor:{
-      model:'Profesor'
+
+    idAgendaLaboratorio:{
+      collection:'AgendaLaboratorio',
+      via:'idMateriaProfesor'
     }
+
+
   }
 };
 

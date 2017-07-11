@@ -78,7 +78,7 @@ export class CalendarTableCellComponent implements OnInit {
 
   setAgendaMateriaProfesor(materiaprofesor: MateriaProfesor): void {
   this.displayMateriaProfesor = materiaprofesor.materia.nombre;
-  this.nuevaAgenda.MateriaProfesor = materiaprofesor;
+  this.nuevaAgenda.idMateriaProfesor= materiaprofesor;
 
   }
 
@@ -90,9 +90,12 @@ export class CalendarTableCellComponent implements OnInit {
       .subscribe(
         res => {
           const rjson: MateriaProfesor[] = res.json();
+          console.log("c"+rjson+"hloooooo");
           this.materiaprofesor = rjson.map(
             (matprof: MateriaProfesor) => {
+
               return matprof;
+
             }
           );
         },

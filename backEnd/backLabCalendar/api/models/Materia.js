@@ -8,18 +8,28 @@
 module.exports = {
 
   attributes: {
-    idMateria:{
+    id:{
       type:'integer',
       unique:true,
-      autoIncrement: true
+      autoIncrement: true,
+      primaryKey: true
+
     },
     nombre: {
       type:'string',
-      unique: true
+      unique: true,
+
     },
     codigo: {
       type:'string',
-      unique: true
+      unique: true,
+
+
+    },
+
+    idMateriaProfesor:{
+      collection:'MateriaProfesor',
+      via:'idMateria'
 
     }
 

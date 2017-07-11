@@ -1,1264 +1,927 @@
 {
   "data": {
+    "laboratorio_software__software_owners": [],
     "agendalaboratorio": [
       {
-        "idAgendaLaboratorio": 1,
+        "pkAgendaLaboratorio": 1,
         "horaInicio": 10,
         "horaFin": 11,
         "observacion": "Traer Aguacates",
-        "id": 1,
         "createdAt": "2017-07-06T02:45:47.584Z",
         "updatedAt": "2017-07-06T02:45:47.584Z"
       },
       {
-        "idAgendaLaboratorio": 2,
+        "pkAgendaLaboratorio": 2,
         "horaInicio": 8,
         "horaFin": 9,
         "observacion": "Traer Mas Aguacates",
-        "id": 2,
         "createdAt": "2017-07-06T02:54:21.512Z",
         "updatedAt": "2017-07-06T02:54:21.512Z"
       }
     ],
     "laboratorio": [
       {
-        "idLaboratorio": 1,
+        "pkLaboratorio": 1,
         "nombre": "Beta",
         "numeroAula": "302",
-        "numeroComputadoras": "23",
-        "modeloComputador": 1,
-        "id": 6,
+        "numeroComputadoras": 23,
         "createdAt": "2017-06-29T02:36:01.954Z",
         "updatedAt": "2017-06-29T02:36:01.954Z"
       },
       {
-        "idLaboratorio": 2,
+        "pkLaboratorio": 2,
         "nombre": "Gamma",
         "numeroAula": "303",
-        "numeroComputadoras": "23",
-        "modeloComputador": 1,
-        "id": 7,
+        "numeroComputadoras": 23,
         "createdAt": "2017-06-29T02:36:50.909Z",
         "updatedAt": "2017-06-29T02:36:50.909Z"
       },
       {
-        "idLaboratorio": 3,
+        "pkLaboratorio": 3,
         "nombre": "Kappa",
         "numeroAula": "306",
-        "numeroComputadoras": "23",
-        "modeloComputador": 1,
-        "id": 8,
+        "numeroComputadoras": 23,
         "createdAt": "2017-06-29T02:39:49.433Z",
         "updatedAt": "2017-06-29T02:39:49.433Z"
       },
       {
-        "idLaboratorio": 4,
+        "pkLaboratorio": 4,
         "nombre": "Sigma",
         "numeroAula": "307",
-        "numeroComputadoras": "23",
-        "modeloComputador": 1,
-        "id": 9,
+        "numeroComputadoras": 23,
         "createdAt": "2017-06-29T02:40:34.252Z",
         "updatedAt": "2017-06-29T02:40:34.252Z"
       },
       {
-        "idLaboratorio": 5,
+        "pkLaboratorio": 5,
         "nombre": "Lambda",
         "numeroAula": "308",
-        "numeroComputadoras": "23",
-        "modeloComputador": 1,
-        "id": 10,
+        "numeroComputadoras": 23,
         "createdAt": "2017-06-29T02:40:58.765Z",
         "updatedAt": "2017-06-29T02:40:58.765Z"
       },
       {
-        "idLaboratorio": 6,
+        "pkLaboratorio": 6,
         "nombre": "Epsilon",
         "numeroAula": "305",
-        "numeroComputadoras": "23",
-        "modeloComputador": 2,
-        "id": 11,
+        "numeroComputadoras": 23,
         "createdAt": "2017-06-29T02:41:31.635Z",
         "updatedAt": "2017-06-29T02:41:31.635Z"
       },
       {
-        "idLaboratorio": 7,
+        "pkLaboratorio": 7,
         "nombre": "Delta",
         "numeroAula": "304",
-        "numeroComputadoras": "23",
-        "modeloComputador": 3,
-        "id": 12,
+        "numeroComputadoras": 23,
         "createdAt": "2017-06-29T02:42:05.136Z",
         "updatedAt": "2017-06-29T02:42:05.136Z"
       }
     ],
     "materia": [
       {
-        "idMateria": 1,
+        "pkMateria": 1,
         "nombre": "FUNDAMENTOS DE CIENCIAS DE LA COMPUTACION",
         "codigo": "ICO204",
-        "id": 1,
         "createdAt": "2017-06-29T04:23:04.073Z",
         "updatedAt": "2017-06-29T04:23:04.073Z"
       },
       {
-        "idMateria": 2,
+        "pkMateria": 2,
         "nombre": "PLANES DE NEGOCIOS TIC",
         "codigo": "SIC884",
-        "id": 2,
         "createdAt": "2017-06-29T04:24:09.460Z",
         "updatedAt": "2017-06-29T04:24:09.460Z"
       },
       {
-        "idMateria": 3,
+        "pkMateria": 3,
         "nombre": "GESTION DE PROYECTOS",
         "codigo": "SIC434",
-        "id": 3,
         "createdAt": "2017-06-29T04:24:45.378Z",
         "updatedAt": "2017-06-29T04:24:45.378Z"
       },
       {
-        "idMateria": 4,
+        "pkMateria": 4,
         "nombre": "BASES DE DATOS",
         "codigo": "SIC426",
-        "id": 4,
         "createdAt": "2017-06-29T04:25:14.251Z",
         "updatedAt": "2017-06-29T04:25:14.251Z"
       },
       {
-        "idMateria": 5,
+        "pkMateria": 5,
         "nombre": "PROGRAMACIÓN II",
         "codigo": "SIC216",
-        "id": 5,
         "createdAt": "2017-06-29T04:25:36.396Z",
         "updatedAt": "2017-06-29T04:25:36.396Z"
       },
       {
-        "idMateria": 6,
+        "pkMateria": 6,
         "nombre": "ESTRUCTURAS DE DATOS",
         "codigo": "SIC334",
-        "id": 6,
         "createdAt": "2017-06-29T04:25:59.742Z",
         "updatedAt": "2017-06-29T04:25:59.742Z"
       },
       {
-        "idMateria": 7,
+        "pkMateria": 7,
         "nombre": "ADMINISTRACION DE SISTEMAS OPERATIVOS Y REDES",
         "codigo": "SIC714",
-        "id": 7,
         "createdAt": "2017-06-29T04:26:21.593Z",
         "updatedAt": "2017-06-29T04:26:21.593Z"
       },
       {
-        "idMateria": 8,
+        "pkMateria": 8,
         "nombre": "GESTION DE SEGURIDAD INFORMATICA",
         "codigo": "SIC814",
-        "id": 8,
         "createdAt": "2017-06-29T04:27:05.078Z",
         "updatedAt": "2017-06-29T04:27:05.078Z"
       },
       {
-        "idMateria": 9,
+        "pkMateria": 9,
         "nombre": "MATEMATICAS DISCRETAS",
         "codigo": "MAT304",
-        "id": 9,
         "createdAt": "2017-06-29T04:27:42.557Z",
         "updatedAt": "2017-06-29T04:27:42.557Z"
       },
       {
-        "idMateria": 10,
+        "pkMateria": 10,
         "nombre": "APLICACIONES EN AMBIENTES LIBRES",
         "codigo": "SIC644",
-        "id": 10,
         "createdAt": "2017-06-29T04:28:01.844Z",
         "updatedAt": "2017-06-29T04:28:01.844Z"
       },
       {
-        "idMateria": 11,
+        "pkMateria": 11,
         "nombre": "REDES DE COMPUTADORAS",
         "codigo": "SIC416",
-        "id": 11,
         "createdAt": "2017-06-29T04:29:32.582Z",
         "updatedAt": "2017-06-29T04:29:32.582Z"
       },
       {
-        "idMateria": 12,
+        "pkMateria": 12,
         "nombre": "CCNA CISCO (CERTIFIED NETWORK ASSOCIATE)",
         "codigo": "SIC854",
-        "id": 12,
         "createdAt": "2017-06-29T04:29:57.691Z",
         "updatedAt": "2017-06-29T04:29:57.691Z"
       },
       {
-        "idMateria": 13,
+        "pkMateria": 13,
         "nombre": "GNU LINUX",
         "codigo": "SIC864",
-        "id": 13,
         "createdAt": "2017-06-29T04:30:24.552Z",
         "updatedAt": "2017-06-29T04:30:24.552Z"
       },
       {
-        "idMateria": 14,
+        "pkMateria": 14,
         "nombre": "PROBABILIDAD Y ESTADISTICA BASICAS",
         "codigo": "MAT234",
-        "id": 14,
         "createdAt": "2017-06-29T04:30:46.442Z",
         "updatedAt": "2017-06-29T04:30:46.442Z"
       },
       {
-        "idMateria": 15,
+        "pkMateria": 15,
         "nombre": "ALGORITMOS NUMERICOS",
         "codigo": "SIC412",
-        "id": 15,
         "createdAt": "2017-06-29T04:31:11.742Z",
         "updatedAt": "2017-06-29T04:31:11.742Z"
       },
       {
-        "idMateria": 16,
+        "pkMateria": 16,
         "nombre": "COMPUTACION DISTRIBUIDA",
         "codigo": "SIC616",
-        "id": 16,
         "createdAt": "2017-06-29T04:31:34.499Z",
         "updatedAt": "2017-06-29T04:31:34.499Z"
       },
       {
-        "idMateria": 17,
+        "pkMateria": 17,
         "nombre": "HABILIDADES DIRECTIVAS",
         "codigo": "SIC774",
-        "id": 17,
         "createdAt": "2017-06-29T04:31:58.078Z",
         "updatedAt": "2017-06-29T04:31:58.078Z"
       },
       {
-        "idMateria": 18,
+        "pkMateria": 18,
         "nombre": "APLICACIONES MOVILES",
         "codigo": "SIC764",
-        "id": 19,
         "createdAt": "2017-06-29T04:44:18.044Z",
         "updatedAt": "2017-06-29T04:44:18.044Z"
       },
       {
-        "idMateria": 19,
+        "pkMateria": 19,
         "nombre": "APLICACIONES WEB",
         "codigo": "SIC754",
-        "id": 20,
         "createdAt": "2017-06-29T04:44:53.253Z",
         "updatedAt": "2017-06-29T04:44:53.253Z"
       },
       {
-        "idMateria": 20,
+        "pkMateria": 20,
         "nombre": "TCP/IP",
         "codigo": "SIC516",
-        "id": 21,
         "createdAt": "2017-06-29T04:45:15.873Z",
         "updatedAt": "2017-06-29T04:45:15.873Z"
       },
       {
-        "idMateria": 21,
+        "pkMateria": 21,
         "nombre": "SISTEMAS OPERATIVOS",
         "codigo": "SIC414",
-        "id": 22,
         "createdAt": "2017-06-29T04:45:36.483Z",
         "updatedAt": "2017-06-29T04:45:36.483Z"
       },
       {
-        "idMateria": 22,
+        "pkMateria": 22,
         "nombre": "SISTEMAS DE COMUNICACION",
         "codigo": "SIC314",
-        "id": 23,
         "createdAt": "2017-06-29T04:45:58.769Z",
         "updatedAt": "2017-06-29T04:45:58.769Z"
       },
       {
-        "idMateria": 23,
+        "pkMateria": 23,
         "nombre": "ADMINISTRACION DE BASE DE DATOS",
         "codigo": "SIC744",
-        "id": 24,
         "createdAt": "2017-06-29T04:46:19.187Z",
         "updatedAt": "2017-06-29T04:46:19.187Z"
       },
       {
-        "idMateria": 24,
+        "pkMateria": 24,
         "nombre": "BASES DE DATOS DISTRIBUIDAS",
         "codigo": "SIC534",
-        "id": 25,
         "createdAt": "2017-06-29T04:46:39.356Z",
         "updatedAt": "2017-06-29T04:46:39.356Z"
       },
       {
-        "idMateria": 25,
+        "pkMateria": 25,
         "nombre": "APLICACIONES EN AMBIENTES PROPIETARIOS",
         "codigo": "SIC554",
-        "id": 26,
         "createdAt": "2017-06-29T04:47:09.817Z",
         "updatedAt": "2017-06-29T04:47:09.817Z"
       },
       {
-        "idMateria": 26,
+        "pkMateria": 26,
         "nombre": "INGENIERIA DE SOFTWARE I",
         "codigo": "SIC544",
-        "id": 27,
         "createdAt": "2017-06-29T04:47:42.653Z",
         "updatedAt": "2017-06-29T04:47:42.653Z"
       },
       {
-        "idMateria": 27,
+        "pkMateria": 27,
         "nombre": "INTELIGENCIA DE NEGOCIOS",
         "codigo": "SIC614",
-        "id": 28,
         "createdAt": "2017-06-29T04:49:05.149Z",
         "updatedAt": "2017-06-29T04:49:05.149Z"
       },
       {
-        "idMateria": 28,
+        "pkMateria": 28,
         "nombre": "INTELIGENCIA ARTIFICIAL",
         "codigo": "SIC524",
-        "id": 29,
         "createdAt": "2017-06-29T04:49:25.793Z",
         "updatedAt": "2017-06-29T04:49:25.793Z"
       },
       {
-        "idMateria": 29,
+        "pkMateria": 29,
         "nombre": "AUDITORIA Y EVALUACION DE SISTEMAS COMPUTACIONALES",
         "codigo": "SIC816",
-        "id": 30,
         "createdAt": "2017-06-29T04:49:58.547Z",
         "updatedAt": "2017-06-29T04:49:58.547Z"
       },
       {
-        "idMateria": 30,
+        "pkMateria": 30,
         "nombre": "CERTIFICACION EN GERENCIA DE SEGURIDAD DE INFORMACION",
         "codigo": "SIC803",
-        "id": 31,
         "createdAt": "2017-06-29T04:50:21.375Z",
         "updatedAt": "2017-06-29T04:50:21.375Z"
       },
       {
-        "idMateria": 31,
+        "pkMateria": 31,
         "nombre": "PROGRAMACION I",
         "codigo": "ICO106",
-        "id": 32,
         "createdAt": "2017-06-29T04:50:42.655Z",
         "updatedAt": "2017-06-29T04:50:42.655Z"
       },
       {
-        "idMateria": 32,
+        "pkMateria": 32,
         "nombre": "INGENIERIA DE SOFTWARE II",
         "codigo": "SIC634",
-        "id": 33,
         "createdAt": "2017-06-29T04:51:01.716Z",
         "updatedAt": "2017-06-29T04:51:01.716Z"
       },
       {
-        "idMateria": 33,
+        "pkMateria": 33,
         "nombre": "GESTION DE TIC Y UNIDADES INFORMATICAS",
         "codigo": "SIC826",
-        "id": 34,
         "createdAt": "2017-06-29T04:51:26.431Z",
         "updatedAt": "2017-06-29T04:51:26.431Z"
       },
       {
-        "idMateria": 34,
+        "pkMateria": 34,
         "nombre": "ARQUITECTURA DE COMPUTADORES",
         "codigo": "SIC316",
-        "id": 35,
         "createdAt": "2017-06-29T04:51:51.766Z",
         "updatedAt": "2017-06-29T04:51:51.766Z"
       },
       {
-        "idMateria": 35,
+        "pkMateria": 35,
         "nombre": "CALIDAD DE SOFTWARE",
         "codigo": "SIC734",
-        "id": 36,
         "createdAt": "2017-06-29T04:52:11.838Z",
         "updatedAt": "2017-06-29T04:52:11.838Z"
       },
       {
-        "idMateria": 36,
+        "pkMateria": 36,
         "nombre": "ALGORITMOS",
         "codigo": "SIC324",
-        "id": 37,
         "createdAt": "2017-06-29T04:52:52.694Z",
         "updatedAt": "2017-06-29T04:52:52.694Z"
       },
       {
-        "idMateria": 37,
+        "pkMateria": 37,
         "nombre": "TECNOLOGIAS DE SEGURIDAD",
         "codigo": "SIC514",
-        "id": 38,
         "createdAt": "2017-06-29T04:53:36.595Z",
         "updatedAt": "2017-06-29T04:53:36.595Z"
       },
       {
-        "idMateria": 38,
+        "pkMateria": 38,
         "nombre": "COMPILADORES Y LENGUAJES",
         "codigo": "SIC424",
-        "id": 39,
         "createdAt": "2017-06-29T04:53:56.391Z",
         "updatedAt": "2017-06-29T04:53:56.391Z"
       },
       {
-        "idMateria": 39,
+        "pkMateria": 39,
         "nombre": "CERTIFICACION PROFESIONAL",
         "codigo": "SIC834",
-        "id": 40,
         "createdAt": "2017-06-29T04:55:12.116Z",
         "updatedAt": "2017-06-29T04:55:12.116Z"
       },
       {
-        "idMateria": 40,
+        "pkMateria": 40,
         "nombre": "COMUNICACION ACADEMICA Y PROFESIONAL",
         "codigo": "SIC343",
-        "id": 41,
         "createdAt": "2017-06-29T04:57:19.063Z",
         "updatedAt": "2017-06-29T04:57:19.063Z"
       },
       {
-        "idMateria": 41,
+        "pkMateria": 41,
         "nombre": "LEGISLACION INFORMATICA",
         "codigo": "ADM612",
-        "id": 42,
         "createdAt": "2017-06-29T04:57:41.125Z",
         "updatedAt": "2017-06-29T04:57:41.125Z"
       },
       {
-        "idMateria": 42,
+        "pkMateria": 42,
         "nombre": "CLUBES",
         "codigo": "ICLUB1",
-        "id": 43,
         "createdAt": "2017-06-29T04:58:23.736Z",
         "updatedAt": "2017-06-29T04:58:23.736Z"
       },
       {
-        "idMateria": 43,
+        "pkMateria": 43,
         "nombre": "SEMINARIO PROFESIONAL IV",
         "codigo": "SIC6A2",
-        "id": 44,
         "createdAt": "2017-06-29T04:58:42.178Z",
         "updatedAt": "2017-06-29T04:58:42.178Z"
       },
       {
-        "idMateria": 44,
+        "pkMateria": 44,
         "nombre": "ECOLOGIA Y MEDIO AMBIENTE",
         "codigo": "EMA313",
-        "id": 45,
         "createdAt": "2017-06-29T04:59:03.060Z",
         "updatedAt": "2017-06-29T04:59:03.060Z"
       },
       {
-        "idMateria": 45,
+        "pkMateria": 45,
         "nombre": "DISEÑO DE PROCESOS ORGANIZACIONALES",
         "codigo": "SIC623",
-        "id": 46,
         "createdAt": "2017-06-29T05:00:31.188Z",
         "updatedAt": "2017-06-29T05:00:31.188Z"
       },
       {
-        "idMateria": 46,
+        "pkMateria": 46,
         "nombre": "TECNOLOGIAS WEB CON JAVASCRIPT",
         "codigo": "SIC8B4",
-        "id": 47,
         "createdAt": "2017-06-29T05:00:53.525Z",
         "updatedAt": "2017-06-29T05:00:53.525Z"
       },
       {
-        "idMateria": 47,
+        "pkMateria": 47,
         "nombre": "ADMINISTRACION FINANCIERA",
         "codigo": "SIC613",
-        "id": 48,
         "createdAt": "2017-06-29T05:01:39.598Z",
         "updatedAt": "2017-06-29T05:01:39.598Z"
       },
       {
-        "idMateria": 48,
+        "pkMateria": 48,
         "nombre": "TALLER DE FORMULACION DE PROYECTOS DE TITULACION",
         "codigo": "SIC812",
-        "id": 49,
         "createdAt": "2017-06-29T05:02:27.636Z",
         "updatedAt": "2017-06-29T05:02:27.636Z"
       }
     ],
     "materiaprofesor": [
       {
-        "idMateriaProfesor": 1,
-        "materia": 12,
-        "profesor": 5,
-        "id": 1,
-        "createdAt": "2017-06-29T08:37:53.763Z",
-        "updatedAt": "2017-06-29T08:37:53.763Z"
+        "pkMateriaProfesor": 2,
+        "grupo": "1",
+        "idProfesor": 5,
+        "idMateria": 6,
+        "createdAt": "2017-07-11T01:57:04.673Z",
+        "updatedAt": "2017-07-11T01:57:04.673Z"
+      },
+      {
+        "pkMateriaProfesor": 3,
+        "grupo": "1",
+        "idProfesor": 3,
+        "idMateria": 1,
+        "createdAt": "2017-07-11T01:57:49.092Z",
+        "updatedAt": "2017-07-11T01:57:49.092Z"
+      },
+      {
+        "pkMateriaProfesor": 4,
+        "grupo": "1",
+        "idProfesor": 9,
+        "idMateria": 4,
+        "createdAt": "2017-07-11T01:57:56.931Z",
+        "updatedAt": "2017-07-11T01:57:56.931Z"
       }
     ],
     "modelocomputador": [
       {
-        "idModeloComputador": 1,
+        "pkModeloComputador": 1,
         "marca": "Dell All-in-One",
         "procesador": "intel core i5",
         "ram": "4 GB",
-        "id": 2,
         "createdAt": "2017-06-29T02:09:53.324Z",
         "updatedAt": "2017-06-29T02:09:53.324Z"
       },
       {
-        "idModeloComputador": 2,
+        "pkModeloComputador": 2,
         "marca": "Dell Torre",
         "procesador": "intel core i7",
         "ram": "8 GB",
-        "id": 1,
         "createdAt": "2017-06-29T02:11:30.858Z",
         "updatedAt": "2017-06-29T02:11:30.858Z"
       },
       {
-        "idModeloComputador": 3,
+        "pkModeloComputador": 3,
         "marca": "Apple iMac All-inOne",
         "procesador": "intel core i5",
         "ram": "8 GB",
-        "id": 3,
         "createdAt": "2017-06-29T02:12:10.670Z",
         "updatedAt": "2017-06-29T02:12:10.670Z"
       }
     ],
+    "periodoacademico": [],
     "profesor": [
       {
-        "idProfesor": 1,
+        "pkProfesor": 1,
         "nombres": "Jhonattan Javier",
         "apellidos": "Barriga Andrade",
         "ultimoTitulo": "MSC",
-        "id": 1,
         "createdAt": "2017-06-29T03:18:17.808Z",
         "updatedAt": "2017-06-29T03:18:17.808Z"
       },
       {
-        "idProfesor": 2,
+        "pkProfesor": 2,
         "nombres": "Marco Enrique",
         "apellidos": "Benalcázar Palacios",
         "ultimoTitulo": "PHD",
-        "id": 2,
         "createdAt": "2017-06-29T03:19:09.768Z",
         "updatedAt": "2017-06-29T03:19:09.768Z"
       },
       {
-        "idProfesor": 3,
+        "pkProfesor": 3,
         "nombres": "Marco Danilo",
         "apellidos": "Burbano Acuña",
         "ultimoTitulo": "MSC",
-        "id": 3,
         "createdAt": "2017-06-29T03:20:03.577Z",
         "updatedAt": "2017-06-29T03:20:03.577Z"
       },
       {
-        "idProfesor": 4,
+        "pkProfesor": 4,
         "nombres": "Luis Fernando",
         "apellidos": "Carrasco Delhy",
         "ultimoTitulo": "MSC",
-        "id": 4,
         "createdAt": "2017-06-29T03:20:50.373Z",
         "updatedAt": "2017-06-29T03:20:50.373Z"
       },
       {
-        "idProfesor": 5,
+        "pkProfesor": 5,
         "nombres": "Iván Marcelo",
         "apellidos": "Carrera Izurieta",
         "ultimoTitulo": "MSC",
-        "id": 5,
         "createdAt": "2017-06-29T03:21:19.831Z",
         "updatedAt": "2017-06-29T03:21:19.831Z"
       },
       {
-        "idProfesor": 6,
+        "pkProfesor": 6,
         "nombres": "Santiago Robert",
         "apellidos": "Carrillo Calderón",
         "ultimoTitulo": "MSC",
-        "id": 6,
         "createdAt": "2017-06-29T03:21:51.493Z",
         "updatedAt": "2017-06-29T03:21:51.493Z"
       },
       {
-        "idProfesor": 7,
+        "pkProfesor": 7,
         "nombres": "Mayra del Cisne",
         "apellidos": "Carrión Toro",
         "ultimoTitulo": "MSC",
-        "id": 7,
         "createdAt": "2017-06-29T03:22:24.963Z",
         "updatedAt": "2017-06-29T03:22:24.963Z"
       },
       {
-        "idProfesor": 8,
+        "pkProfesor": 8,
         "nombres": "Rodrigo Fabián",
         "apellidos": "Chancusig Chuquilla",
         "ultimoTitulo": "MSC",
-        "id": 8,
         "createdAt": "2017-06-29T03:29:21.424Z",
         "updatedAt": "2017-06-29T03:29:21.424Z"
       },
       {
-        "idProfesor": 9,
+        "pkProfesor": 9,
         "nombres": "Bernardino",
         "apellidos": "Chancusig Espín",
         "ultimoTitulo": "ING",
-        "id": 9,
         "createdAt": "2017-06-29T03:30:02.410Z",
         "updatedAt": "2017-06-29T03:30:02.410Z"
       },
       {
-        "idProfesor": 10,
+        "pkProfesor": 10,
         "nombres": "Marcos Raúl",
         "apellidos": "Córdova Batas",
         "ultimoTitulo": "MSC",
-        "id": 10,
         "createdAt": "2017-06-29T03:30:50.294Z",
         "updatedAt": "2017-06-29T03:30:50.294Z"
       },
       {
-        "idProfesor": 11,
+        "pkProfesor": 11,
         "nombres": "Henry Manolo",
         "apellidos": "Echeverría Culqui",
         "ultimoTitulo": "MSC",
-        "id": 11,
         "createdAt": "2017-06-29T03:31:41.755Z",
         "updatedAt": "2017-06-29T03:31:41.755Z"
       },
       {
-        "idProfesor": 12,
+        "pkProfesor": 12,
         "nombres": "Vicente Adrián",
         "apellidos": "Eguez Sarzosa",
         "ultimoTitulo": "ING",
-        "id": 12,
         "createdAt": "2017-06-29T03:32:14.679Z",
         "updatedAt": "2017-06-29T03:32:14.679Z"
       },
       {
-        "idProfesor": 13,
+        "pkProfesor": 13,
         "nombres": "César Humbert",
         "apellidos": "Esquetini Cáceres",
         "ultimoTitulo": "MSC",
-        "id": 13,
         "createdAt": "2017-06-29T03:32:57.207Z",
         "updatedAt": "2017-06-29T03:32:57.207Z"
       },
       {
-        "idProfesor": 14,
+        "pkProfesor": 14,
         "nombres": "Denys Alberto",
         "apellidos": "Flores Armas",
         "ultimoTitulo": "MSC",
-        "id": 14,
         "createdAt": "2017-06-29T03:33:39.256Z",
         "updatedAt": "2017-06-29T03:33:39.256Z"
       },
       {
-        "idProfesor": 15,
+        "pkProfesor": 15,
         "nombres": "Pamela Catherine",
         "apellidos": "Flores Naranjo",
         "ultimoTitulo": "PHD",
-        "id": 15,
         "createdAt": "2017-06-29T03:34:08.908Z",
         "updatedAt": "2017-06-29T03:34:08.908Z"
       },
       {
-        "idProfesor": 16,
+        "pkProfesor": 16,
         "nombres": "César Eduardo",
         "apellidos": "Gallardo Carrera",
         "ultimoTitulo": "MSC",
-        "id": 16,
         "createdAt": "2017-06-29T03:34:54.093Z",
         "updatedAt": "2017-06-29T03:34:54.093Z"
       },
       {
-        "idProfesor": 17,
+        "pkProfesor": 17,
         "nombres": "Marco Sebastián",
         "apellidos": "Guerrero Flor",
         "ultimoTitulo": "MSC",
-        "id": 17,
         "createdAt": "2017-06-29T03:35:27.191Z",
         "updatedAt": "2017-06-29T03:35:27.191Z"
       },
       {
-        "idProfesor": 18,
+        "pkProfesor": 18,
         "nombres": "María Asunción",
         "apellidos": "Hallo Carrasco",
         "ultimoTitulo": "PHD",
-        "id": 18,
         "createdAt": "2017-06-29T03:35:58.125Z",
         "updatedAt": "2017-06-29T03:35:58.125Z"
       },
       {
-        "idProfesor": 19,
+        "pkProfesor": 19,
         "nombres": "Myriam Beatriz",
         "apellidos": "Hernández Álvarez",
         "ultimoTitulo": "PHD",
-        "id": 19,
         "createdAt": "2017-06-29T03:36:26.602Z",
         "updatedAt": "2017-06-29T03:36:26.602Z"
       },
       {
-        "idProfesor": 20,
+        "pkProfesor": 20,
         "nombres": "Juan Alberto",
         "apellidos": "Herrera Silva",
         "ultimoTitulo": "MSC",
-        "id": 20,
         "createdAt": "2017-06-29T03:37:01.242Z",
         "updatedAt": "2017-06-29T03:37:01.242Z"
       },
       {
-        "idProfesor": 21,
+        "pkProfesor": 21,
         "nombres": "María Monserrate",
         "apellidos": "Intriago Pazmiño",
         "ultimoTitulo": "MSC",
-        "id": 21,
         "createdAt": "2017-06-29T03:37:31.524Z",
         "updatedAt": "2017-06-29T03:37:31.524Z"
       },
       {
-        "idProfesor": 22,
+        "pkProfesor": 22,
         "nombres": "Andrés Gabriel",
         "apellidos": "Jaramillo Yánez",
         "ultimoTitulo": "MSC",
-        "id": 22,
         "createdAt": "2017-06-29T03:38:17.672Z",
         "updatedAt": "2017-06-29T03:38:17.672Z"
       },
       {
-        "idProfesor": 23,
+        "pkProfesor": 23,
         "nombres": "Enrique Andrés",
         "apellidos": "Larco Ampudia",
         "ultimoTitulo": "MSC",
-        "id": 23,
         "createdAt": "2017-06-29T03:38:52.060Z",
         "updatedAt": "2017-06-29T03:38:52.060Z"
       },
       {
-        "idProfesor": 24,
+        "pkProfesor": 24,
         "nombres": "José Francisco",
         "apellidos": "Lucio Naranjo",
         "ultimoTitulo": "PHD",
-        "id": 24,
         "createdAt": "2017-06-29T03:39:31.379Z",
         "updatedAt": "2017-06-29T03:39:31.379Z"
       },
       {
-        "idProfesor": 25,
+        "pkProfesor": 25,
         "nombres": "Luis Enrique",
         "apellidos": "Mafla Gallegos",
         "ultimoTitulo": "PHD",
-        "id": 25,
         "createdAt": "2017-06-29T03:40:07.006Z",
         "updatedAt": "2017-06-29T03:40:07.006Z"
       },
       {
-        "idProfesor": 26,
+        "pkProfesor": 26,
         "nombres": "Daniel Alejandro",
         "apellidos": "Maldonado Ruiz",
         "ultimoTitulo": "MSC",
-        "id": 26,
         "createdAt": "2017-06-29T03:40:33.285Z",
         "updatedAt": "2017-06-29T03:40:33.285Z"
       },
       {
-        "idProfesor": 27,
+        "pkProfesor": 27,
         "nombres": "Elisa Karina",
         "apellidos": "Mena Maldonado",
         "ultimoTitulo": "MSC",
-        "id": 27,
         "createdAt": "2017-06-29T03:42:04.277Z",
         "updatedAt": "2017-06-29T03:42:04.277Z"
       },
       {
-        "idProfesor": 28,
+        "pkProfesor": 28,
         "nombres": "Susana Piedad",
         "apellidos": "Mier Araujo",
         "ultimoTitulo": "ING",
-        "id": 28,
         "createdAt": "2017-06-29T03:42:37.639Z",
         "updatedAt": "2017-06-29T03:42:37.639Z"
       },
       {
-        "idProfesor": 29,
+        "pkProfesor": 29,
         "nombres": "Carlos E",
         "apellidos": "Montenegro Armas",
         "ultimoTitulo": "MSC",
-        "id": 29,
         "createdAt": "2017-06-29T03:44:21.049Z",
         "updatedAt": "2017-06-29T03:44:21.049Z"
       },
       {
-        "idProfesor": 30,
+        "pkProfesor": 30,
         "nombres": "Evelyn Marcela",
         "apellidos": "Mosquera Espinosa",
         "ultimoTitulo": "ING",
-        "id": 30,
         "createdAt": "2017-06-29T03:44:54.093Z",
         "updatedAt": "2017-06-29T03:44:54.093Z"
       },
       {
-        "idProfesor": 31,
+        "pkProfesor": 31,
         "nombres": "Rosa del Carmen",
         "apellidos": "Navarrete Rueda",
         "ultimoTitulo": "MSC",
-        "id": 31,
         "createdAt": "2017-06-29T03:45:27.729Z",
         "updatedAt": "2017-06-29T03:45:27.729Z"
       },
       {
-        "idProfesor": 32,
+        "pkProfesor": 32,
         "nombres": "Sheila Lorena",
         "apellidos": "Noboa Cruz",
         "ultimoTitulo": "MSC",
-        "id": 32,
         "createdAt": "2017-06-29T03:45:55.323Z",
         "updatedAt": "2017-06-29T03:45:55.323Z"
       },
       {
-        "idProfesor": 33,
+        "pkProfesor": 33,
         "nombres": "Hernán David",
         "apellidos": "Ordoñez Calero",
         "ultimoTitulo": "ING",
-        "id": 33,
         "createdAt": "2017-06-29T03:46:36.046Z",
         "updatedAt": "2017-06-29T03:46:36.046Z"
       },
       {
-        "idProfesor": 34,
+        "pkProfesor": 34,
         "nombres": "Luis Miguel",
         "apellidos": "Orquera Andrade",
         "ultimoTitulo": "MSC",
-        "id": 34,
         "createdAt": "2017-06-29T03:47:11.043Z",
         "updatedAt": "2017-06-29T03:47:11.043Z"
       },
       {
-        "idProfesor": 35,
+        "pkProfesor": 35,
         "nombres": "Henry Patricio",
         "apellidos": "Paz Arias",
         "ultimoTitulo": "MSC",
-        "id": 35,
         "createdAt": "2017-06-29T03:47:38.249Z",
         "updatedAt": "2017-06-29T03:47:38.249Z"
       },
       {
-        "idProfesor": 36,
+        "pkProfesor": 36,
         "nombres": "Tania Mireya",
         "apellidos": "Pazmiño Santana",
         "ultimoTitulo": "MSC",
-        "id": 36,
         "createdAt": "2017-06-29T03:49:25.243Z",
         "updatedAt": "2017-06-29T03:49:25.243Z"
       },
       {
-        "idProfesor": 37,
+        "pkProfesor": 37,
         "nombres": "Myriam Guadalupe",
         "apellidos": "Peñafiel Aguilar",
         "ultimoTitulo": "MSC",
-        "id": 37,
         "createdAt": "2017-06-29T03:49:50.650Z",
         "updatedAt": "2017-06-29T03:49:50.650Z"
       },
       {
-        "idProfesor": 38,
+        "pkProfesor": 38,
         "nombres": "Diego Andrés",
         "apellidos": "Pérez Almeida",
         "ultimoTitulo": "ing",
-        "id": 38,
         "createdAt": "2017-06-29T03:50:28.942Z",
         "updatedAt": "2017-06-29T03:50:28.942Z"
       },
       {
-        "idProfesor": 39,
+        "pkProfesor": 39,
         "nombres": "María Gabriela",
         "apellidos": "Pérez Hernández",
         "ultimoTitulo": "MSC",
-        "id": 39,
         "createdAt": "2017-06-29T03:51:14.364Z",
         "updatedAt": "2017-06-29T03:51:14.364Z"
       },
       {
-        "idProfesor": 40,
+        "pkProfesor": 40,
         "nombres": "Luis Antonio",
         "apellidos": "Salvador Ullauri",
         "ultimoTitulo": "MSC",
-        "id": 40,
         "createdAt": "2017-06-29T03:51:40.700Z",
         "updatedAt": "2017-06-29T03:51:40.700Z"
       },
       {
-        "idProfesor": 41,
+        "pkProfesor": 41,
         "nombres": "Julio César",
         "apellidos": "Sandobalín Guamán",
         "ultimoTitulo": "MSC",
-        "id": 41,
         "createdAt": "2017-06-29T03:52:10.995Z",
         "updatedAt": "2017-06-29T03:52:10.995Z"
       },
       {
-        "idProfesor": 42,
+        "pkProfesor": 42,
         "nombres": "Marco Oswaldo",
         "apellidos": "Santórum Gaibor",
         "ultimoTitulo": "PHD",
-        "id": 42,
         "createdAt": "2017-06-29T03:52:54.340Z",
         "updatedAt": "2017-06-29T03:52:54.340Z"
       },
       {
-        "idProfesor": 43,
+        "pkProfesor": 43,
         "nombres": "Gabriela Lorena",
         "apellidos": "Suntaxi Oña",
         "ultimoTitulo": "MSC",
-        "id": 43,
         "createdAt": "2017-06-29T03:53:31.457Z",
         "updatedAt": "2017-06-29T03:53:31.457Z"
       },
       {
-        "idProfesor": 44,
+        "pkProfesor": 44,
         "nombres": "Sandra Patricia",
         "apellidos": "Sánchez Gordón",
         "ultimoTitulo": "MSC",
-        "id": 44,
         "createdAt": "2017-06-29T03:54:21.249Z",
         "updatedAt": "2017-06-29T03:54:21.249Z"
       },
       {
-        "idProfesor": 45,
+        "pkProfesor": 45,
         "nombres": "Regina Maritzol",
         "apellidos": "Tenemaza Vera",
         "ultimoTitulo": "MSC",
-        "id": 45,
         "createdAt": "2017-06-29T03:54:50.553Z",
         "updatedAt": "2017-06-29T03:54:50.553Z"
       },
       {
-        "idProfesor": 46,
+        "pkProfesor": 46,
         "nombres": "Jenny Gabriela",
         "apellidos": "Torres Olmedo",
         "ultimoTitulo": "PHD",
-        "id": 46,
         "createdAt": "2017-06-29T03:55:28.706Z",
         "updatedAt": "2017-06-29T03:55:28.706Z"
       },
       {
-        "idProfesor": 47,
+        "pkProfesor": 47,
         "nombres": "Edgar Porfirio",
         "apellidos": "Torres Proaño",
         "ultimoTitulo": "MSC",
-        "id": 47,
         "createdAt": "2017-06-29T03:56:15.882Z",
         "updatedAt": "2017-06-29T03:56:15.882Z"
       },
       {
-        "idProfesor": 48,
+        "pkProfesor": 48,
         "nombres": "Doris Karina",
         "apellidos": "Tutillo Sánchez",
         "ultimoTitulo": "ING",
-        "id": 48,
         "createdAt": "2017-06-29T03:56:51.078Z",
         "updatedAt": "2017-06-29T03:56:51.078Z"
       },
       {
-        "idProfesor": 49,
+        "pkProfesor": 49,
         "nombres": "Luz Marina",
         "apellidos": "Vintimilla Jaramillo",
         "ultimoTitulo": "MSC",
-        "id": 49,
         "createdAt": "2017-06-29T03:57:19.851Z",
         "updatedAt": "2017-06-29T03:57:19.851Z"
       },
       {
-        "idProfesor": 50,
+        "pkProfesor": 50,
         "nombres": "Diana Cecilia",
         "apellidos": "Yacchirema Vargas",
         "ultimoTitulo": "MSC",
-        "id": 50,
         "createdAt": "2017-06-29T03:57:58.398Z",
         "updatedAt": "2017-06-29T03:57:58.398Z"
       },
       {
-        "idProfesor": 51,
+        "pkProfesor": 51,
         "nombres": "Tania Elizabeth",
         "apellidos": "Calle Jiménez",
         "ultimoTitulo": "MSC",
-        "id": 51,
         "createdAt": "2017-06-29T04:00:40.723Z",
         "updatedAt": "2017-06-29T04:00:40.723Z"
       },
       {
-        "idProfesor": 52,
+        "pkProfesor": 52,
         "nombres": "Josafá de Jesús",
         "apellidos": "Aguiar Pontes",
         "ultimoTitulo": "PHD",
-        "id": 52,
         "createdAt": "2017-06-29T04:01:35.912Z",
         "updatedAt": "2017-06-29T04:01:35.912Z"
       },
       {
-        "idProfesor": 53,
+        "pkProfesor": 53,
         "nombres": "Carlos Eduardo",
         "apellidos": "Anchundia Valencia",
         "ultimoTitulo": "MSC",
-        "id": 53,
         "createdAt": "2017-06-29T04:02:08.518Z",
         "updatedAt": "2017-06-29T04:02:08.518Z"
       },
       {
-        "idProfesor": 54,
+        "pkProfesor": 54,
         "nombres": "William Humberto",
         "apellidos": "Andrade Hinojosa",
         "ultimoTitulo": "MSC",
-        "id": 54,
         "createdAt": "2017-06-29T04:02:40.532Z",
         "updatedAt": "2017-06-29T04:02:40.532Z"
       },
       {
-        "idProfesor": 55,
+        "pkProfesor": 55,
         "nombres": "Carlos Artuto",
         "apellidos": "Bonilla Játiva",
         "ultimoTitulo": "MSC",
-        "id": 55,
         "createdAt": "2017-06-29T04:03:11.029Z",
         "updatedAt": "2017-06-29T04:03:11.029Z"
       },
       {
-        "idProfesor": 56,
+        "pkProfesor": 56,
         "nombres": "Carlos Artuto",
         "apellidos": "Bonilla Játiva",
         "ultimoTitulo": "MSC",
-        "id": 56,
         "createdAt": "2017-06-29T04:04:17.555Z",
         "updatedAt": "2017-06-29T04:04:17.555Z"
       }
     ],
     "software": [],
-    "laboratorio_software__software_owners": []
+    "laboratorio_idsoftware__software_idlaboratorio": []
   },
   "schema": {
-    "agendalaboratorio": {
-      "idAgendaLaboratorio": {
-        "type": "integer",
-        "unique": true,
-        "autoIncrement": true
-      },
-      "fechaInicio": {
-        "type": "date"
-      },
-      "fechaFin": {
-        "type": "date"
-      },
-      "horaInicio": {
-        "type": "integer"
-      },
-      "horaFin": {
-        "type": "integer"
-      },
-      "observacion": {
-        "type": "string"
-      },
-      "materiaProfesor": {
-        "type": "integer",
-        "model": "materiaprofesor",
-        "foreignKey": true,
-        "alias": "materiaProfesor"
-      },
-      "laboratorio": {
-        "type": "integer",
-        "model": "laboratorio",
-        "foreignKey": true,
-        "alias": "laboratorio"
-      },
-      "id": {
-        "type": "integer",
-        "autoIncrement": true,
-        "primaryKey": true,
-        "unique": true
-      },
-      "createdAt": {
-        "type": "datetime"
-      },
-      "updatedAt": {
-        "type": "datetime"
-      }
-    },
-    "laboratorio": {
-      "idLaboratorio": {
-        "type": "integer",
-        "unique": true,
-        "autoIncrement": true
-      },
-      "nombre": {
-        "type": "string"
-      },
-      "numeroAula": {
-        "type": "string"
-      },
-      "numeroComputadoras": {
-        "type": "string"
-      },
-      "modeloComputador": {
-        "type": "integer",
-        "model": "modelocomputador",
-        "foreignKey": true,
-        "alias": "modeloComputador",
-        "via": "idModelo"
-      },
-      "id": {
-        "type": "integer",
-        "autoIncrement": true,
-        "primaryKey": true,
-        "unique": true
-      },
-      "createdAt": {
-        "type": "datetime"
-      },
-      "updatedAt": {
-        "type": "datetime"
-      }
-    },
-    "materia": {
-      "idMateria": {
-        "type": "integer",
-        "unique": true,
-        "autoIncrement": true
-      },
-      "nombre": {
-        "type": "string",
-        "unique": true
-      },
-      "codigo": {
-        "type": "string",
-        "unique": true
-      },
-      "id": {
-        "type": "integer",
-        "autoIncrement": true,
-        "primaryKey": true,
-        "unique": true
-      },
-      "createdAt": {
-        "type": "datetime"
-      },
-      "updatedAt": {
-        "type": "datetime"
-      }
-    },
-    "materiaprofesor": {
-      "idMateriaProfesor": {
-        "type": "integer",
-        "unique": true,
-        "autoIncrement": true
-      },
-      "grupo": {
-        "type": "string"
-      },
-      "materia": {
-        "type": "integer",
-        "model": "materia",
-        "foreignKey": true,
-        "alias": "materia"
-      },
-      "profesor": {
-        "type": "integer",
-        "model": "profesor",
-        "foreignKey": true,
-        "alias": "profesor"
-      },
-      "id": {
-        "type": "integer",
-        "autoIncrement": true,
-        "primaryKey": true,
-        "unique": true
-      },
-      "createdAt": {
-        "type": "datetime"
-      },
-      "updatedAt": {
-        "type": "datetime"
-      }
-    },
-    "modelocomputador": {
-      "idModeloComputador": {
-        "type": "integer",
-        "unique": true,
-        "autoIncrement": true
-      },
-      "marca": {
-        "type": "string"
-      },
-      "procesador": {
-        "type": "string"
-      },
-      "ram": {
-        "type": "string"
-      },
-      "id": {
-        "type": "integer",
-        "autoIncrement": true,
-        "primaryKey": true,
-        "unique": true
-      },
-      "createdAt": {
-        "type": "datetime"
-      },
-      "updatedAt": {
-        "type": "datetime"
-      }
-    },
-    "profesor": {
-      "idProfesor": {
-        "type": "integer",
-        "unique": true,
-        "autoIncrement": true
-      },
-      "nombres": {
-        "type": "string"
-      },
-      "apellidos": {
-        "type": "string"
-      },
-      "ultimoTitulo": {
-        "type": "string"
-      },
-      "telefono1": {
-        "type": "string"
-      },
-      "telefono2": {
-        "type": "string"
-      },
-      "correo": {
-        "type": "string"
-      },
-      "id": {
-        "type": "integer",
-        "autoIncrement": true,
-        "primaryKey": true,
-        "unique": true
-      },
-      "createdAt": {
-        "type": "datetime"
-      },
-      "updatedAt": {
-        "type": "datetime"
-      }
-    },
-    "software": {
-      "idSoftware": {
-        "type": "integer",
-        "unique": true,
-        "autoIncrement": true
-      },
-      "nombre": {
-        "type": "string"
-      },
-      "version": {
-        "type": "string"
-      },
-      "id": {
-        "type": "integer",
-        "autoIncrement": true,
-        "primaryKey": true,
-        "unique": true
-      },
-      "createdAt": {
-        "type": "datetime"
-      },
-      "updatedAt": {
-        "type": "datetime"
-      }
-    },
     "laboratorio_software__software_owners": {
       "id": {
         "primaryKey": true,
@@ -1280,34 +943,274 @@
         "on": "id",
         "via": "laboratorio_software"
       }
+    },
+    "agendalaboratorio": {
+      "pkAgendaLaboratorio": {
+        "type": "integer",
+        "unique": true,
+        "autoIncrement": true,
+        "primaryKey": true
+      },
+      "fechaInicio": {
+        "type": "date"
+      },
+      "fechaFin": {
+        "type": "date"
+      },
+      "horaInicio": {
+        "type": "integer"
+      },
+      "horaFin": {
+        "type": "integer"
+      },
+      "observacion": {
+        "type": "string"
+      },
+      "idMateriaProfesor": {
+        "type": "integer",
+        "model": "materiaprofesor",
+        "foreignKey": true,
+        "alias": "idMateriaProfesor"
+      },
+      "idLaboratorio": {
+        "type": "integer",
+        "model": "laboratorio",
+        "foreignKey": true,
+        "alias": "idLaboratorio"
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "laboratorio": {
+      "pkLaboratorio": {
+        "type": "integer",
+        "unique": true,
+        "autoIncrement": true,
+        "primaryKey": true
+      },
+      "nombre": {
+        "type": "string"
+      },
+      "numeroAula": {
+        "type": "string"
+      },
+      "numeroComputadoras": {
+        "type": "integer"
+      },
+      "idModeloComputador": {
+        "type": "integer",
+        "model": "modelocomputador",
+        "foreignKey": true,
+        "alias": "idModeloComputador"
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "materia": {
+      "pkMateria": {
+        "type": "integer",
+        "unique": true,
+        "autoIncrement": true,
+        "primaryKey": true
+      },
+      "nombre": {
+        "type": "string",
+        "unique": true
+      },
+      "codigo": {
+        "type": "string",
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "materiaprofesor": {
+      "pkMateriaProfesor": {
+        "type": "integer",
+        "unique": true,
+        "autoIncrement": true,
+        "primaryKey": true
+      },
+      "grupo": {
+        "type": "string"
+      },
+      "idProfesor": {
+        "type": "integer",
+        "model": "profesor",
+        "foreignKey": true,
+        "alias": "idProfesor"
+      },
+      "idMateria": {
+        "type": "integer",
+        "model": "materia",
+        "foreignKey": true,
+        "alias": "idMateria"
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "modelocomputador": {
+      "pkModeloComputador": {
+        "type": "integer",
+        "unique": true,
+        "autoIncrement": true,
+        "primaryKey": true
+      },
+      "marca": {
+        "type": "string"
+      },
+      "procesador": {
+        "type": "string"
+      },
+      "ram": {
+        "type": "string"
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "periodoacademico": {
+      "id": {
+        "type": "integer",
+        "autoIncrement": true,
+        "primaryKey": true,
+        "unique": true
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "profesor": {
+      "pkProfesor": {
+        "type": "integer",
+        "unique": true,
+        "autoIncrement": true,
+        "primaryKey": true
+      },
+      "nombres": {
+        "type": "string"
+      },
+      "apellidos": {
+        "type": "string"
+      },
+      "ultimoTitulo": {
+        "type": "string"
+      },
+      "telefono1": {
+        "type": "string"
+      },
+      "telefono2": {
+        "type": "string"
+      },
+      "correo": {
+        "type": "string"
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "software": {
+      "pkSoftware": {
+        "type": "integer",
+        "unique": true,
+        "autoIncrement": true,
+        "primaryKey": true
+      },
+      "nombre": {
+        "type": "string"
+      },
+      "version": {
+        "type": "string"
+      },
+      "createdAt": {
+        "type": "datetime"
+      },
+      "updatedAt": {
+        "type": "datetime"
+      }
+    },
+    "laboratorio_idsoftware__software_idlaboratorio": {
+      "id": {
+        "primaryKey": true,
+        "unique": true,
+        "autoIncrement": true,
+        "type": "integer"
+      },
+      "laboratorio_idSoftware": {
+        "type": "integer",
+        "foreignKey": true,
+        "references": "laboratorio",
+        "on": "pkLaboratorio",
+        "via": "software_idLaboratorio"
+      },
+      "software_idLaboratorio": {
+        "type": "integer",
+        "foreignKey": true,
+        "references": "software",
+        "on": "pkSoftware",
+        "via": "laboratorio_idSoftware"
+      }
     }
   },
   "counters": {
     "agendalaboratorio": {
       "idAgendaLaboratorio": 2,
-      "id": 2
+      "id": 2,
+      "pkAgendaLaboratorio": 2
     },
     "laboratorio": {
       "id": 12,
-      "idLaboratorio": 7
+      "idLaboratorio": 7,
+      "pkLaboratorio": 7
     },
     "materia": {
       "id": 49,
-      "idMateria": 48
+      "idMateria": 48,
+      "pkMateria": 48
     },
     "materiaprofesor": {
       "id": 1,
-      "idMateriaProfesor": 1
+      "idMateriaProfesor": 1,
+      "pkMateriaProfesor": 4
     },
     "modelocomputador": {
       "id": 4,
-      "idModeloComputador": 3
+      "idModeloComputador": 3,
+      "pkModeloComputador": 3
     },
     "profesor": {
       "id": 56,
-      "idProfesor": 56
+      "idProfesor": 56,
+      "pkProfesor": 56
     },
     "software": {},
-    "laboratorio_software__software_owners": {}
+    "laboratorio_software__software_owners": {},
+    "periodoacademico": {},
+    "laboratorio_idsoftware__software_idlaboratorio": {}
   }
 }
