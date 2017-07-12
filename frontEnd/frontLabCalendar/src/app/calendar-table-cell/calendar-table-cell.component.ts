@@ -17,6 +17,10 @@ export class CalendarTableCellComponent implements OnInit {
   @Input()selectLab: Laboratorio;
   @ViewChild(ContextMenuComponent)
   public basicMenu: ContextMenuComponent;
+  modelInicio;
+  modelFin;
+  fechaFin:Date;
+  fechaInicio:Date;
 
   nombreDias: string[]= ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'];
   horaFin = 0;
@@ -30,6 +34,9 @@ export class CalendarTableCellComponent implements OnInit {
     this.horaFin = this.horaInicio + 1;
     this.nuevaAgenda = new AgendaLaboratorio(this.horaInicio, this.selectLab);
     this.nuevaAgenda.horaFin = this.horaFin;
+    this.nuevaAgenda.fechaInicio=new Date();
+    this.nuevaAgenda.fechaFin=new Date();
+
 
     this.displayMateriaProfesor = 'Sin Asignar';
 
@@ -38,7 +45,8 @@ export class CalendarTableCellComponent implements OnInit {
   constructor(private modalService: NgbModal, private _http: Http) {}
 
   open(content) {
-    this.modalService.open(content).result.then((result) => {
+
+    this.modalService.open(content,{size: 'lg'}).result.then((result) => {
       this.closeResult = `Closed with: ${result}`;
     }, (reason) => {
       this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
@@ -59,9 +67,7 @@ export class CalendarTableCellComponent implements OnInit {
   getdia(numDia: number): string {
     return this.nombreDias[numDia - 1];
   }
-  getAgenda(hora: number, dia: number): string {
-    return 'ddddd';
-  }
+
 
    gethorasRestantes(hora: number): number []{
     let horas = [];
@@ -78,20 +84,14 @@ export class CalendarTableCellComponent implements OnInit {
     this.horaFin = event.target.value;
     this.nuevaAgenda.horaFin = this.horaFin;
   }
-
   setAgendaMateriaProfesor(materiaprofesor: MateriaProfesor): void {
   this.displayMateriaProfesor = materiaprofesor.idMateria.nombre ;
   this.nuevaAgenda.idMateriaProfesor= materiaprofesor;
 
   }
-
-
   vacio (ingreso: any): boolean {
     return 'undefined' === typeof ingreso;
   }
-
-
-
   getSelectedLabName(lab: Laboratorio): string{
     if (this.vacio(lab)) {
       return 'No disponible';
@@ -99,10 +99,10 @@ export class CalendarTableCellComponent implements OnInit {
       return lab.nombre;
     }
   }
-
   guardarNuevaAgenda(): void {
+    this.setFechaInicio();
+    this.setFechaFin();
 
-    console.log(JSON.stringify(this.nuevaAgenda));
     this._http
       .post('http://localhost:1337/AgendaLaboratorio/',this.nuevaAgenda)
       .subscribe(
@@ -115,6 +115,15 @@ export class CalendarTableCellComponent implements OnInit {
       );
 
   }
+  setFechaInicio(){
+    this.fechaInicio=new Date(this.modelInicio.year,this.modelInicio.month-1,this.modelInicio.day);
+    this.nuevaAgenda.fechaInicio=this.fechaInicio;
+  }
+ setFechaFin(){
+    this.fechaFin=new Date(this.modelFin.year,this.modelFin.month-1,this.modelFin.day);
+    this.nuevaAgenda.fechaFin=this.fechaFin;
+ }
+
 
 
 }

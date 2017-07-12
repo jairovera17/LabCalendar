@@ -16,6 +16,7 @@ import { CalendarTableComponent } from './calendar-table/calendar-table.componen
 import {ContextMenuModule} from 'ngx-contextmenu';
 import { CalendarTableCellComponent } from './calendar-table-cell/calendar-table-cell.component';
 import {LabCalendarService} from "./lab-calendar.service";
+import { AgendaVentanaComponent } from './agenda-ventana/agenda-ventana.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +25,8 @@ import {LabCalendarService} from "./lab-calendar.service";
     MainPageComponent,
     LabViewComponent,
     CalendarTableComponent,
-    CalendarTableCellComponent
+    CalendarTableCellComponent,
+    AgendaVentanaComponent
   ],
   imports: [
     BrowserModule,

@@ -35,6 +35,7 @@ export class WeekViewCalendarComponent implements OnInit {
       (lab: Laboratorio) => {
         if (lab.nombre === event.target.value) {
           this.selectLab = lab;
+          this.abrirCalendario=true;
           return;
         }
       }

@@ -36,7 +36,7 @@ export class CalendarTableComponent implements OnInit {
         res => {
           const rjson: MateriaProfesor[] = res.json();
 
-          console.log('halo',JSON.stringify(rjson));
+
           this.materiaprofesor = rjson;
 
 
