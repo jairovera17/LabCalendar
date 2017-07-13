@@ -8,13 +8,13 @@
 module.exports = {
 
   attributes: {
-    id:{
+   /* id:{
       type:'integer',
       unique:true,
       autoIncrement: true,
       primaryKey: true
 
-    },
+    },*/
     grupo: {
       type:'string',
 
@@ -22,12 +22,14 @@ module.exports = {
 
 
     idProfesor:{
-      model:'Profesor'
+      model:'Profesor',
+      required:true
 
     },
 
     idMateria:{
-      model:'Materia'
+      model:'Materia',
+        required:true
 
     },
 
