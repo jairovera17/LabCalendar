@@ -16,10 +16,10 @@ module.exports = {
 
     },
 
-    fechaInicio: {type:'date',required:true},
-    fechaFin: {type:'date',required:true},
-    horaInicio: {type:'integer',required:true},
-    horaFin: {type:'integer',required:true},
+    fechaInicio: {type:'date'},
+    fechaFin: {type:'date'},
+    horaInicio: {type:'integer'},
+    horaFin: {type:'integer'},
     observacion: 'string',
 
 

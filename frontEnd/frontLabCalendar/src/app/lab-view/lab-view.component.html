@@ -1,25 +1,143 @@
-<div class="container">
-  <div class="row">
-    <div class="col">
-      <div ngbDropdown class="d-inline-block">
-        <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>Toggle dropdown</button>
-        <div class="dropdown-menu" aria-labelledby="dropdownBasic1">
-          <button class="dropdown-item">Action - 1</button>
-          <button class="dropdown-item">Another Action</button>
-          <button class="dropdown-item">Something else is here</button>
+<div class="container-fluid">
+
+  <div class="container">
+
+
+    <div class="row jumbotron" style="text-align: center">
+      <div class="col-4">
+        <button type="button" class="btn btn-outline-primary" data-toggle="button" aria-pressed="false" autocomplete="off"
+                (click)="this.showProfesores=!this.showProfesores;this.showMaterias=false;this.showMateriaProfesor=false">
+          Profesores
+        </button>
+      </div>
+      <div class="col-4">
+        <button type="button" class="btn btn-outline-primary" data-toggle="button" aria-pressed="false" autocomplete="off"
+                (click)="this.showProfesores=false;this.showMaterias=!this.showMaterias;this.showMateriaProfesor=false">
+          Materias
+        </button>
+      </div>
+      <div class="col-4">
+        <button type="button" class="btn btn-outline-primary" data-toggle="button" aria-pressed="false" autocomplete="off"
+                (click)="this.showProfesores=false;this.showMaterias=false;this.showMateriaProfesor=!this.showMateriaProfesor">
+          Materia - Profesor
+        </button>
+      </div>
+    </div>
+
+
+
+
+
+
+
+    <div *ngIf="this.showProfesores">
+      <h1>Profesores</h1>
+
+      <div *ngFor="let prof of this.profesores">
+
+        <div class="jumbotron">
+
+          <div class="row">
+            <div class="col-9">
+              <p><strong>Apellidos: </strong>{{prof.apellidos}}</p>
+              <p><strong>Nombres: </strong>{{prof.nombres}}</p>
+              <p><strong>Titulo: </strong> {{prof.ultimoTitulo}}</p>
+            </div>
+            <div class="col-3">
+              <br><br>
+              <button type="button" class="btn btn-warning">
+              Editar
+              </button>
+              <button type="button" class="btn btn-danger">
+                Eliminar
+              </button>
+            </div>
+          </div>
+
+
         </div>
+
+      </div>
+
+
+    </div>
+    <div *ngIf="this.showMaterias">
+      <h1>Materias</h1>
+
+
+
+      <div *ngFor="let mat of this.materias">
+
+        <div class="jumbotron">
+
+          <div class="row">
+            <div class="col-9">
+              <p><strong>Codigo: </strong>{{mat.codigo}}</p>
+              <p><strong>Nombre: </strong>{{mat.nombre}}</p>
+            </div>
+            <div class="col-3">
+              <br>
+              <button type="button" class="btn btn-warning">
+                Editar
+              </button>
+              <button type="button" class="btn btn-danger">
+                Eliminar
+              </button>
+            </div>
+          </div>
+
+
+
+        </div>
+
+      </div>
+
+
+    </div>
+    <div *ngIf="this.showMateriaProfesor">
+      <h1>Materias Profesor</h1>
+
+      <div *ngFor="let matprof of this.materiaProfesor">
+
+        <div class="jumbotron">
+
+          <div class="row">
+            <div class="col-9">
+              <h3>Materia</h3>
+              <p><strong>Codigo: </strong>{{matprof.idMateria.codigo}}</p>
+              <p><strong>Nombre: </strong>{{matprof.idMateria.nombre}}</p>
+              <hr>
+              <h3>Profesor</h3>
+              <p><strong>Apellidos: </strong>{{matprof.idProfesor.apellidos}}</p>
+              <p><strong>Nombres: </strong>{{matprof.idProfesor.nombres}}</p>
+              <p><strong>Titulo: </strong> {{matprof.idProfesor.ultimoTitulo}}</p>
+              <hr>
+
+              <h3>Grupo</h3>
+              <p><strong>Grupo: </strong>{{matprof.grupo}}</p>
+            </div>
+            <div class="col-3">
+              <br><br><br><br>
+              <br><br><br><br>
+              <button type="button" class="btn btn-warning">
+                Editar
+              </button>
+              <button type="button" class="btn btn-danger">
+                Eliminar
+              </button>
+            </div>
+          </div>
+
+
+
+
+
+        </div>
+
       </div>
     </div>
 
 
   </div>
 
-  <div>
-    <h1> Materias inscritas</h1>
-    <button class="btn btn-primary" (click)="cargar()">CargarMaterias Inscritas</button>
-
-  </div>
 </div>
-
-
-

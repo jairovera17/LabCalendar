@@ -4,7 +4,7 @@
 
 export class Profesor {
   constructor(
-    public pkProfesor: number,
+    public id: number,
     public nombres: string,
     public apellidos: string,
     public ultimoTitulo: string,

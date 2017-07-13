@@ -1,23 +1,67 @@
 
-<div  [contextMenu]="basicMenu" style=" min-height: 35px;
+<div  [contextMenu]="basicMenu" style=" min-height: 40px;
   text-align: center;">
 
 </div>
 
 <context-menu class="container" style="text-align: center">
   <ng-template contextMenuItem >
-    <button class="btn btn-lg btn-outline-primary" (click)="open(content)">Agendar</button>
+    <button class="btn btn-lg btn-outline-primary" (click)='open(content)'>Agendar </button>
   </ng-template>
 
 </context-menu>
 
-<ng-template #content let-c="close" let-d="dismiss" style="width: 500px">
+<ng-template #content let-c="close" let-d="dismiss" style="width: 500px" >
   <div class="modal-header">
     <h4 class="modal-title" style="text-align: center">Agendar</h4>
   </div>
   <div class="modal-body" style="text-align: center">
     <h6>Laboratorio:</h6>
     <p>{{this.getSelectedLabName(this.selectLab)}}</p>
+
+    <div class="row jumbotron">
+
+      <div class="col-6">
+        <h6><strong>Fecha Inicio</strong></h6>
+        <form class="form-inline">
+          <div class="form-group">
+            <div class="input-group">
+              <input class="form-control" placeholder="yyyy-mm-dd"
+                     name="dp" [(ngModel)]="modelInicio" ngbDatepicker #d1="ngbDatepicker">
+              <div class="input-group-addon" (click)="d1.toggle();" >
+                <img src="/assets/calendar-512.png" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <hr/>
+        <pre>Model: {{ modelInicio | json }}</pre>
+      </div>
+
+      <div class="col-6">
+        <h6><strong>Fecha Fin</strong></h6>
+        <form class="form-inline">
+          <div class="form-group">
+            <div class="input-group">
+              <input class="form-control" placeholder="yyyy-mm-dd"
+                     name="dp" [(ngModel)]="modelFin" ngbDatepicker #d2="ngbDatepicker">
+              <div class="input-group-addon" (click)="d2.toggle();" >
+                <img src="/assets/calendar-512.png" style="width: 1.2rem; height: 1rem; cursor: pointer;"/>
+              </div>
+            </div>
+          </div>
+        </form>
+
+        <hr/>
+        <pre>Model: {{ modelFin | json }}</pre>
+      </div>
+
+    </div>
+
+
+
+
     <h6><strong>Dia:</strong></h6>
     <p>{{this.getdia(this.dia)}}</p>
 
@@ -53,7 +97,7 @@
             <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>{{this.displayMateriaProfesor}}</button>
             <div class="dropdown-menu" aria-labelledby="dropdownBasic1">
               <div *ngFor="let inicio of this.materiaprofesor" style="text-align: center">
-                <input class="dropdown-item" type="button" (click)="setAgendaMateriaProfesor(inicio)" value="{{inicio.materia.nombre}} por {{inicio.profesor.nombres}}">
+                <input class="dropdown-item" type="button" (click)="setAgendaMateriaProfesor(inicio)" value="{{inicio.idMateria.nombre}} por {{inicio.idProfesor.nombres}}">
               </div>
 
             </div>
@@ -75,7 +119,7 @@
         <input class="form-control"  type="text" [(ngModel)]="this.nuevaAgenda.observacion" placeholder="Ingresa alguna observacion">
       </div>
     </div>
-
+    <pre>{{this.nuevaAgenda | json}}</pre>
 
 
 

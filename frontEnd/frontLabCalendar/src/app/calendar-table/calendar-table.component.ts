@@ -1,6 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Http} from '@angular/http';
 import {Laboratorio} from '../misClasses/interfazLaboratorio';
+import {MateriaProfesor} from "../misClasses/interfazMateriaProfesor";
+import {LabCalendarService} from "../lab-calendar.service";
 
 @Component({
   selector: 'app-calendar-table',
@@ -12,17 +14,40 @@ export class CalendarTableComponent implements OnInit {
   idDias: number[] = [1, 2, 3, 4, 5, 6];
   nombreDias: string[]= ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'];
   @Input()selectLab: Laboratorio;
-  constructor(private _http: Http) {
+  materiaprofesor:MateriaProfesor[]=[];
+  constructor(private _http: Http,private labService: LabCalendarService) {
   }
 
   ngOnInit() {
-    console.log('hola', this.selectLab.nombre);
+    this.getMateriaProfesor();
   }
   getdia(numDia: number): string {
     return this.nombreDias[numDia - 1];
   }
   getAgenda(hora: number, dia: number): string {
     return 'ddddd';
+  }
+
+  getMateriaProfesor():void{
+
+    this._http
+      .get('http://localhost:1337/MateriaProfesor')
+      .subscribe(
+        res => {
+          const rjson: MateriaProfesor[] = res.json();
+
+
+          this.materiaprofesor = rjson;
+
+
+
+        },
+        error => {
+          console.log('error papu');
+        }
+      );
+
+
   }
 }
 
