@@ -196,12 +196,14 @@ export class InicioComponent implements OnInit {
   constructor(private _http:Http) { }
 
   ngOnInit() {
-/*
-   this.backProfes();
-   this.backMaterias();
-   this.backModelos();
-   this.backLabos()
-*/
+
+  }
+
+  respaldar(): void{
+    this.backProfes();
+    this.backMaterias();
+    this.backModelos();
+    this.backLabos();
   }
 
   backProfes(){

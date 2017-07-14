@@ -5,10 +5,11 @@ import {Profesor} from './interfazProfesor';
  */
 export class MateriaProfesor {
   constructor(
-    public id: number,
-    public grupo: string,
-    public idMateria: Materia,
-    public idProfesor: Profesor
+    public id?: number,
+    public grupo?: string,
+    public idMateria?: Materia,
+    public idProfesor?: Profesor,
+    public editable?: boolean
   ) {
   }
 }

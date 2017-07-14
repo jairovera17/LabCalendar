@@ -8,15 +8,16 @@
 module.exports = {
 
   attributes: {
-   /* id:{
+    id:{
       type:'integer',
       unique:true,
       autoIncrement: true,
       primaryKey: true
 
-    },*/
+    },
     grupo: {
       type:'string',
+      required:true
 
     },
 

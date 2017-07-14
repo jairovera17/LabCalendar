@@ -3,24 +3,27 @@
   <div class="container">
 
 
-    <div class="row jumbotron" style="text-align: center">
-      <div class="col-4">
+    <div class="jumbotron">
+
+      <h4>Selecciona la categoria que desea visualizar</h4>
+      <br><br>
+      <div class="btn-group " role="group" aria-label="Basic example" style="text-align: center">
+
         <button type="button" class="btn btn-outline-primary" data-toggle="button" aria-pressed="false" autocomplete="off"
                 (click)="this.showProfesores=!this.showProfesores;this.showMaterias=false;this.showMateriaProfesor=false">
           Profesores
         </button>
-      </div>
-      <div class="col-4">
         <button type="button" class="btn btn-outline-primary" data-toggle="button" aria-pressed="false" autocomplete="off"
                 (click)="this.showProfesores=false;this.showMaterias=!this.showMaterias;this.showMateriaProfesor=false">
           Materias
         </button>
-      </div>
-      <div class="col-4">
+
         <button type="button" class="btn btn-outline-primary" data-toggle="button" aria-pressed="false" autocomplete="off"
                 (click)="this.showProfesores=false;this.showMaterias=false;this.showMateriaProfesor=!this.showMateriaProfesor">
           Materia - Profesor
         </button>
+
+
       </div>
     </div>
 
@@ -28,10 +31,90 @@
 
 
 
-
-
     <div *ngIf="this.showProfesores">
-      <h1>Profesores</h1>
+      <div style="padding: 15px">
+        <h1 >Profesores</h1>
+        <br>
+        <button  type="button" (click)="this.inputNuevoProfesor=true" class="btn btn-primary">Nuevo Profesor</button>
+      </div>
+
+      <div *ngIf="this.inputNuevoProfesor">
+        <div  class="jumbotron" style="background-color: white">
+          <div>
+            <div class="form-group row">
+              <label for="nombre" class="col-2 col-form-label">Nombres</label>
+              <div class="col-10">
+                <input class="form-control" type="text" placeholder="Nombres del Profesor" [(ngModel)]="this.nuevoProfesor.nombres" id="nombre">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="apellidos" class="col-2 col-form-label">Apellidos</label>
+              <div class="col-10">
+                <input class="form-control" type="text" placeholder="Apellidos del Profesor" [(ngModel)]="this.nuevoProfesor.apellidos" id="apellidos">
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label for="titulo" class="col-2 col-form-label">Ultimo Titulo</label>
+              <div ngbDropdown class="d-inline-block " id="titulo">
+                <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>{{this.nuevoProfesor.ultimoTitulo}}</button>
+                <div class="dropdown-menu" aria-labelledby="dropdownBasic1">
+                  <div  style="text-align: center">
+                    <input class="dropdown-item" type="button"  (click)="this.nuevoProfesor.ultimoTitulo='Ing'" value="Ing">
+                    <input class="dropdown-item" type="button"  (click)="this.nuevoProfesor.ultimoTitulo='Msc'" value="Msc">
+                    <input class="dropdown-item" type="button"  (click)="this.nuevoProfesor.ultimoTitulo='Phd'" value="Phd">
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+
+
+
+            <div class="form-group row">
+              <label for="telefono1" class="col-2 col-form-label">Teléfono 1</label>
+              <div class="col-10">
+                <input class="form-control" type="number" placeholder="Teléfono Principal" [(ngModel)]="this.nuevoProfesor.telefono1" id="telefono1">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="telefono2" class="col-2 col-form-label">Teléfono 2</label>
+              <div class="col-10">
+                <input class="form-control" type="number" placeholder="Teléfono Secundario" [(ngModel)]="this.nuevoProfesor.telefono2" id="telefono2">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="correo" class="col-2 col-form-label">e-mail</label>
+              <div class="col-10">
+                <input class="form-control" type="email" placeholder="e-mail" [(ngModel)]="this.nuevoProfesor.correo" id="correo">
+              </div>
+            </div>
+
+          </div>
+
+          <div *ngIf="!validarProfesor()"  class="alert alert-warning animated" role="alert">
+            <strong>Alerta!</strong> Se debe llenar por lo menos los siguientes campos:
+            <ul>
+              <li>Nombres</li>
+              <li>Apellidos</li>
+              <li>Ultimo Titulo</li>
+            </ul>
+
+          </div>
+
+
+          <div style="text-align: right">
+            <button type="button" class="btn btn-primary" (click)="this.guardarNuevoProfesor()">Guardar</button>
+            <button type="button" class="btn btn-warning" (click)="this.borrarNuevoProfesor()">Cerrar</button>
+          </div>
+
+          <pre>{{this.nuevoProfesor | json}}</pre>
+
+        </div>
+      </div>
+
+
 
       <div *ngFor="let prof of this.profesores">
 
@@ -141,3 +224,6 @@
   </div>
 
 </div>
+
+
+

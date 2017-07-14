@@ -16,7 +16,7 @@ module.exports = {
 
     },
 
-    nombre: {type:'string',required: true},
+    nombre: {type:'string',required: true, unique: true},
     numeroAula: {type:'string',required: true},
     numeroComputadoras: {type:'string',required: true},
 

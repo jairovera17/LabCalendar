@@ -4,8 +4,9 @@
 
 export class Materia {
   constructor(
-    public id: number,
-    public nombre: string,
-    public codigo: string
+    public id?: number,
+    public nombre?: string,
+    public codigo?: string,
+    public editable?: boolean
   ) {}
 }
