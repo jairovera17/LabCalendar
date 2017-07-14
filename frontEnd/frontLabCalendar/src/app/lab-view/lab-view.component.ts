@@ -88,7 +88,12 @@ export class LabViewComponent implements OnInit {
           const rjson: Profesor[] = res.json();
 
 
-          this.profesores = rjson;
+          this.profesores = rjson.map(
+            (prof: Profesor)=>{
+              prof.editable=false;
+              return prof;
+            }
+          );
 
 
 
@@ -131,11 +136,11 @@ export class LabViewComponent implements OnInit {
     return 'undefined' === typeof ingreso;
   }
 
-  validarProfesor(): boolean{
-    if (this.vacio(this.nuevoProfesor.nombres)||this.vacio(this.nuevoProfesor.apellidos))
+  validarProfesor(prof: Profesor): boolean{
+    if (this.vacio(prof.nombres)||this.vacio(prof.apellidos))
       return false;
     else{
-      if(this.nuevoProfesor.nombres.length<4||this.nuevoProfesor.apellidos.length<4)
+      if(prof.nombres.length<4||prof.apellidos.length<4)
         return false;
       else return true;
     }
@@ -144,7 +149,7 @@ export class LabViewComponent implements OnInit {
   }
 
   guardarNuevoProfesor(): void{
-    if(this.validarProfesor()){
+    if(this.validarProfesor(this.nuevoProfesor)){
       this._http
         .post('http://localhost:1337/Profesor',this.nuevoProfesor)
         .subscribe(
@@ -167,6 +172,40 @@ export class LabViewComponent implements OnInit {
     }
   }
 
+  eliminarProfesor(prof: Profesor): void{
+    this._http
+      .delete('http://localhost:1337/Profesor/'+prof.id)
+      .subscribe(
+        res => {
+          const rjson: Profesor = res.json();
+          console.log(JSON.stringify(rjson));
+          let indice = this.profesores.indexOf(prof);
+          this.profesores.splice(indice,1);
+        },
+        error => {
+          console.log('error papu');
+        }
+      );
+  }
+
+  editarProfesor(prof: Profesor): void{
+
+    this._http
+      .put('http://localhost:1337/Profesor/'+prof.id,prof)
+      .subscribe(
+        res => {
+          const rjson: Profesor = res.json();
+
+
+          console.log(JSON.stringify(rjson));
+
+
+        },
+        error => {
+          console.log('error papu');
+        }
+      );
+  }
 
 
 

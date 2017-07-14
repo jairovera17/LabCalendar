@@ -93,7 +93,7 @@
 
           </div>
 
-          <div *ngIf="!validarProfesor()"  class="alert alert-warning animated" role="alert">
+          <div *ngIf="!validarProfesor(this.nuevoProfesor)"  class="alert alert-warning animated" role="alert">
             <strong>Alerta!</strong> Se debe llenar por lo menos los siguientes campos:
             <ul>
               <li>Nombres</li>
@@ -121,19 +121,55 @@
         <div class="jumbotron">
 
           <div class="row">
-            <div class="col-9">
+            <div class="col-8" *ngIf="!prof.editable">
               <p><strong>Apellidos: </strong>{{prof.apellidos}}</p>
               <p><strong>Nombres: </strong>{{prof.nombres}}</p>
               <p><strong>Titulo: </strong> {{prof.ultimoTitulo}}</p>
             </div>
-            <div class="col-3">
-              <br><br>
-              <button type="button" class="btn btn-warning">
-              Editar
-              </button>
-              <button type="button" class="btn btn-danger">
-                Eliminar
-              </button>
+            <div class="col-8" *ngIf="prof.editable">
+              <p><strong>Apellidos: </strong>{{prof.apellidos}}</p>
+              <input type="text" [(ngModel)]="prof.apellidos">
+              <p><strong>Nombres: </strong>{{prof.nombres}}</p>
+              <input type="text" [(ngModel)]="prof.nombres">
+              <p><strong>Titulo: </strong> {{prof.ultimoTitulo}}</p>
+
+              {{prof | json}}
+            </div>
+            <div class="col-4">
+              <br> <br>
+
+
+              <div class="btn-group" role="group" aria-label="Basic example" style="text-align: center">
+                <button type="button" class="btn btn-secondary" *ngIf="this.validarProfesor(prof)&&prof.editable" (click)="editarProfesor(prof);prof.editable=false;">
+                  Guardar
+                </button>
+
+                <button type="button" class="btn btn-warning" (click)="prof.editable=!prof.editable">
+                  Editar
+                </button>
+                <button type="button" class="btn btn-danger" (click)="this.eliminarProfesor(prof)">
+                  Eliminar
+                </button>
+              </div>
+
+              <!-- <div class="btn-group " role="group" aria-label="Basic example" style="text-align: center">
+
+        <button type="button" class="btn btn-outline-primary" data-toggle="button" aria-pressed="false" autocomplete="off"
+                (click)="this.showProfesores=!this.showProfesores;this.showMaterias=false;this.showMateriaProfesor=false">
+          Profesores
+        </button>
+        <button type="button" class="btn btn-outline-primary" data-toggle="button" aria-pressed="false" autocomplete="off"
+                (click)="this.showProfesores=false;this.showMaterias=!this.showMaterias;this.showMateriaProfesor=false">
+          Materias
+        </button>
+
+        <button type="button" class="btn btn-outline-primary" data-toggle="button" aria-pressed="false" autocomplete="off"
+                (click)="this.showProfesores=false;this.showMaterias=false;this.showMateriaProfesor=!this.showMateriaProfesor">
+          Materia - Profesor
+        </button>
+
+
+      </div>-->
             </div>
           </div>
 
