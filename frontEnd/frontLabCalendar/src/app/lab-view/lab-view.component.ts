@@ -41,6 +41,17 @@ export class LabViewComponent implements OnInit {
     this.nuevoProfesor.editable=false;
     this.nuevoProfesor.ultimoTitulo="Ing";
 
+    this.nuevaMateria = new Materia();
+    this.nuevaMateria.editable=false;
+
+    this.blankNuevaMateriaProfesor();
+
+
+
+  }
+  blankNuevaMateriaProfesor(): void{
+    this.nuevaMateriaProfesor = new MateriaProfesor();
+    this.nuevaMateriaProfesor.editable=false;
 
   }
 
@@ -132,8 +143,40 @@ export class LabViewComponent implements OnInit {
     this.nuevoProfesor.ultimoTitulo="Ing";
 
   }
+  borrarNuevaMateria(): void{
+    this.inputNuevaMateria=false;
+    this.nuevaMateria=new Materia();
+    this.nuevaMateria.editable=false;
+  }
+  borrarNuevaMateriaProfesor(): void{
+    this.inputNuevaMateriaProfesor=false;
+    this.nuevaMateriaProfesor=new MateriaProfesor();
+    this.nuevaMateriaProfesor.editable=false;
+  }
   vacio (ingreso: any): boolean {
     return 'undefined' === typeof ingreso;
+  }
+
+  getMateria(matprof:MateriaProfesor): string{
+    if(this.vacio(matprof))
+      return 'Sin Especificar xx';
+    else{
+      if(this.vacio(matprof.idMateria))
+        return 'Sin Especificar Materia';
+      else
+        return matprof.idMateria.nombre+' '+matprof.idMateria.codigo;
+    }
+  }
+
+  getProfesor(matprof: MateriaProfesor): string{
+    if(this.vacio(matprof))
+      return 'Sin especificar';
+    else{
+      if(this.vacio(matprof.idProfesor))
+        return 'Sin Especificar Profesor';
+      else return matprof.idProfesor.nombres+''+matprof.idProfesor.apellidos;
+    }
+
   }
 
   validarProfesor(prof: Profesor): boolean{
@@ -146,6 +189,31 @@ export class LabViewComponent implements OnInit {
     }
 
 
+  }
+
+  validarMateria(mat: Materia): boolean{
+    if (this.vacio(mat.codigo)||this.vacio(mat.nombre))
+      return false;
+    else{
+      if(mat.codigo.length<4||mat.nombre.length<4)
+        return false;
+      else return true;
+    }
+  }
+
+  validarMateriaProfesor(matprof:MateriaProfesor): boolean{
+    if(this.vacio(matprof))
+      return false;
+    else{
+      if(this.vacio(matprof.idProfesor)||this.vacio(matprof.idMateria)||this.vacio(matprof.grupo))
+        return false;
+      else{
+        if(matprof<1)
+          return false;
+        else return true;
+      }
+
+    }
   }
 
   guardarNuevoProfesor(): void{
@@ -161,12 +229,42 @@ export class LabViewComponent implements OnInit {
 
            this.profesores.push(this.nuevoProfesor);
 
-
+          this.borrarNuevoProfesor();
 
 
           },
           error => {
             console.log('error papu');
+          }
+        );
+    }
+  }
+
+  guardarNuevaMateria(): void {
+    if(this.validarMateria(this.nuevaMateria)){
+      this._http
+        .post('http://localhost:1337/Materia',this.nuevaMateria)
+        .subscribe(
+          res=> {
+            const rjson: Materia = res.json();
+            console.log(JSON.stringify(rjson));
+            this.materias.push(this.nuevaMateria);
+            this.borrarNuevaMateria();
+          }
+        );
+
+    }
+  }
+  guardarNuevaMateriaProfesor(): void{
+    if(this.validarMateriaProfesor(this.nuevaMateriaProfesor)){
+      this._http
+        .post('http://localhost:1337/MateriaProfesor',this.nuevaMateriaProfesor)
+        .subscribe(
+          res=> {
+            const rjson: MateriaProfesor = res.json();
+            console.log(JSON.stringify(rjson));
+            this.materiaProfesor.push(this.nuevaMateriaProfesor);
+            this.borrarNuevaMateriaProfesor();
           }
         );
     }
@@ -188,6 +286,23 @@ export class LabViewComponent implements OnInit {
       );
   }
 
+  eliminarMateria(mat : Materia): void{
+    this._http
+      .delete('http://localhost:1337/Materia/'+mat.id)
+      .subscribe(
+        res => {
+          const rjson: Materia = res.json();
+          console.log(JSON.stringify(rjson));
+          let indice = this.materias.indexOf(mat);
+          this.materias.splice(indice,1);
+        },
+        error => {
+          console.log('error papu');
+        }
+      );
+
+  }
+
   editarProfesor(prof: Profesor): void{
 
     this._http
@@ -197,6 +312,22 @@ export class LabViewComponent implements OnInit {
           const rjson: Profesor = res.json();
 
 
+          console.log(JSON.stringify(rjson));
+
+
+        },
+        error => {
+          console.log('error papu');
+        }
+      );
+  }
+
+  editarMateria(mat:Materia): void{
+    this._http
+      .put('http://localhost:1337/Materia/'+mat.id,mat)
+      .subscribe(
+        res => {
+          const rjson: Materia = res.json();
           console.log(JSON.stringify(rjson));
 
 
