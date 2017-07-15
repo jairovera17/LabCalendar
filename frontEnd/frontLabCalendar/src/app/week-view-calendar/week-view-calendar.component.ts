@@ -23,6 +23,7 @@ export class WeekViewCalendarComponent implements OnInit {
         res => {
           const rjson: Laboratorio[] = res.json();
           this.laboratorios = rjson;
+
         },
         error => {
           console.log('error papu');
