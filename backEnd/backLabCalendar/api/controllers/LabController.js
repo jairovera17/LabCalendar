@@ -17,24 +17,22 @@ module.exports = {
     var param = req.allParams();
     AgendaLaboratorio.findOne(
       {dia:param.dia,
-
+      idLaboratorio:param.idLaboratorio,
       horaInicio:param.horaInicio,
       horaFin:param.horaFin}
       ).exec(function (err, agenda) {
-
 
       if(err){
         return res.send('error en agenda');
       }
      else{
-
         if(agenda){
           MateriaProfesor
             .findOne({id:agenda.idMateriaProfesor})
             .exec(function (err,materiaprofesor) {
             sails.log.info(materiaprofesor);
             if(err){
-              return res.send('error en materia profesor');
+              return res.notFound('error en materia profesor');
             }
             else{
               //res.json(materiaprofesor);
@@ -44,21 +42,24 @@ module.exports = {
                   if(err){
                     return res.send('error en materia');
                   }
-                  else
-                    res.json(materia);
+                  else{
+                    if(materia)
+                      return res.json(materia);
+                    else
+                      return res.notFound('no hay materia');
+                  }
 
 
 
                 });
               }
+              else return res.notFound('no hay materia profesor');
 
             }
 
           });
         }
-
-
-
+        else return res.notFound('no hay');
       }
     });
 

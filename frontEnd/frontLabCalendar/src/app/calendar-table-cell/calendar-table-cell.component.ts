@@ -16,7 +16,7 @@ export class CalendarTableCellComponent implements OnInit {
   @Input()horaInicio: number;
   @Input()dia: number;
   @Input()selectLab: Laboratorio;
-
+  auxLab:Laboratorio;
   @ViewChild(ContextMenuComponent)
   public basicMenu: ContextMenuComponent;
   modelInicio;
@@ -49,7 +49,9 @@ export class CalendarTableCellComponent implements OnInit {
 
     this.displayMateriaProfesor = 'Sin Asignar';
     //this.cargarAgendas();
+    console.log(this.selectLab.nombre);
    this.getAgenda();
+   this.auxLab=this.selectLab;
 
 
   }
@@ -126,6 +128,7 @@ export class CalendarTableCellComponent implements OnInit {
         }
       );
     this.agenda=this.nuevaAgenda;
+    this.getAgenda();
 
   }
   setFechaInicio(){
@@ -139,6 +142,7 @@ export class CalendarTableCellComponent implements OnInit {
 
  getAgenda(){
    let url='http://localhost:1337/Lab/getAgenda?dia='+this.dia+
+     '&idLaboratorio='+this.selectLab.id+
      '&horaInicio='+this.horaInicio+
      '&horaFin='+this.horaFin;
    this._http
@@ -155,45 +159,20 @@ export class CalendarTableCellComponent implements OnInit {
        }
      );
 
+   this.materiaAsignada='';
+
 
  }
 
-/*
- getCurrentAgenda(){
-   var salida ="";
-   if(this.agendas)
-   for(var i=0;i<this.agendas.length;i++){
-     if(this.agendas[i].idLaboratorio.nombre===this.selectLab.nombre&&this.dia===1){
-       console.log('haloooooooo'+this.nombreDias[this.dia]);
-       return this.agendas[i].idMateriaProfesor.idMateria;
-     }
+ refresh():string{
+
+   if(this.auxLab.nombre!=this.selectLab.nombre){
+     this.getAgenda();
+     this.auxLab=this.selectLab;
+     return '';
    }
-   else
-   return '';
-}*/
-
-
-
-/*
-cargarAgendas(){
-   this._http
-     .get("http://localhost:1337/AgendaLaboratorio")
-     .subscribe(
-       res => {
-         const rjson: AgendaLaboratorio[] = res.json();
-
-         //   console.log('halo',JSON.stringify(rjson));
-         this.agendas = rjson;
-
-
-
-       },
-       error => {
-         console.log('error papu');
-       }
-     );
-
-}*/
+   else return '';
+ }
 
 
 
