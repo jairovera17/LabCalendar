@@ -15,22 +15,71 @@ module.exports = {
   getAgenda: function (req, res) {
 
     var param = req.allParams();
-    sails.log.info(param.dia);
-    AgendaLaboratorio.find(
+    AgendaLaboratorio.findOne(
       {dia:param.dia,
+
       horaInicio:param.horaInicio,
       horaFin:param.horaFin}
       ).exec(function (err, agenda) {
-      sails.log.info(JSON.stringify(agenda));
+
+
       if(err){
-        return res.badRequest();
+        return res.send('error en agenda');
       }
-      return res.json(agenda);
+     else{
+
+        if(agenda){
+          MateriaProfesor
+            .findOne({id:agenda.idMateriaProfesor})
+            .exec(function (err,materiaprofesor) {
+            sails.log.info(materiaprofesor);
+            if(err){
+              return res.send('error en materia profesor');
+            }
+            else{
+              //res.json(materiaprofesor);
+              if(materiaprofesor){
+                Materia.findOne({id:materiaprofesor.idMateria}).exec(function (err,materia) {
+                  sails.log.info(materia);
+                  if(err){
+                    return res.send('error en materia');
+                  }
+                  else
+                    res.json(materia);
+
+
+
+                });
+              }
+
+            }
+
+          });
+        }
+
+
+
+      }
     });
 
    // return res.json({
 
     //});
+
+  },
+
+  getMateriaProfesor: function (req,res) {
+
+    var param = req.allParams();
+    MateriaProfesor.find({id:param.idMateriaProfesor}).exec(function (err,materiaprofesor) {
+      sails.log.info(materiaprofesor);
+      if(err){
+        res.badRequest;
+      }
+      else{
+        res.json(materiaprofesor);
+      }
+    });
   }
 };
 

@@ -5,6 +5,7 @@ import {Http} from '@angular/http';
 import {MateriaProfesor} from '../misClasses/interfazMateriaProfesor';
 import {Laboratorio} from "../misClasses/interfazLaboratorio";
 import {AgendaLaboratorio} from "../misClasses/interfazAgenda";
+import {Materia} from "../misClasses/interfazMateria";
 @Component({
   selector: 'app-calendar-table-cell',
   templateUrl: './calendar-table-cell.component.html',
@@ -15,13 +16,15 @@ export class CalendarTableCellComponent implements OnInit {
   @Input()horaInicio: number;
   @Input()dia: number;
   @Input()selectLab: Laboratorio;
-  @Input()agenda:AgendaLaboratorio;
+
   @ViewChild(ContextMenuComponent)
   public basicMenu: ContextMenuComponent;
   modelInicio;
   modelFin;
   fechaFin:Date;
   fechaInicio:Date;
+  agenda:AgendaLaboratorio;
+  materiaAsignada='';
 
 
   nombreDias: string[]= ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'];
@@ -46,7 +49,7 @@ export class CalendarTableCellComponent implements OnInit {
 
     this.displayMateriaProfesor = 'Sin Asignar';
     //this.cargarAgendas();
-
+   this.getAgenda();
 
 
   }
@@ -122,6 +125,7 @@ export class CalendarTableCellComponent implements OnInit {
           console.log('error ', err);
         }
       );
+    this.agenda=this.nuevaAgenda;
 
   }
   setFechaInicio(){
@@ -131,6 +135,27 @@ export class CalendarTableCellComponent implements OnInit {
  setFechaFin(){
     this.fechaFin=new Date(this.modelFin.year,this.modelFin.month-1,this.modelFin.day);
     this.nuevaAgenda.fechaFin=this.fechaFin;
+ }
+
+ getAgenda(){
+   let url='http://localhost:1337/Lab/getAgenda?dia='+this.dia+
+     '&horaInicio='+this.horaInicio+
+     '&horaFin='+this.horaFin;
+   this._http
+     .get(url)
+     .subscribe(
+       res=>{
+
+         let rjson: Materia = res.json();
+         console.log('res'+rjson.nombre);
+         this.materiaAsignada= rjson.nombre;
+       },
+       error=>{
+         console.log('error');
+       }
+     );
+
+
  }
 
 /*
