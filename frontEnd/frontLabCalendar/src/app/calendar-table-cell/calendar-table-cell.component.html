@@ -1,7 +1,9 @@
 
 <div  [contextMenu]="basicMenu" style=" min-height: 40px;
   text-align: center;">
+   <div >
 
+   </div>
 </div>
 
 <context-menu class="container" style="text-align: center">
@@ -54,7 +56,7 @@
         </form>
 
         <hr/>
-        <pre>Model: {{ modelFin | json }}</pre>
+        <pre>   Model: {{ modelFin | json }}</pre>
       </div>
 
     </div>
@@ -119,7 +121,7 @@
         <input class="form-control"  type="text" [(ngModel)]="this.nuevaAgenda.observacion" placeholder="Ingresa alguna observacion">
       </div>
     </div>
-    <pre>{{this.nuevaAgenda | json}}</pre>
+    <pre> {{this.nuevaAgenda.dia}} {{this.nuevaAgenda | json}}</pre>
 
 
 

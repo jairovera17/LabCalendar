@@ -13,7 +13,9 @@ export class AgendaLaboratorio {
     public observacion?: string,
     public idMateriaProfesor?: MateriaProfesor,
     public fechaInicio?: Date,
-    public fechaFin?: Date
+    public fechaFin?: Date,
+    public dia?:number
+
   ) {}
 }
 

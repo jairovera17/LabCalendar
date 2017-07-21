@@ -15,6 +15,7 @@ export class CalendarTableCellComponent implements OnInit {
   @Input()horaInicio: number;
   @Input()dia: number;
   @Input()selectLab: Laboratorio;
+  @Input()agenda:AgendaLaboratorio;
   @ViewChild(ContextMenuComponent)
   public basicMenu: ContextMenuComponent;
   modelInicio;
@@ -22,23 +23,30 @@ export class CalendarTableCellComponent implements OnInit {
   fechaFin:Date;
   fechaInicio:Date;
 
+
   nombreDias: string[]= ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'];
   horaFin = 0;
   @Input()materiaprofesor: MateriaProfesor[];
   nuevaAgenda: AgendaLaboratorio;
   displayMateriaProfesor: string;
   closeResult: string;
+ // agendas:AgendaLaboratorio[];
+
 
 
   ngOnInit() {
+
     this.horaFin = this.horaInicio + 1;
     this.nuevaAgenda = new AgendaLaboratorio(this.horaInicio, this.selectLab);
+    this.nuevaAgenda.dia=this.dia;
     this.nuevaAgenda.horaFin = this.horaFin;
     this.nuevaAgenda.fechaInicio=new Date();
     this.nuevaAgenda.fechaFin=new Date();
 
 
     this.displayMateriaProfesor = 'Sin Asignar';
+    //this.cargarAgendas();
+
 
 
   }
@@ -102,6 +110,7 @@ export class CalendarTableCellComponent implements OnInit {
   guardarNuevaAgenda(): void {
     this.setFechaInicio();
     this.setFechaFin();
+    this.nuevaAgenda.dia=this.dia;
 
     this._http
       .post('http://localhost:1337/AgendaLaboratorio/',this.nuevaAgenda)
@@ -123,6 +132,43 @@ export class CalendarTableCellComponent implements OnInit {
     this.fechaFin=new Date(this.modelFin.year,this.modelFin.month-1,this.modelFin.day);
     this.nuevaAgenda.fechaFin=this.fechaFin;
  }
+
+/*
+ getCurrentAgenda(){
+   var salida ="";
+   if(this.agendas)
+   for(var i=0;i<this.agendas.length;i++){
+     if(this.agendas[i].idLaboratorio.nombre===this.selectLab.nombre&&this.dia===1){
+       console.log('haloooooooo'+this.nombreDias[this.dia]);
+       return this.agendas[i].idMateriaProfesor.idMateria;
+     }
+   }
+   else
+   return '';
+}*/
+
+
+
+/*
+cargarAgendas(){
+   this._http
+     .get("http://localhost:1337/AgendaLaboratorio")
+     .subscribe(
+       res => {
+         const rjson: AgendaLaboratorio[] = res.json();
+
+         //   console.log('halo',JSON.stringify(rjson));
+         this.agendas = rjson;
+
+
+
+       },
+       error => {
+         console.log('error papu');
+       }
+     );
+
+}*/
 
 
 
