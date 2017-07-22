@@ -9,7 +9,12 @@
 
 <context-menu class="container" style="text-align: center">
   <ng-template contextMenuItem >
-    <button class="btn btn-lg btn-outline-primary" (click)='open(content)'>Agendar </button>
+    <button  *ngIf="!this.agenda" class="btn btn-lg btn-outline-primary" (click)='open(content)'>Agendar </button>
+    <div *ngIf="this.agenda" style="text-align: center">
+      <button class="btn btn-lg btn-outline-warning" (click)="this.eliminarAgenda()">Eliminar</button>
+      <br>
+      <button class="btn btn-lg btn-outline-warning">Detalles</button>
+    </div>
   </ng-template>
 
 </context-menu>
@@ -57,7 +62,7 @@
         </form>
 
         <hr/>
-        <pre>   Model: {{ modelFin | json }}</pre>
+
       </div>
 
     </div>

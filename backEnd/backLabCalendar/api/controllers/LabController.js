@@ -10,9 +10,9 @@ module.exports = {
 
 
   /**
-   * `LabController.getAgenda()`
+   * `LabController.getMateriaGivenAgenda()`
    */
-  getAgenda: function (req, res) {
+  getMateriaGivenAgenda: function (req, res) {
 
     var param = req.allParams();
     AgendaLaboratorio.findOne(
@@ -21,6 +21,7 @@ module.exports = {
       horaInicio:param.horaInicio,
       horaFin:param.horaFin}
       ).exec(function (err, agenda) {
+      sails.log.info('agenda ='+agenda);
 
       if(err){
         return res.send('error en agenda');
@@ -32,13 +33,13 @@ module.exports = {
             .exec(function (err,materiaprofesor) {
             sails.log.info(materiaprofesor);
             if(err){
-              return res.notFound('error en materia profesor');
+              return res.send('error en agenda');
             }
             else{
               //res.json(materiaprofesor);
               if(materiaprofesor){
                 Materia.findOne({id:materiaprofesor.idMateria}).exec(function (err,materia) {
-                  sails.log.info(materia);
+                  sails.log.info('materia ='+materia);
                   if(err){
                     return res.send('error en materia');
                   }
@@ -46,20 +47,20 @@ module.exports = {
                     if(materia)
                       return res.json(materia);
                     else
-                      return res.notFound('no hay materia');
+                      return res.send('vacio');
                   }
 
 
 
                 });
               }
-              else return res.notFound('no hay materia profesor');
+              else return res.send('vacio');
 
             }
 
           });
         }
-        else return res.notFound('no hay');
+        else return res.send('vacio');
       }
     });
 
@@ -69,18 +70,47 @@ module.exports = {
 
   },
 
-  getMateriaProfesor: function (req,res) {
-
+  getAgenda: function (req,res) {
     var param = req.allParams();
-    MateriaProfesor.find({id:param.idMateriaProfesor}).exec(function (err,materiaprofesor) {
-      sails.log.info(materiaprofesor);
+    AgendaLaboratorio.findOne(
+      {dia:param.dia,
+        idLaboratorio:param.idLaboratorio,
+        horaInicio:param.horaInicio,
+        horaFin:param.horaFin})
+      .exec(function (err,agenda) {
+        if(err){
+          return res.send('error en agenda');
+        }
+        else{
+          if(agenda){
+            return res.json(agenda);
+
+          }
+          else
+            return res.notFound('no hay');
+        }
+      })
+
+
+  },
+
+  deleteAgenda: function (req, res) {
+    var param = req.allParams();
+    AgendaLaboratorio (
+      {dia:param.dia,
+       horaInicio:param.horaInicio,
+       horaFin:param.horaFin,
+       idLaboratorio:param.idLaboratorio,
+       idMateriaProfesor:param.idMateriaProfesor
+      }
+      ).exec(function (err) {
       if(err){
-        res.badRequest;
+        return res.negotiate(err);
       }
-      else{
-        res.json(materiaprofesor);
-      }
-    });
+      return res.ok();
+
+    })
+
   }
 };
 

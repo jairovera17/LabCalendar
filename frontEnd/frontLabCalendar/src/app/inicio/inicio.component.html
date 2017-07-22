@@ -16,9 +16,7 @@
         <a class="nav-link" routerLink="/lab-view">Info<span class="sr-only">(current)</span></a>
       </li>
 
-      <li class="nav-item active">
-        <a class="nav-link" (click)="this.respaldar()">Respaldar Base<span class="sr-only">(current)</span> </a>
-      </li>
+
     </ul>
   </div>
 </nav>
@@ -31,6 +29,22 @@
   <br><br>
   <div class="container">
     <h1>Proyecto Semestral</h1>
+    <div class="jumbotron">
+      <h3>Respaldar datos:</h3>
+
+      <p>Esto no se mantendra en la version final</p>
+
+      <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group" role="group" aria-label="First group">
+          <button type="button" class="btn btn-secondary" (click)="this.backProfes()">Profesores</button>
+          <button type="button" class="btn btn-secondary" (click)="this.backMaterias()">Materias</button>
+          <button type="button" class="btn btn-secondary" (click)="this.backModelos()">Modelos PC</button>
+          <button type="button" class="btn btn-secondary" (click)="this.backLabos()">Laboratorios</button>
+        </div>
+
+      </div>
+
+    </div>
   </div>
 
   <br><br><br><br><br>

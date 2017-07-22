@@ -50,7 +50,7 @@ export class CalendarTableCellComponent implements OnInit {
     this.displayMateriaProfesor = 'Sin Asignar';
     //this.cargarAgendas();
     console.log(this.selectLab.nombre);
-   this.getAgenda();
+   this.getMateriaGivenAgenda();
    this.auxLab=this.selectLab;
 
 
@@ -122,13 +122,14 @@ export class CalendarTableCellComponent implements OnInit {
       .subscribe(
         res => {
           console.log(res);
+          this.getMateriaGivenAgenda();
         },
         err => {
           console.log('error ', err);
         }
       );
     this.agenda=this.nuevaAgenda;
-    this.getAgenda();
+
 
   }
   setFechaInicio(){
@@ -140,8 +141,9 @@ export class CalendarTableCellComponent implements OnInit {
     this.nuevaAgenda.fechaFin=this.fechaFin;
  }
 
- getAgenda(){
-   let url='http://localhost:1337/Lab/getAgenda?dia='+this.dia+
+ getMateriaGivenAgenda(){
+   console.log('entre en getagenda');
+   let url='http://localhost:1337/Lab/getMateriaGivenAgenda?dia='+this.dia+
      '&idLaboratorio='+this.selectLab.id+
      '&horaInicio='+this.horaInicio+
      '&horaFin='+this.horaFin;
@@ -153,6 +155,8 @@ export class CalendarTableCellComponent implements OnInit {
          let rjson: Materia = res.json();
          console.log('res'+rjson.nombre);
          this.materiaAsignada= rjson.nombre;
+         this.agenda=new AgendaLaboratorio();
+         return;
        },
        error=>{
          console.log('error');
@@ -167,11 +171,15 @@ export class CalendarTableCellComponent implements OnInit {
  refresh():string{
 
    if(this.auxLab.nombre!=this.selectLab.nombre){
-     this.getAgenda();
+     this.getMateriaGivenAgenda();
      this.auxLab=this.selectLab;
      return '';
    }
    else return '';
+ }
+
+ eliminarAgenda(){
+
  }
 
 

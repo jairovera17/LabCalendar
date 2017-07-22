@@ -110,7 +110,7 @@ export class InicioComponent implements OnInit {
 
     'MATEMATICAS DISCRETAS ','MAT304',
 
-    'CCNA CISCO ','CERTIFIED NETWORK ASSOCIATE ',
+    'CCNA CISCO ','MAT001 ',
 
     'PROBABILIDAD Y ESTADISTICA BASICAS ','MAT234',
 
@@ -218,6 +218,7 @@ export class InicioComponent implements OnInit {
     for (var i =0;i< this.arrayMateria.length;i+=2){
       var mat : Mat=new Mat(this.arrayMateria[i],this.arrayMateria[i+1]);
       this.guardarMateria(mat);
+      console.log(mat);
 
     }
 
