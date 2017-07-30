@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output, ViewChild} from '@angular/core';
 import { ContextMenuComponent } from 'ngx-contextmenu';
 import {NgbModal, ModalDismissReasons} from '@ng-bootstrap/ng-bootstrap';
 import {Http} from '@angular/http';
@@ -17,7 +17,9 @@ export class CalendarTableCellComponent implements OnInit {
   @Input()dia: number;
   @Input()selectLab: Laboratorio;
   auxLab:Laboratorio;
+  @Output() eventoRefresh = new EventEmitter();
   @ViewChild(ContextMenuComponent)
+
   public basicMenu: ContextMenuComponent;
   modelInicio;
   modelFin;
@@ -50,8 +52,9 @@ export class CalendarTableCellComponent implements OnInit {
     this.displayMateriaProfesor = 'Sin Asignar';
     //this.cargarAgendas();
     console.log(this.selectLab.nombre);
-   this.getMateriaGivenAgenda();
-   this.auxLab=this.selectLab;
+    //this.setAgenda();
+    this.getMateriaGivenAgenda();
+    this.auxLab=this.selectLab;
 
 
   }
@@ -77,12 +80,12 @@ export class CalendarTableCellComponent implements OnInit {
       return  `with: ${reason}`;
     }
   }
+
   getdia(numDia: number): string {
     return this.nombreDias[numDia - 1];
   }
 
-
-   gethorasRestantes(hora: number): number []{
+  gethorasRestantes(hora: number): number []{
     let horas = [];
     while (hora < 22) {
       hora++;
@@ -93,10 +96,35 @@ export class CalendarTableCellComponent implements OnInit {
     return horas;
 
   }
+
   setHoraFin(event) {
     this.horaFin = event.target.value;
     this.nuevaAgenda.horaFin = this.horaFin;
   }
+
+
+  setAgenda(){
+    let url='http://localhost:1337/Lab/getAgenda?dia='+this.dia+
+    '&idLaboratorio='+this.selectLab.id+
+    '&horaInicio='+this.horaInicio+
+    '&horaFin='+this.horaFin;
+
+    this._http.get(url)
+      .subscribe(
+        res => {
+
+          let rjson:AgendaLaboratorio = res.json();
+          this.agenda=rjson;
+          return;
+        },
+        err =>{
+          console.log('error en getAgenda');
+        }
+
+      );
+    this.agenda=undefined;
+  }
+
   setAgendaMateriaProfesor(materiaprofesor: MateriaProfesor): void {
   this.displayMateriaProfesor = materiaprofesor.idMateria.nombre ;
   this.nuevaAgenda.idMateriaProfesor= materiaprofesor;
@@ -112,6 +140,20 @@ export class CalendarTableCellComponent implements OnInit {
       return lab.nombre;
     }
   }
+
+  validarAgenda():boolean{
+
+    if(this.vacio(this.nuevaAgenda.idMateriaProfesor)||
+      this.vacio(this.nuevaAgenda.idLaboratorio)||
+        this.vacio(this.modelInicio)||this.vacio(this.modelFin)
+
+    ){
+      return false;
+
+    }else return true;
+
+  }
+
   guardarNuevaAgenda(): void {
     this.setFechaInicio();
     this.setFechaFin();
@@ -123,14 +165,21 @@ export class CalendarTableCellComponent implements OnInit {
         res => {
           console.log(res);
           this.getMateriaGivenAgenda();
+          this.emitir();
         },
         err => {
           console.log('error ', err);
         }
       );
     this.agenda=this.nuevaAgenda;
+    this.nuevaAgenda = new AgendaLaboratorio(this.horaInicio, this.selectLab);
 
+    this.emitir();
 
+  }
+  emitir(){
+    console.log('estoy emitiendo');
+    this.eventoRefresh.emit(null);
   }
   setFechaInicio(){
     this.fechaInicio=new Date(this.modelInicio.year,this.modelInicio.month-1,this.modelInicio.day);
@@ -142,7 +191,7 @@ export class CalendarTableCellComponent implements OnInit {
  }
 
  getMateriaGivenAgenda(){
-   console.log('entre en getagenda');
+
    let url='http://localhost:1337/Lab/getMateriaGivenAgenda?dia='+this.dia+
      '&idLaboratorio='+this.selectLab.id+
      '&horaInicio='+this.horaInicio+
@@ -164,6 +213,7 @@ export class CalendarTableCellComponent implements OnInit {
      );
 
    this.materiaAsignada='';
+
 
 
  }

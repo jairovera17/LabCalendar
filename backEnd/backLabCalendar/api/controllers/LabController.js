@@ -18,8 +18,9 @@ module.exports = {
     AgendaLaboratorio.findOne(
       {dia:param.dia,
       idLaboratorio:param.idLaboratorio,
-      horaInicio:param.horaInicio,
-      horaFin:param.horaFin}
+      horaInicio:{'<=':param.horaInicio},
+      horaFin:{'>=':param.horaFin}
+      }
       ).exec(function (err, agenda) {
       sails.log.info('agenda ='+agenda);
 
@@ -75,8 +76,9 @@ module.exports = {
     AgendaLaboratorio.findOne(
       {dia:param.dia,
         idLaboratorio:param.idLaboratorio,
-        horaInicio:param.horaInicio,
-        horaFin:param.horaFin})
+        horaInicio:{'<=':param.horaInicio},
+        horaFin:{'>=':param.horaFin}
+      })
       .exec(function (err,agenda) {
         if(err){
           return res.send('error en agenda');
@@ -87,7 +89,7 @@ module.exports = {
 
           }
           else
-            return res.notFound('no hay');
+            return res.undefined;
         }
       })
 
