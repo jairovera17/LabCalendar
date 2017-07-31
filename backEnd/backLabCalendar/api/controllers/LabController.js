@@ -70,7 +70,7 @@ module.exports = {
     //});
 
   },
-
+//haloooooooooo
   getAgenda: function (req,res) {
     var param = req.allParams();
     AgendaLaboratorio.findOne(
