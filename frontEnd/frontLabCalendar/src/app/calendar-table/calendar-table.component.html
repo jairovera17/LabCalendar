@@ -29,7 +29,7 @@
       <div class="col-11">
         <div class="row">
           <div class="col-2 calendarRight " onmouseover="this.style.backgroundColor='gray'" onmouseout="this.style.backgroundColor='white'"  style="min-height: 35px" *ngFor="let dia of this.idDias">
-              <app-calendar-table-cell  [selectLab]="selectLab" [dia]="dia" [horaInicio]="miHora" [materiaprofesor]="this.materiaprofesor"  >hola</app-calendar-table-cell>
+              <app-calendar-table-cell   [selectLab]="selectLab" [dia]="dia" [horaInicio]="miHora" [materiaprofesor]="this.materiaprofesor" (eventoRefresh)="getMateriaGivenAgenda()" ></app-calendar-table-cell>
           </div>
         </div>
       </div>

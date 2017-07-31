@@ -6,6 +6,12 @@
  */
 
 module.exports = {
-	
+
+  getAgenda:function(req,res){
+    return res.json({nombre:"hallooooooooo"});
+
+  }
+
+
 };
 

@@ -7,13 +7,15 @@ import {Laboratorio} from './interfazLaboratorio';
 export class AgendaLaboratorio {
   constructor(
 
-    public horaInicio: number,
-    public idLaboratorio: Laboratorio,
+    public horaInicio?: number,
+    public idLaboratorio?: Laboratorio,
     public horaFin?: number,
     public observacion?: string,
     public idMateriaProfesor?: MateriaProfesor,
     public fechaInicio?: Date,
-    public fechaFin?: Date
+    public fechaFin?: Date,
+    public dia?:number
+
   ) {}
 }
 
