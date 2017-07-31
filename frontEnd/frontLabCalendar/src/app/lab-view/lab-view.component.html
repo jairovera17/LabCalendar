@@ -275,9 +275,9 @@
           <div ngbDropdown class="d-inline-block " id="materiaP">
             <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>{{this.getMateria(this.nuevaMateriaProfesor)}}</button>
             <div class="dropdown-menu" aria-labelledby="dropdownBasic1">
-              <div  style="text-align: center">
+              <div  style="text-align: center;overflow-y: auto;max-height: 250px">
 
-                <div *ngFor="let mat of this.materias">
+                <div *ngFor="let mat of this.materias" style="overflow-y: auto">
                   <input class="dropdown-item" type="button"  (click)="this.nuevaMateriaProfesor.idMateria=mat" value="{{mat.nombre}}">
 
                 </div>
@@ -292,9 +292,9 @@
           <div ngbDropdown class="d-inline-block " id="materiaP">
             <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>{{this.getProfesor(this.nuevaMateriaProfesor)}}</button>
             <div class="dropdown-menu" aria-labelledby="dropdownBasic1">
-              <div  style="text-align: center">
+              <div  style="text-align: center;overflow-y: auto;max-height: 250px">
 
-                <div *ngFor="let prof of this.profesores">
+                <div *ngFor="let prof of this.profesores" >
                   <input class="dropdown-item" type="button"  (click)="this.nuevaMateriaProfesor.idProfesor=prof" value="{{prof.apellidos}} {{prof.nombres}} ">
 
                 </div>
