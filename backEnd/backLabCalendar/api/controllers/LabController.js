@@ -109,12 +109,12 @@ module.exports = {
 
   deleteAgenda: function (req, res) {
     var param = req.allParams();
-    AgendaLaboratorio (
+    AgendaLaboratorio.destroy(
+
       {dia:param.dia,
-       horaInicio:param.horaInicio,
-       horaFin:param.horaFin,
-       idLaboratorio:param.idLaboratorio,
-       idMateriaProfesor:param.idMateriaProfesor
+        idLaboratorio:param.idLaboratorio,
+        horaInicio:{'<=':param.horaInicio},
+        horaFin:{'>=':param.horaFin}
       }
       ).exec(function (err) {
       if(err){

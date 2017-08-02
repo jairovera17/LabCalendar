@@ -3,6 +3,7 @@ import {Http} from '@angular/http';
 import {Laboratorio} from '../misClasses/interfazLaboratorio';
 import {MateriaProfesor} from "../misClasses/interfazMateriaProfesor";
 import {LabCalendarService} from "../lab-calendar.service";
+import {delay} from "q";
 
 @Component({
   selector: 'app-calendar-table',
@@ -16,6 +17,8 @@ export class CalendarTableComponent implements OnInit {
   @Input()selectLab: Laboratorio;
   materiaprofesor:MateriaProfesor[]=[];
   reboot:boolean=false;
+  labImplicado='';
+  diaImplicado=-5;
 
   constructor(private _http: Http,private labService: LabCalendarService) {
   }
@@ -30,8 +33,11 @@ export class CalendarTableComponent implements OnInit {
     return 'ddddd';
   }
 
-  cambio(){
-    this.reboot=true;
+  cambio(labnombre:string,dia:number){
+    this.labImplicado=labnombre;
+    this.diaImplicado=dia;
+
+
   }
 
 

@@ -16,7 +16,10 @@ export class CalendarTableCellComponent implements OnInit {
   @Input()horaInicio: number;
   @Input()dia: number;
   @Input()selectLab: Laboratorio;
-  @Input()reboot:boolean;
+
+  @Input()labImplicado:string;
+  @Input()diaImplicado:number;
+
   auxLab:Laboratorio;
   @Output() eventoRefresh = new EventEmitter();
   @ViewChild(ContextMenuComponent)
@@ -56,6 +59,7 @@ export class CalendarTableCellComponent implements OnInit {
 
     this.getMateriaGivenAgenda();
     this.auxLab=this.selectLab;
+    this.refresh();
     this.setAgenda();
 
   }
@@ -171,7 +175,9 @@ export class CalendarTableCellComponent implements OnInit {
   guardarNuevaAgenda(): void {
     this.setFechaInicio();
     this.setFechaFin();
+    this.refresh();
     this.nuevaAgenda.dia=this.dia;
+    this.nuevaAgenda.idLaboratorio=this.selectLab;
 
     this._http
       .post('http://localhost:1337/AgendaLaboratorio/',this.nuevaAgenda)
@@ -193,7 +199,7 @@ export class CalendarTableCellComponent implements OnInit {
   }
   emitir(){
     console.log('estoy emitiendo');
-    this.eventoRefresh.emit();
+    this.eventoRefresh.emit(this.selectLab.nombre);
   }
   setFechaInicio(){
     this.fechaInicio=new Date(this.modelInicio.year,this.modelInicio.month-1,this.modelInicio.day);
@@ -255,7 +261,22 @@ try {
 
  eliminarAgenda(){
 
+   let url='http://localhost:1337/Lab/deleteAgenda?dia='+this.dia+
+     '&idLaboratorio='+this.selectLab.id+
+     '&horaInicio='+this.horaInicio+
+     '&horaFin='+this.horaFin;
 
+   this._http.get(url)
+     .subscribe(
+       res=>{
+         console.log(JSON.stringify(res.json()));
+       },
+       err=>{
+         console.log('error');
+       }
+     );
+   this.agenda=undefined;
+   this.materiaAsignada='';
 
  }
 
