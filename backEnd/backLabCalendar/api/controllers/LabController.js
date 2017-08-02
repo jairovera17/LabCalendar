@@ -22,7 +22,7 @@ module.exports = {
       horaFin:{'>=':param.horaFin}
       }
       ).exec(function (err, agenda) {
-      sails.log.info('agenda ='+agenda);
+     // sails.log.info('agenda ='+agenda);
 
       if(err){
         return res.send('error en agenda');
@@ -32,7 +32,7 @@ module.exports = {
           MateriaProfesor
             .findOne({id:agenda.idMateriaProfesor})
             .exec(function (err,materiaprofesor) {
-            sails.log.info(materiaprofesor);
+      //      sails.log.info(materiaprofesor);
             if(err){
               return res.send('error en agenda');
             }
@@ -40,28 +40,27 @@ module.exports = {
               //res.json(materiaprofesor);
               if(materiaprofesor){
                 Materia.findOne({id:materiaprofesor.idMateria}).exec(function (err,materia) {
-                  sails.log.info('materia ='+materia);
+         //         sails.log.info('materia ='+materia);
                   if(err){
-                    return res.send('error en materia');
+                    return res.undefined;
                   }
                   else{
                     if(materia)
                       return res.json(materia);
                     else
-                      return res.send('vacio');
+                      return res.badRequest();
                   }
 
 
 
                 });
               }
-              else return res.send('vacio');
-
+              else return res.badRequest();
             }
 
           });
         }
-        else return res.send('vacio');
+        else return res.badRequest();
       }
     });
 
@@ -72,29 +71,41 @@ module.exports = {
   },
 //haloooooooooo
   getAgenda: function (req,res) {
-    var param = req.allParams();
-    AgendaLaboratorio.findOne(
-      {dia:param.dia,
-        idLaboratorio:param.idLaboratorio,
-        horaInicio:{'<=':param.horaInicio},
-        horaFin:{'>=':param.horaFin}
-      })
-      .exec(function (err,agenda) {
-        if(err){
-          return res.send('error en agenda');
-        }
-        else{
-          if(agenda){
-            return res.json(agenda);
 
-          }
-          else
-            return res.undefined;
-        }
-      })
+   var param = req.allParams();
+   AgendaLaboratorio.findOne({
+     dia:param.dia,
+     idLaboratorio:param.idLaboratorio,
+     horaInicio:{'<=':param.horaInicio},
+     horaFin:{'>=':param.horaFin}
+   }).exec(function (err,agenda){
+     if(err)
+       return res.badRequest;
+     else{
+       if(agenda)
+       sails.log.info(JSON.stringify(agenda));
+       return res.json(agenda);
+     }
 
+   })
 
   },
+
+  getMateria:function(req,res){
+    var param = req.allParams();
+    MateriaProfesor.findOne({
+      id:param.idMateriaProfesor
+    }).exec(function (err,matprof) {
+      if(err)
+        return res.badRequest();
+      else{
+        return matprof;
+      }
+
+    });
+
+  }
+  ,
 
   deleteAgenda: function (req, res) {
     var param = req.allParams();

@@ -15,6 +15,8 @@ export class CalendarTableComponent implements OnInit {
   nombreDias: string[]= ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'];
   @Input()selectLab: Laboratorio;
   materiaprofesor:MateriaProfesor[]=[];
+  reboot:boolean=false;
+
   constructor(private _http: Http,private labService: LabCalendarService) {
   }
 
@@ -28,7 +30,13 @@ export class CalendarTableComponent implements OnInit {
     return 'ddddd';
   }
 
+  cambio(){
+    this.reboot=true;
+  }
+
+
   getMateriaProfesor():void{
+
 
     this._http
       .get('http://localhost:1337/MateriaProfesor')

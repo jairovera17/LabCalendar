@@ -16,6 +16,7 @@ export class CalendarTableCellComponent implements OnInit {
   @Input()horaInicio: number;
   @Input()dia: number;
   @Input()selectLab: Laboratorio;
+  @Input()reboot:boolean;
   auxLab:Laboratorio;
   @Output() eventoRefresh = new EventEmitter();
   @ViewChild(ContextMenuComponent)
@@ -52,10 +53,10 @@ export class CalendarTableCellComponent implements OnInit {
     this.displayMateriaProfesor = 'Sin Asignar';
     //this.cargarAgendas();
     console.log(this.selectLab.nombre);
-    //this.setAgenda();
+
     this.getMateriaGivenAgenda();
     this.auxLab=this.selectLab;
-
+    this.setAgenda();
 
   }
   constructor(private modalService: NgbModal, private _http: Http) {}
@@ -102,8 +103,8 @@ export class CalendarTableCellComponent implements OnInit {
     this.nuevaAgenda.horaFin = this.horaFin;
   }
 
+  setAgenda() {
 
-  setAgenda(){
     let url='http://localhost:1337/Lab/getAgenda?dia='+this.dia+
     '&idLaboratorio='+this.selectLab.id+
     '&horaInicio='+this.horaInicio+
@@ -113,16 +114,29 @@ export class CalendarTableCellComponent implements OnInit {
       .subscribe(
         res => {
 
-          let rjson:AgendaLaboratorio = res.json();
-          this.agenda=rjson;
-          return;
+  let rjson:AgendaLaboratorio = res.json();
+  this.agenda = rjson;
+  this.setMateriaProfesor();
+
+
         },
         err =>{
           console.log('error en getAgenda');
         }
 
       );
-    this.agenda=undefined;
+
+  }
+
+
+  setMateriaProfesor(): void{
+  for(var i =0;i<this.materiaprofesor.length;i++){
+    if(this.materiaprofesor[i].id===this.agenda.idMateriaProfesor){
+      this.agenda.idMateriaProfesor=this.materiaprofesor[i];
+
+      return;
+      }
+    }
   }
 
   setAgendaMateriaProfesor(materiaprofesor: MateriaProfesor): void {
@@ -179,7 +193,7 @@ export class CalendarTableCellComponent implements OnInit {
   }
   emitir(){
     console.log('estoy emitiendo');
-    this.eventoRefresh.emit(null);
+    this.eventoRefresh.emit();
   }
   setFechaInicio(){
     this.fechaInicio=new Date(this.modelInicio.year,this.modelInicio.month-1,this.modelInicio.day);
@@ -192,19 +206,29 @@ export class CalendarTableCellComponent implements OnInit {
 
  getMateriaGivenAgenda(){
 
+   let val = true;
+
    let url='http://localhost:1337/Lab/getMateriaGivenAgenda?dia='+this.dia+
      '&idLaboratorio='+this.selectLab.id+
      '&horaInicio='+this.horaInicio+
      '&horaFin='+this.horaFin;
+
    this._http
      .get(url)
      .subscribe(
        res=>{
 
-         let rjson: Materia = res.json();
-         console.log('res'+rjson.nombre);
-         this.materiaAsignada= rjson.nombre;
-         this.agenda=new AgendaLaboratorio();
+try {
+  let rjson: Materia = res.json();
+
+  this.materiaAsignada = rjson.nombre;
+  this.agenda = new AgendaLaboratorio();
+  val=false;
+}catch(e){
+
+};
+
+
          return;
        },
        error=>{
@@ -212,6 +236,7 @@ export class CalendarTableCellComponent implements OnInit {
        }
      );
 
+   if(val)
    this.materiaAsignada='';
 
 
@@ -230,7 +255,11 @@ export class CalendarTableCellComponent implements OnInit {
 
  eliminarAgenda(){
 
+
+
  }
+
+
 
 
 

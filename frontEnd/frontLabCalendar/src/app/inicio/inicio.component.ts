@@ -192,6 +192,11 @@ export class InicioComponent implements OnInit {
     'Delta', '304','23', 3
   ];
 
+  arrayMateriaProfesor:any[]=[
+    
+
+  ]
+
   profes:Profe[]=[];
   constructor(private _http:Http) { }
 
@@ -299,6 +304,17 @@ export class InicioComponent implements OnInit {
         }
       );
   }
+
+}
+
+class MateriaProfesor{
+  constructor(
+    public id?: number,
+    public grupo?: string,
+    public idMateria?: number,
+    public idProfesor?: number,
+    public editable?: boolean
+  ){}
 
 }
 class Labo{

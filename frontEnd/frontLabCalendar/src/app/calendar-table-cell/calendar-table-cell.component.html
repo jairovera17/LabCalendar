@@ -1,10 +1,10 @@
 
 <div  [contextMenu]="basicMenu" style=" min-height: 40px;
   text-align: center;">
-   <div >
+
 {{this.materiaAsignada}}
     {{this.refresh()}}
-   </div>
+
 </div>
 
 <context-menu class="container" style="text-align: center">
@@ -13,7 +13,7 @@
     <div *ngIf="this.agenda" style="text-align: center">
       <button class="btn btn-lg btn-outline-warning" (click)="this.eliminarAgenda()">Eliminar</button>
       <br>
-      <button class="btn btn-lg btn-outline-warning" (click)="open(infoMateria)">Detalles</button>
+      <button class="btn btn-lg btn-outline-warning" (click)="this.setAgenda();open(infoMateria)">Detalles</button>
     </div>
   </ng-template>
 
@@ -151,12 +151,22 @@
     </button>
   </div>
   <div class="modal-body">
-    <p>{{this.agenda | json}}</p>
+     <h2>Detalle de la Agenda</h2>
+    <p><strong>Laboratorio:</strong> {{this.selectLab.nombre}}</p>
+    <p><strong>Hora Inicio:</strong> {{this.agenda.horaInicio}}</p>
+    <p><strong>Hora Fin:</strong> {{this.agenda.horaFin}}</p>
+    <p><strong>Dia:</strong> {{this.nombreDias[this.agenda.dia]}}</p>
+    <hr>
+    <p><strong>Materia:</strong> {{this.agenda.idMateriaProfesor.idMateria.nombre}}</p>
+    <p><strong>Profesor:</strong> {{this.agenda.idMateriaProfesor.idProfesor.apellidos}}  {{this.agenda.idMateriaProfesor.idProfesor.nombres}}</p>
+    <p><strong>Grupo: {{this.agenda.idMateriaProfesor.grupo}}</strong></p>
+
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
   </div>
 </ng-template>
+
 
 
 
