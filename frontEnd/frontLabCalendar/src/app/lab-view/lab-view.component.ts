@@ -262,7 +262,7 @@ export class LabViewComponent implements OnInit {
         .subscribe(
           res=> {
             const rjson: MateriaProfesor = res.json();
-            console.log(JSON.stringify(rjson));
+            console.log('se guardo materia profesor');
             this.materiaProfesor.push(this.nuevaMateriaProfesor);
             this.borrarNuevaMateriaProfesor();
           }
@@ -338,6 +338,21 @@ export class LabViewComponent implements OnInit {
       );
   }
 
+  eliminarMateriaProfesor(matprof: MateriaProfesor){
+    this._http
+      .delete('http://localhost:1337/MateriaProfesor/'+matprof.id)
+      .subscribe(
+        res => {
+          const rjson: MateriaProfesor = res.json();
+          console.log('se ha borrado materia profesor');
+          let indice = this.materiaProfesor.indexOf(matprof);
+          this.materiaProfesor.splice(indice,1);
+        },
+        error => {
+          console.log('error papu');
+        }
+      );
+  }
 
 
 }

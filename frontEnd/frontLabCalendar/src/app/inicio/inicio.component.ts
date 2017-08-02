@@ -17,9 +17,13 @@ export class InicioComponent implements OnInit {
 
     'Marco Enrique ','Benalcázar Palacios',' PhD.',
 
+    'Carlos Arturo Ramon ', 'Bonilla Javita', ' MSc. ',
+
     'Marco Danilo ','Burbano Acuña',' MSc.',
 
     'Tania Elizabeth ','Calle Jiménez',' MSc.',
+
+    'Eduardo Mauricio ', 'Campaña Ortega', ' MSc. ',
 
     'Luis Fernando ','Carrasco Delhy',' MSc.',
 
@@ -30,6 +34,8 @@ export class InicioComponent implements OnInit {
     'Mayra del Cisne ','Carrión Toro',' MSc.',
 
     'Andrés Alejandro ','Cevallos López',' Ing.',
+
+    'Santiago Roberto ', 'Cevallos Teran',' MSc. ',
 
     'Bernardino ','Chancusig Espín',' Ing.',
 
@@ -56,6 +62,8 @@ export class InicioComponent implements OnInit {
     'Enrique Andrés ','Larco Ampudia',' MSc.',
 
     'José Francisco ','Lucio Naranjo',' Phd.',
+
+    'Daniel Alejandro ','Maldonado Ruiz', ' MSc. ',
 
     'Luis Enrique ','Mafla Gallegos',' PhD.',
 
@@ -101,7 +109,39 @@ export class InicioComponent implements OnInit {
 
     'Eddie Hans ','Yánez Quesada',' Ing.',
 
-    'Patricio Xavier ','Zambrano Rodríguez',' MSc.'
+    'Patricio Xavier ','Zambrano Rodríguez',' MSc.',
+
+    'Rodrigo Fabian ' ,'Chancusig Chuquilla' , ' MSc. ',
+
+    'Henry Manolo ', 'Echeverria Culqui' , ' MSc. ',
+
+    'Cesar Humberto ', 'Esquetini Caceres', ' MSc. ',
+
+    'Walter Marcelo ','Fuertes Diaz', ' MSc. ',
+
+    'Carlos Miguel ','Teran Villamarin', ' MSc. ',
+
+    'Cesar Gustavo ', 'Samaniego Burbano', ' MSc. ',
+
+    'Myriam ', 'Penafiel Aguilar', ' MSc. ',
+
+    'Regina Maritzol ', 'Tenemaza Vera', ' MSc. ',
+
+    'Cristina ', 'Acuña', ' MSc. ',
+
+    'Miguel Angel ', 'Tualombo Rea', 'MSc.',
+
+    'Maria Fernanda ', 'Jaramillo', 'MSc.',
+
+    'Patricio ', 'Abad', 'MSc.',
+
+    'Sebastian ', 'Guerrero', 'MSc.',
+
+    'Jorge Eduardo ', 'Rivadeneira Muñoz','MSc.'
+
+
+
+
   ];
   arrayMateria:string[]=[
     'PLANES DE NEGOCIOS TIC ','SIC884',
@@ -176,6 +216,41 @@ export class InicioComponent implements OnInit {
 
     'APLICACIONES MOVILES ','SIC764',
 
+    'BASES DE DATOS ','SIC534',
+
+    'APLICACIONES WEB ','SIC754',
+
+    'GNU LINUX ', 'SIC854',
+
+    'APLICACIONES EN AMBIENTES LIBRES ', 'SIC644' ,
+
+    'APLICACIONES EN AMBIENTES PROPIETARIOS ', 'SIC554',
+
+    'BASES DE DATOS DISTRIBUIDAS ','SIC 534',
+
+    'ARQUITECTURA DE COMPUTADORES ', 'SIC316',
+
+    'ALGORITMOS ', 'SIC324',
+
+    'ADMINISTRACION DE SISTEMAS OPERATIVOS Y REDES ', 'SIC714',
+
+    'COMPILADORES Y LENGUAJES ', 'SIC424',
+
+    'CERTIFICACION PROFESIONAL ', 'SIC834',
+
+    'PROGRAMACION II ', 'SIC216',
+
+    'SEMINARIO PROFESIONAL IV ', 'SIC6A2',
+
+    'LEGISLACION INFORMATICA ', 'ADM612',
+
+    'TECNOLOGIAS WEB CON JAVASCRIPT ','SIC8B4',
+
+    'SEMINARIO PROFESIONAL V', 'SIC666',
+
+    'GESTION DE SEGURIDAD INFORMATICA ', 'SIC814'
+
+
   ];
   arrayModelos:string[]=[
     'Dell Torres', 'intel core i7' , '8GB',
@@ -193,9 +268,9 @@ export class InicioComponent implements OnInit {
   ];
 
   arrayMateriaProfesor:any[]=[
-    
 
-  ]
+
+  ];
 
   profes:Profe[]=[];
   constructor(private _http:Http) { }
