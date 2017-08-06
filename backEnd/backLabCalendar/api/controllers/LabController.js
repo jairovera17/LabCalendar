@@ -22,7 +22,7 @@ module.exports = {
       horaFin:{'>=':param.horaFin}
       }
       ).exec(function (err, agenda) {
-     // sails.log.info('agenda ='+agenda);
+      sails.log.info('agenda ='+agenda);
 
       if(err){
         return res.send('error en agenda');
@@ -83,7 +83,7 @@ module.exports = {
        return res.badRequest;
      else{
        if(agenda)
-       sails.log.info(JSON.stringify(agenda));
+     //  sails.log.info(JSON.stringify(agenda));
        return res.json(agenda);
      }
 

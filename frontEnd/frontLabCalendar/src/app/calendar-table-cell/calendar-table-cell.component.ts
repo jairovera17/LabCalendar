@@ -36,6 +36,9 @@ export class CalendarTableCellComponent implements OnInit {
   nombreDias: string[]= ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'];
   horaFin = 0;
   @Input()materiaprofesor: MateriaProfesor[];
+  @Input()reboot:boolean;
+
+  auxReboot:boolean;
   nuevaAgenda: AgendaLaboratorio;
   displayMateriaProfesor: string;
   closeResult: string;
@@ -44,6 +47,9 @@ export class CalendarTableCellComponent implements OnInit {
 
 
   ngOnInit() {
+    this.auxReboot=this.reboot;
+
+    console.log('hola');
 
     this.horaFin = this.horaInicio + 1;
     this.nuevaAgenda = new AgendaLaboratorio(this.horaInicio, this.selectLab);
@@ -250,8 +256,10 @@ try {
  }
 
  refresh():string{
+   console.log('hola');
 
    if(this.auxLab.nombre!=this.selectLab.nombre){
+     this.auxReboot=this.reboot;
      this.getMateriaGivenAgenda();
      this.auxLab=this.selectLab;
      return '';

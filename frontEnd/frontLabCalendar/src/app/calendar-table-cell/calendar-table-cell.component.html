@@ -104,9 +104,12 @@
           <div ngbDropdown class="d-inline-block">
             <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>{{this.displayMateriaProfesor}}</button>
             <div class="dropdown-menu" aria-labelledby="dropdownBasic1">
-              <div *ngFor="let inicio of this.materiaprofesor" style="text-align: center" style="overflow-y: auto;text-align: center">
-                <input class="dropdown-item" type="button" (click)="setAgendaMateriaProfesor(inicio)" value="{{inicio.idMateria.nombre}} por {{inicio.idProfesor.nombres}}">
+              <div  style="text-align: center;overflow-y: auto;max-height: 250px">
+                <div *ngFor="let inicio of this.materiaprofesor" style="text-align: center" style="overflow-y: auto;text-align: center">
+                  <input class="dropdown-item" type="button" (click)="setAgendaMateriaProfesor(inicio)" value="{{inicio.idMateria.nombre}} por {{inicio.idProfesor.nombres}}">
+                </div>
               </div>
+
 
             </div>
           </div>

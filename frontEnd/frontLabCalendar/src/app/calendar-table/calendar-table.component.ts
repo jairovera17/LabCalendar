@@ -16,7 +16,7 @@ export class CalendarTableComponent implements OnInit {
   nombreDias: string[]= ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'];
   @Input()selectLab: Laboratorio;
   materiaprofesor:MateriaProfesor[]=[];
-  reboot:boolean=false;
+  reboot = false;
   labImplicado='';
   diaImplicado=-5;
 
@@ -24,6 +24,8 @@ export class CalendarTableComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log('refrescando');
+    this.reboot=false;
     this.getMateriaProfesor();
   }
   getdia(numDia: number): string {
@@ -36,6 +38,7 @@ export class CalendarTableComponent implements OnInit {
   cambio(labnombre:string,dia:number){
     this.labImplicado=labnombre;
     this.diaImplicado=dia;
+    this.reboot=!this.reboot;
 
 
   }
