@@ -70,9 +70,12 @@ module.exports = {
 
   },
 //haloooooooooo
+
   getAgenda: function (req,res) {
 
    var param = req.allParams();
+
+
    AgendaLaboratorio.findOne({
      dia:param.dia,
      idLaboratorio:param.idLaboratorio,
@@ -82,9 +85,12 @@ module.exports = {
      if(err)
        return res.badRequest;
      else{
-       if(agenda)
-     //  sails.log.info(JSON.stringify(agenda));
-       return res.json(agenda);
+       if(agenda){
+        res.json(agenda);
+       }
+
+       else
+         return res.ok();
      }
 
    })

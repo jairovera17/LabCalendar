@@ -6,6 +6,7 @@ import {MateriaProfesor} from '../misClasses/interfazMateriaProfesor';
 import {Laboratorio} from "../misClasses/interfazLaboratorio";
 import {AgendaLaboratorio} from "../misClasses/interfazAgenda";
 import {Materia} from "../misClasses/interfazMateria";
+import {isNullOrUndefined} from "util";
 @Component({
   selector: 'app-calendar-table-cell',
   templateUrl: './calendar-table-cell.component.html',
@@ -13,14 +14,17 @@ import {Materia} from "../misClasses/interfazMateria";
 })
 export class CalendarTableCellComponent implements OnInit {
 
+
+
   @Input()horaInicio: number;
   @Input()dia: number;
   @Input()selectLab: Laboratorio;
-
-  @Input()labImplicado:string;
-  @Input()diaImplicado:number;
+  @Input()semanaInicio: Date;
+  @Input()semanaFin: Date;
 
   auxLab:Laboratorio;
+  auxSemanaInicio:Date;
+  auxSemanaFin:Date;
   @Output() eventoRefresh = new EventEmitter();
   @ViewChild(ContextMenuComponent)
 
@@ -30,7 +34,7 @@ export class CalendarTableCellComponent implements OnInit {
   fechaFin:Date;
   fechaInicio:Date;
   agenda:AgendaLaboratorio;
-  materiaAsignada='';
+
 
 
   nombreDias: string[]= ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'];
@@ -42,32 +46,27 @@ export class CalendarTableCellComponent implements OnInit {
   nuevaAgenda: AgendaLaboratorio;
   displayMateriaProfesor: string;
   closeResult: string;
+  workingMateriaProfesor: MateriaProfesor;
+  //no borrar
  // agendas:AgendaLaboratorio[];
 
 
 
   ngOnInit() {
+    this.auxLab=this.selectLab;
     this.auxReboot=this.reboot;
-
-    console.log('hola');
-
+    this.auxSemanaInicio=this.semanaInicio;
+    this.auxSemanaFin=this.semanaFin;
     this.horaFin = this.horaInicio + 1;
     this.nuevaAgenda = new AgendaLaboratorio(this.horaInicio, this.selectLab);
     this.nuevaAgenda.dia=this.dia;
     this.nuevaAgenda.horaFin = this.horaFin;
+
+
     this.nuevaAgenda.fechaInicio=new Date();
     this.nuevaAgenda.fechaFin=new Date();
 
-
-    this.displayMateriaProfesor = 'Sin Asignar';
-    //this.cargarAgendas();
-    console.log(this.selectLab.nombre);
-
-    this.getMateriaGivenAgenda();
-    this.auxLab=this.selectLab;
-    this.refresh();
-    this.setAgenda();
-
+    this.getAgenda();
   }
   constructor(private modalService: NgbModal, private _http: Http) {}
 
@@ -80,8 +79,6 @@ export class CalendarTableCellComponent implements OnInit {
     });
   }
 
-
-
   private getDismissReason(reason: any): string {
     if (reason === ModalDismissReasons.ESC) {
       return 'by pressing ESC';
@@ -92,8 +89,8 @@ export class CalendarTableCellComponent implements OnInit {
     }
   }
 
-  getdia(numDia: number): string {
-    return this.nombreDias[numDia - 1];
+  getDiaNombre(numDia: number): string {
+    return this.nombreDias[numDia];
   }
 
   gethorasRestantes(hora: number): number []{
@@ -108,57 +105,24 @@ export class CalendarTableCellComponent implements OnInit {
 
   }
 
+
   setHoraFin(event) {
     this.horaFin = event.target.value;
     this.nuevaAgenda.horaFin = this.horaFin;
   }
 
-  setAgenda() {
-
-    let url='http://localhost:1337/Lab/getAgenda?dia='+this.dia+
-    '&idLaboratorio='+this.selectLab.id+
-    '&horaInicio='+this.horaInicio+
-    '&horaFin='+this.horaFin;
-
-    this._http.get(url)
-      .subscribe(
-        res => {
-
-  let rjson:AgendaLaboratorio = res.json();
-  this.agenda = rjson;
-  this.setMateriaProfesor();
-
-
-        },
-        err =>{
-          console.log('error en getAgenda');
-        }
-
-      );
-
-  }
-
-
-  setMateriaProfesor(): void{
-  for(var i =0;i<this.materiaprofesor.length;i++){
-    if(this.materiaprofesor[i].id===this.agenda.idMateriaProfesor){
-      this.agenda.idMateriaProfesor=this.materiaprofesor[i];
-
-      return;
-      }
-    }
-  }
-
   setAgendaMateriaProfesor(materiaprofesor: MateriaProfesor): void {
-  this.displayMateriaProfesor = materiaprofesor.idMateria.nombre ;
-  this.nuevaAgenda.idMateriaProfesor= materiaprofesor;
+    this.displayMateriaProfesor = materiaprofesor.idMateria.nombre+' GR: '+materiaprofesor.grupo ;
+    this.nuevaAgenda.idMateriaProfesor= materiaprofesor;
 
   }
-  vacio (ingreso: any): boolean {
+
+  isVacio (ingreso: any): boolean {
     return 'undefined' === typeof ingreso;
   }
+
   getSelectedLabName(lab: Laboratorio): string{
-    if (this.vacio(lab)) {
+    if (this.isVacio(lab)) {
       return 'No disponible';
     } else {
       return lab.nombre;
@@ -167,9 +131,10 @@ export class CalendarTableCellComponent implements OnInit {
 
   validarAgenda():boolean{
 
-    if(this.vacio(this.nuevaAgenda.idMateriaProfesor)||
-      this.vacio(this.nuevaAgenda.idLaboratorio)||
-        this.vacio(this.modelInicio)||this.vacio(this.modelFin)
+    if(this.isVacio(this.nuevaAgenda.idMateriaProfesor)||
+      this.isVacio(this.nuevaAgenda.idLaboratorio)||
+      this.isVacio(this.modelInicio)||
+      this.isVacio(this.modelFin)
 
     ){
       return false;
@@ -178,93 +143,116 @@ export class CalendarTableCellComponent implements OnInit {
 
   }
 
+  setFechaInicio(){
+    this.fechaInicio=new Date(this.modelInicio.year,this.modelInicio.month-1,this.modelInicio.day);
+    this.nuevaAgenda.fechaInicio=this.fechaInicio;
+  }
+
+  setFechaFin(){
+    this.fechaFin=new Date(this.modelFin.year,this.modelFin.month-1,this.modelFin.day);
+    this.nuevaAgenda.fechaFin=this.fechaFin;
+  }
+
+
+  getMateriaProfesorFromAgenda(){
+    let url = 'http://localhost:1337/MateriaProfesor/'+this.agenda.idMateriaProfesor;
+    console.log(JSON.stringify(this.agenda));
+    this._http.get(url)
+      .subscribe(
+        res => {
+
+          let rjson: MateriaProfesor = res.json();
+          this.agenda.idMateriaProfesor=rjson;
+          this.workingMateriaProfesor=rjson;
+
+        },
+        err =>{
+          console.log('error en getAgenda');
+        }
+      );
+  }
+
+  getAgenda() {
+
+    let url='http://localhost:1337/Lab/getAgenda?dia='+this.dia+
+    '&idLaboratorio='+this.selectLab.id+
+    '&horaInicio='+this.horaInicio+
+    '&horaFin='+this.horaFin;
+    if(this.horaInicio===7&&this.dia===0)
+      console.log(url);
+
+    this._http.get(url)
+      .subscribe(
+        res => {
+try {
+  let rjson: AgendaLaboratorio = res.json();
+  this.agenda = rjson;
+ return this.getMateriaProfesorFromAgenda();
+}catch (e){
+
+}
+
+        },
+        err =>{
+          console.log('error en getAgenda');
+        }
+
+      );
+
+  return;
+
+  }
+
   guardarNuevaAgenda(): void {
     this.setFechaInicio();
     this.setFechaFin();
-    this.refresh();
+
     this.nuevaAgenda.dia=this.dia;
     this.nuevaAgenda.idLaboratorio=this.selectLab;
-
+    console.log('gardando agenda'+JSON.stringify(this.nuevaAgenda));
     this._http
       .post('http://localhost:1337/AgendaLaboratorio/',this.nuevaAgenda)
       .subscribe(
         res => {
-          console.log(res);
-          this.getMateriaGivenAgenda();
-          this.emitir();
+
+
+          this.agenda=this.nuevaAgenda;
+          this.nuevaAgenda = new AgendaLaboratorio(this.horaInicio, this.selectLab);
+          console.log('vales vrgggggggggg');
+
         },
         err => {
           console.log('error ', err);
         }
       );
-    this.agenda=this.nuevaAgenda;
-    this.nuevaAgenda = new AgendaLaboratorio(this.horaInicio, this.selectLab);
+
+
 
     this.emitir();
 
   }
+
   emitir(){
     console.log('estoy emitiendo');
-    this.eventoRefresh.emit(this.selectLab.nombre);
+    this.eventoRefresh.emit(null);
   }
-  setFechaInicio(){
-    this.fechaInicio=new Date(this.modelInicio.year,this.modelInicio.month-1,this.modelInicio.day);
-    this.nuevaAgenda.fechaInicio=this.fechaInicio;
-  }
- setFechaFin(){
-    this.fechaFin=new Date(this.modelFin.year,this.modelFin.month-1,this.modelFin.day);
-    this.nuevaAgenda.fechaFin=this.fechaFin;
- }
 
- getMateriaGivenAgenda(){
-
-   let val = true;
-
-   let url='http://localhost:1337/Lab/getMateriaGivenAgenda?dia='+this.dia+
-     '&idLaboratorio='+this.selectLab.id+
-     '&horaInicio='+this.horaInicio+
-     '&horaFin='+this.horaFin;
-
-   this._http
-     .get(url)
-     .subscribe(
-       res=>{
-
-try {
-  let rjson: Materia = res.json();
-
-  this.materiaAsignada = rjson.nombre;
-  this.agenda = new AgendaLaboratorio();
-  val=false;
-}catch(e){
-
-};
+ refresh(){
+   if(this.auxLab.nombre!=this.selectLab.nombre||
+     this.auxReboot!=this.reboot||
+   this.auxSemanaInicio!=this.semanaInicio||
+   this.auxSemanaFin!=this.semanaFin){
 
 
-         return;
-       },
-       error=>{
-         console.log('error');
-       }
-     );
-
-   if(val)
-   this.materiaAsignada='';
-
-
-
- }
-
- refresh():string{
-   console.log('hola');
-
-   if(this.auxLab.nombre!=this.selectLab.nombre){
+  this.agenda=undefined;
+  this.workingMateriaProfesor=undefined;
      this.auxReboot=this.reboot;
-     this.getMateriaGivenAgenda();
      this.auxLab=this.selectLab;
-     return '';
+     this.auxSemanaInicio=this.semanaInicio;
+     this.auxSemanaFin=this.semanaFin;
+
+    return this.getAgenda();
    }
-   else return '';
  }
 
  eliminarAgenda(){
@@ -277,17 +265,30 @@ try {
    this._http.get(url)
      .subscribe(
        res=>{
-         console.log(JSON.stringify(res.json()));
+         console.log('se ha eliminado una agenda prrro :v',JSON.stringify(res.json()));
+
        },
        err=>{
          console.log('error');
        }
      );
-   this.agenda=undefined;
-   this.materiaAsignada='';
+
+   this.emitir();
+
+
+
 
  }
 
+
+
+ getWorkingMateria(): string{
+  if(this.workingMateriaProfesor){
+    return this.workingMateriaProfesor.idMateria.nombre +' GR '+this.workingMateriaProfesor.grupo;
+  }
+  else return '';
+
+ }
 
 
 

@@ -11,39 +11,35 @@ import {delay} from "q";
   styleUrls: ['./calendar-table.component.css']
 })
 export class CalendarTableComponent implements OnInit {
+
+
   horas: number[] = [7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21];
-  idDias: number[] = [1, 2, 3, 4, 5, 6];
+  idDias: number[] = [0, 1, 2, 3, 4, 5];
   nombreDias: string[]= ['Lunes', 'Martes', 'Miercoles', 'Jueves', 'Viernes', 'Sabado'];
+
   @Input()selectLab: Laboratorio;
+  @Input()semanaInicio: Date;
+  @Input()semanaFin:Date;
   materiaprofesor:MateriaProfesor[]=[];
   reboot = false;
-  labImplicado='';
-  diaImplicado=-5;
 
   constructor(private _http: Http,private labService: LabCalendarService) {
   }
 
   ngOnInit() {
-    console.log('refrescando');
     this.reboot=false;
     this.getMateriaProfesor();
   }
-  getdia(numDia: number): string {
-    return this.nombreDias[numDia - 1];
-  }
-  getAgenda(hora: number, dia: number): string {
-    return 'ddddd';
+
+
+//devuelve el nombre del dia como string
+  getDiaNombre(numDia: number): string {
+    return this.nombreDias[numDia];
   }
 
-  cambio(labnombre:string,dia:number){
-    this.labImplicado=labnombre;
-    this.diaImplicado=dia;
+  cambioEnCelda(){
     this.reboot=!this.reboot;
-
-
   }
-
-
   getMateriaProfesor():void{
 
 
