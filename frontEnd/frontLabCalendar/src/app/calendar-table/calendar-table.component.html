@@ -1,35 +1,42 @@
 
-<div class="container ">
-
-
 <div class="container">
   <div style="text-align: center">
     <h2>Calendario Semanal</h2>
     <h3>Laboratorio: {{this.selectLab.nombre}}</h3>
   </div>
 
-  <div>
+  <div class="animated bounceInLeft">
     <div class="row calendarTop calendarRight" style="background-color: #d1d5db; min-height: 70px">
       <div class=" col-1  calendarLeft">
 
       </div>
       <div class="col-11">
         <div class="row">
-          <div class="col-2 " *ngFor="let dia of this.idDias"><br>{{getdia(dia)}}</div>
+          <div class="col-2 " *ngFor="let dia of this.idDias"><br>{{this.getDiaNombre(dia)}}</div>
         </div>
       </div>
     </div>
 
 
     <div class="row calendarLeft " *ngFor="let miHora of this.horas">
-      <div class="col-1 calendarBottom calendarRight">
+      <div class="col-1 calendarBottom calendarRight" style="text-align: center">
+        <br>
         {{miHora}}-{{miHora+1}}
       </div>
 
       <div class="col-11">
         <div class="row">
           <div class="col-2 calendarRight " onmouseover="this.style.backgroundColor='gray'" onmouseout="this.style.backgroundColor='white'"  style="min-height: 35px" *ngFor="let dia of this.idDias">
-              <app-calendar-table-cell   [selectLab]="selectLab" [dia]="dia" [horaInicio]="miHora" [materiaprofesor]="this.materiaprofesor" (eventoRefresh)="getMateriaGivenAgenda()" ></app-calendar-table-cell>
+              <app-calendar-table-cell
+                [selectLab]="selectLab"
+                [dia]="dia"
+                [horaInicio]="miHora"
+                [materiaprofesor]="this.materiaprofesor"
+                (eventoRefresh)="this.cambioEnCelda($event) "
+                [reboot]="this.reboot"
+                [semanaInicio]="this.semanaInicio"
+                [semanaFin]="this.semanaFin"
+              ></app-calendar-table-cell>
           </div>
         </div>
       </div>
@@ -43,3 +50,4 @@
   </div>
 
 </div>
+

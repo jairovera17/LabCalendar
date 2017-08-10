@@ -9,21 +9,44 @@
 
 <div class="jumbotron">
   <div class="container">
-    <h3>Laboratorio: </h3>
-    <div class="row">
-      <div class="col">
-        <div ngbDropdown class="d-inline-block">
-          <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>{{getSelectedLabName(this.selectLab)}}</button>
-          <div class="dropdown-menu" aria-labelledby="dropdownBasic1">
-            <div *ngFor="let inicio of this.laboratorios" style="text-align: center">
-              <input class="dropdown-item" type="button"  (click)="setLab($event)" value="{{inicio.nombre}}">
+    <div>
+      <h3>Laboratorio: </h3>
+      <div class="row">
+        <div class="col">
+          <div ngbDropdown class="d-inline-block">
+            <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>{{getSelectedLabName(this.selectLab)}}</button>
+            <div class="dropdown-menu" aria-labelledby="dropdownBasic1">
+              <div *ngFor="let inicio of this.laboratorios" style="text-align: center">
+                <input class="dropdown-item" type="button"  (click)="setLab($event)" value="{{inicio.nombre}}">
+              </div>
             </div>
-
           </div>
         </div>
       </div>
+      <br>
     </div>
-    <br>
+
+    <div>
+      <h2>Semana</h2>
+
+      <h4>Desde:</h4>
+
+      <h5>{{this.semanaInicio.getFullYear()}}-{{this.nombreMeses[this.semanaInicio.getMonth()]}}-{{this.semanaInicio.getDate()}}</h5>
+
+      <h4>Hasta:</h4>
+
+        <h5>{{this.semanaFin.getFullYear()}}-{{this.nombreMeses[this.semanaFin.getMonth()]}}-{{this.semanaFin.getDate()}}</h5>
+
+      <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+        <div class="btn-group" role="group" aria-label="First group">
+          <button type="button" class="btn btn-secondary" (click)="this.irSemanaAtras()" >Atras</button>
+          <button type="button" class="btn btn-secondary" (click)="this.irSemanaAdelante()" >Adelante</button>
+
+        </div>
+
+      </div>
+
+    </div>
 
   </div>
 
@@ -32,5 +55,5 @@
 </div>
 
 <div *ngIf="this.abrirCalendario">
-  <app-calendar-table [selectLab]="this.selectLab"></app-calendar-table>
+  <app-calendar-table [selectLab]="this.selectLab"  [semanaInicio]="this.semanaInicio" [semanaFin]="this.semanaFin"></app-calendar-table>
 </div>

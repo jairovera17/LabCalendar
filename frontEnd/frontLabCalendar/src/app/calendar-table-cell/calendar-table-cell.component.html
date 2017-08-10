@@ -1,30 +1,33 @@
 
 <div  [contextMenu]="basicMenu" style=" min-height: 40px;
   text-align: center;">
-   <div >
-{{this.materiaAsignada}}
+
+ {{this.getWorkingMateria()}}
     {{this.refresh()}}
-   </div>
+
 </div>
 
 <context-menu class="container" style="text-align: center">
   <ng-template contextMenuItem >
-    <button  *ngIf="!this.agenda" class="btn btn-lg btn-outline-primary" (click)='open(content)'>Agendar </button>
+    <div *ngIf="!this.agenda" style="text-align: center">
+      <button   class="btn btn-lg btn-outline-primary" (click)='open(nuevaAgendaModal)'>Agendar </button>
+    </div>
+
     <div *ngIf="this.agenda" style="text-align: center">
       <button class="btn btn-lg btn-outline-warning" (click)="this.eliminarAgenda()">Eliminar</button>
-      <br>
+      <hr>
       <button class="btn btn-lg btn-outline-warning" (click)="open(infoMateria)">Detalles</button>
     </div>
   </ng-template>
 
 </context-menu>
 
-<ng-template #content let-c="close" let-d="dismiss" style="width: 500px" >
+<ng-template  #nuevaAgendaModal let-c="close" let-d="dismiss" style="width: 500px" >
   <div class="modal-header">
     <h4 class="modal-title" style="text-align: center">Agendar</h4>
   </div>
   <div class="modal-body" style="text-align: center">
-    <h6>Laboratorio:</h6>
+    <h6 >Laboratorio:</h6>
     <p>{{this.getSelectedLabName(this.selectLab)}}</p>
 
     <div class="row jumbotron">
@@ -71,7 +74,7 @@
 
 
     <h6><strong>Dia:</strong></h6>
-    <p>{{this.getdia(this.dia)}}</p>
+    <p>{{this.getDiaNombre(this.dia)}}</p>
 
     <h6><strong>Hora Inicio:</strong></h6>
     <p>{{this.horaInicio}}</p>
@@ -102,11 +105,14 @@
       <div class="row">
         <div class="col">
           <div ngbDropdown class="d-inline-block">
-            <button class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>{{this.displayMateriaProfesor}}</button>
-            <div class="dropdown-menu" aria-labelledby="dropdownBasic1">
-              <div *ngFor="let inicio of this.materiaprofesor" style="text-align: center">
-                <input class="dropdown-item" type="button" (click)="setAgendaMateriaProfesor(inicio)" value="{{inicio.idMateria.nombre}} por {{inicio.idProfesor.nombres}}">
+            <button class="btn btn-outline-primary" id="dropdownBasic2" ngbDropdownToggle>{{this.displayMateriaProfesor}}</button>
+            <div class="dropdown-menu" aria-labelledby="dropdownBasic2">
+              <div  style="text-align: center;overflow-y: auto;max-height: 250px">
+                <div *ngFor="let inicio of this.materiaprofesor" style="text-align: center" style="overflow-y: auto;text-align: center">
+                  <input class="dropdown-item" type="button" (click)="setAgendaMateriaProfesor(inicio)" value="{{inicio.idMateria.nombre}} GR: {{inicio.grupo}} por {{inicio.idProfesor.nombres}}">
+                </div>
               </div>
+
 
             </div>
           </div>
@@ -127,6 +133,8 @@
         <input class="form-control"  type="text" [(ngModel)]="this.nuevaAgenda.observacion" placeholder="Ingresa alguna observacion">
       </div>
     </div>
+
+    {{this.nuevaAgenda | json}}
 
 
 
@@ -151,12 +159,23 @@
     </button>
   </div>
   <div class="modal-body">
-    <p>{{this.agenda | json}}</p>
+     <h2>Detalle de la Agenda</h2>
+    <p><strong>Laboratorio:</strong> {{this.selectLab.nombre}}</p>
+    <p><strong>Hora Inicio:</strong> {{this.agenda.horaInicio}}</p>
+    <p><strong>Hora Fin:</strong> {{this.agenda.horaFin}}</p>
+    <p><strong>Dia:</strong> {{this.nombreDias[this.agenda.dia]}}</p>
+    <hr>
+    <p><strong>Materia:</strong> {{this.agenda.idMateriaProfesor.idMateria.nombre}}</p>
+    <p><strong>Profesor:</strong> {{this.agenda.idMateriaProfesor.idProfesor.apellidos}}  {{this.agenda.idMateriaProfesor.idProfesor.nombres}}</p>
+    <p><strong>Grupo: {{this.agenda.idMateriaProfesor.grupo}}</strong></p>
+
   </div>
   <div class="modal-footer">
     <button type="button" class="btn btn-secondary" (click)="c('Close click')">Close</button>
   </div>
 </ng-template>
+
+
 
 
 
