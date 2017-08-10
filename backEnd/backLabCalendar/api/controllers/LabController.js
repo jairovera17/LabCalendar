@@ -75,12 +75,55 @@ module.exports = {
 
    var param = req.allParams();
 
+   sails.log.info(req.semanaInicio);
+    sails.log.info(req.semanaFin);
 
-   AgendaLaboratorio.findOne({
-     dia:param.dia,
-     idLaboratorio:param.idLaboratorio,
-     horaInicio:{'<=':param.horaInicio},
-     horaFin:{'>=':param.horaFin}
+
+
+    AgendaLaboratorio.findOne().where({
+     or:[
+       //rango externo
+       {
+         fechaInicio:{'<=':param.semanaInicio},
+         fechaFin:{'>=':param.semanaFin},
+         dia:param.dia,
+         idLaboratorio:param.idLaboratorio,
+         horaInicio:{'<=':param.horaInicio},
+         horaFin:{'>=':param.horaFin}
+       },
+       //rango left
+       {
+         fechaInicio:{'<=':param.semanaInicio},
+         fechaFin:{'>=':param.semanaInicio},
+         dia:param.dia,
+         idLaboratorio:param.idLaboratorio,
+         horaInicio:{'<=':param.horaInicio},
+         horaFin:{'>=':param.horaFin}
+       },
+       //rango right
+       {
+
+         fechaInicio:{'<=':param.semanaFin},
+         fechaFin:{'>=':param.semanaFin},
+         dia:param.dia,
+         idLaboratorio:param.idLaboratorio,
+         horaInicio:{'<=':param.horaInicio},
+         horaFin:{'>=':param.horaFin}
+       },
+       //rango interno
+       {
+         fechaInicio:{'>=':param.semanaInicio},
+         fechaFin:{'<=':param.semanaFin},
+         dia:param.dia,
+         idLaboratorio:param.idLaboratorio,
+         horaInicio:{'<=':param.horaInicio},
+         horaFin:{'>=':param.horaFin}
+       }
+
+
+     ]
+
+
    }).exec(function (err,agenda){
      if(err)
        return res.badRequest;

@@ -177,7 +177,10 @@ export class CalendarTableCellComponent implements OnInit {
     let url='http://localhost:1337/Lab/getAgenda?dia='+this.dia+
     '&idLaboratorio='+this.selectLab.id+
     '&horaInicio='+this.horaInicio+
-    '&horaFin='+this.horaFin;
+    '&horaFin='+this.horaFin+
+    '&semanaInicio='+this.semanaInicio+
+     '&semanaFin='+this.semanaFin
+    ;
     if(this.horaInicio===7&&this.dia===0)
       console.log(url);
 
@@ -209,15 +212,12 @@ try {
 
     this.nuevaAgenda.dia=this.dia;
     this.nuevaAgenda.idLaboratorio=this.selectLab;
+
     console.log('gardando agenda'+JSON.stringify(this.nuevaAgenda));
     this._http
       .post('http://localhost:1337/AgendaLaboratorio/',this.nuevaAgenda)
       .subscribe(
         res => {
-
-
-          this.agenda=this.nuevaAgenda;
-          this.nuevaAgenda = new AgendaLaboratorio(this.horaInicio, this.selectLab);
           console.log('vales vrgggggggggg');
 
         },
@@ -225,7 +225,6 @@ try {
           console.log('error ', err);
         }
       );
-
 
 
     this.emitir();
@@ -238,11 +237,13 @@ try {
   }
 
  refresh(){
+
    if(this.auxLab.nombre!=this.selectLab.nombre||
      this.auxReboot!=this.reboot||
    this.auxSemanaInicio!=this.semanaInicio||
    this.auxSemanaFin!=this.semanaFin){
 
+     console.log('estoy refrescando');
 
   this.agenda=undefined;
   this.workingMateriaProfesor=undefined;
