@@ -31,15 +31,15 @@
 
 
 
-    <div *ngIf="this.showProfesores">
-      <div style="padding: 15px">
+    <div  *ngIf="this.showProfesores">
+      <div class="animated bounceInLeft" style="padding: 15px">
         <h1 >Profesores</h1>
         <br>
         <button  type="button" (click)="this.inputNuevoProfesor=true" class="btn btn-primary">Nuevo Profesor</button>
       </div>
 
       <div *ngIf="this.inputNuevoProfesor">
-        <div  class="jumbotron" style="background-color: white">
+        <div   class="jumbotron animated bounceInLeft" style="background-color: white">
           <div>
             <div class="form-group row">
               <label for="nombre" class="col-2 col-form-label">Nombres</label>
@@ -109,14 +109,14 @@
             <button type="button" class="btn btn-warning" (click)="this.borrarNuevoProfesor()">Cerrar</button>
           </div>
 
-          <pre>{{this.nuevoProfesor | json}}</pre>
+
 
         </div>
       </div>
 
 
 
-      <div *ngFor="let prof of this.profesores">
+      <div *ngFor="let prof of this.profesores" class="animated bounceInLeft">
 
         <div class="jumbotron">
 
@@ -174,14 +174,14 @@
     <div *ngIf="this.showMaterias">
 
 
-      <div style="padding: 10px">
+      <div  class="animated bounceInUp" style="padding: 10px">
         <h1>Materias</h1>
         <br>
         <button class="btn btn-primary" (click)="this.inputNuevaMateria=true">Nueva Materia</button>
       </div>
 
       <div *ngIf="this.inputNuevaMateria">
-        <div class="jumbotron" style="background-color: white">
+        <div class="animated bounceInLeft jumbotron" style="background-color: white">
           <div class="form-group row">
             <label for="codigo" class="col-2 col-form-label">Codigo</label>
             <div class="col-10">
@@ -214,7 +214,7 @@
 
 
 
-      <div *ngFor="let mat of this.materias">
+      <div *ngFor="let mat of this.materias" class="animated bounceInUp">
 
         <div class="jumbotron">
 
@@ -261,7 +261,7 @@
      -->
     <div *ngIf="this.showMateriaProfesor">
 
-      <div style="padding: 15px">
+      <div class="animated bounceInRight" style="padding: 15px">
         <h1>Materias Profesor</h1>
         <br>
         <button class="btn btn-primary" (click)="this.inputNuevaMateriaProfesor=true">Nueva Materia-Profesor</button>
@@ -277,7 +277,7 @@
             <div class="dropdown-menu" aria-labelledby="dropdownBasic1">
               <div  style="text-align: center;overflow-y: auto;max-height: 250px">
 
-                <div *ngFor="let mat of this.materias" style="overflow-y: auto">
+                <div *ngFor="let mat of this.materias" style="overflow-y: auto" >
                   <input class="dropdown-item" type="button"  (click)="this.nuevaMateriaProfesor.idMateria=mat" value="{{mat.nombre}}">
 
                 </div>
@@ -330,7 +330,7 @@
 
       </div>
 
-      <div *ngFor="let matprof of this.materiaProfesor">
+      <div *ngFor="let matprof of this.materiaProfesor" class="animated bounceInRight">
 
         <div class="jumbotron">
 
@@ -352,9 +352,7 @@
             <div class="col-3">
               <br><br><br><br>
               <br><br><br><br>
-              <button type="button" class="btn btn-warning">
-                Editar
-              </button>
+
               <button type="button" class="btn btn-danger" (click)="this.eliminarMateriaProfesor(matprof)">
                 Eliminar
               </button>

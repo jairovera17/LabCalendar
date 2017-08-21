@@ -1,12 +1,4 @@
 
-<div class="container" style="text-align: center">
-  <br><br>
-  <h1>Calendarios de Los Laboratorios</h1>
-  <br><br>
-</div>
-
-
-
 <div class="jumbotron">
   <div class="container">
     <div>
@@ -26,25 +18,40 @@
       <br>
     </div>
 
-    <div>
-      <h2>Semana</h2>
+    <div *ngIf="this.abrirCalendario">
 
-      <h4>Desde:</h4>
+      <div>
+        <h2>Semana</h2>
+        <div class="row">
+          <div class="col-4">
+            <h4>Desde:</h4>
 
-      <h5>{{this.semanaInicio.getFullYear()}}-{{this.nombreMeses[this.semanaInicio.getMonth()]}}-{{this.semanaInicio.getDate()}}</h5>
+            <p>{{this.semanaInicio.getDate()}}-{{this.nombreMeses[this.semanaInicio.getMonth()]}}-{{this.semanaInicio.getFullYear()}}</p>
+          </div>
+          <div class="col-4">
+            <h4>Hasta:</h4>
 
-      <h4>Hasta:</h4>
+            <p>{{this.semanaFin.getDate()}}-{{this.nombreMeses[this.semanaFin.getMonth()]}}-{{this.semanaFin.getFullYear()}}</p>
 
-        <h5>{{this.semanaFin.getFullYear()}}-{{this.nombreMeses[this.semanaFin.getMonth()]}}-{{this.semanaFin.getDate()}}</h5>
+          </div>
+          <div class="col-4">
+            <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
+              <div class="btn-group" role="group" aria-label="First group">
+                <button type="button" class="btn btn-secondary" (click)="this.irSemanaAtras()" >Atras</button>
+                <button type="button" class="btn btn-secondary" (click)="this.irSemanaAdelante()" >Adelante</button>
 
-      <div class="btn-toolbar justify-content-between" role="toolbar" aria-label="Toolbar with button groups">
-        <div class="btn-group" role="group" aria-label="First group">
-          <button type="button" class="btn btn-secondary" (click)="this.irSemanaAtras()" >Atras</button>
-          <button type="button" class="btn btn-secondary" (click)="this.irSemanaAdelante()" >Adelante</button>
+              </div>
 
+            </div>
+
+          </div>
         </div>
 
+
+
+
       </div>
+
 
     </div>
 
