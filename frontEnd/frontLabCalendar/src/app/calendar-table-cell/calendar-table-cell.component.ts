@@ -218,7 +218,9 @@ try {
       .post('http://localhost:1337/AgendaLaboratorio/',this.nuevaAgenda)
       .subscribe(
         res => {
-          console.log('vales vrgggggggggg');
+
+         this.emitir();
+
 
         },
         err => {
@@ -227,7 +229,7 @@ try {
       );
 
 
-    this.emitir();
+
 
   }
 
@@ -266,15 +268,18 @@ try {
    this._http.get(url)
      .subscribe(
        res=>{
-         console.log('se ha eliminado una agenda prrro :v',JSON.stringify(res.json()));
+        // console.log('se ha eliminado una agenda prrro :v',JSON.stringify(res.json()));
+         this.emitir();
 
        },
        err=>{
          console.log('error');
+         this.emitir();
        }
      );
-
    this.emitir();
+
+
 
 
 
